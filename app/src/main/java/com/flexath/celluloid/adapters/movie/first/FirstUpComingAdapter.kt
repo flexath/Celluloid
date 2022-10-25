@@ -1,11 +1,13 @@
-package com.flexath.celluloid.adapters
+package com.flexath.celluloid.adapters.movie.first
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.flexath.celluloid.data.database.Result
 import com.flexath.celluloid.databinding.UpComingRvBinding
+import com.flexath.celluloid.ui.movie.PopularFirstFragmentDirections
 
 class FirstUpComingAdapter(private val upComingMovieList: ArrayList<Result>)
     : RecyclerView.Adapter<FirstUpComingAdapter.ViewHolder>() {
@@ -22,6 +24,11 @@ class FirstUpComingAdapter(private val upComingMovieList: ArrayList<Result>)
             upComingMovieLanguage.text = "  "+item.original_language
             upComingMovieReleaseDate.text = "  "+item.release_date
             upComingMoviePoster.load("https://image.tmdb.org/t/p/original"+item.poster_path)
+        }
+        holder.itemView.setOnClickListener {
+            val action = PopularFirstFragmentDirections.movieFirstToSecondAction()
+            action.result = item
+            it.findNavController().navigate(action)
         }
     }
 

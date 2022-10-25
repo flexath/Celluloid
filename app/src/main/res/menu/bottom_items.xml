@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/bottomMovie"
+        android:id="@+id/popularFirstFragment"
         android:title="Movies"
         android:icon="@drawable/ic_movie"
         app:showAsAction="always"/>

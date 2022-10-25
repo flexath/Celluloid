@@ -1,11 +1,18 @@
-package com.flexath.celluloid.adapters
+package com.flexath.celluloid.adapters.movie.first
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.flexath.celluloid.R
 import com.flexath.celluloid.data.database.Result
 import com.flexath.celluloid.databinding.NowPlayingRvBinding
+import com.flexath.celluloid.databinding.UpComingRvBinding
+import com.flexath.celluloid.ui.movie.PopularFirstFragmentDirections
+import kotlinx.android.synthetic.main.now_playing_rv.view.*
+import java.io.Serializable
 
 class FirstNowPlayingAdapter(private val nowPlayingMovieList: ArrayList<Result>)
         :RecyclerView.Adapter<FirstNowPlayingAdapter.ViewHolder>() {
@@ -22,11 +29,17 @@ class FirstNowPlayingAdapter(private val nowPlayingMovieList: ArrayList<Result>)
             nowPlayingMovieReleaseDate.text = "  "+item.release_date
             nowPlayingMoviePoster.load("https://image.tmdb.org/t/p/original"+item.poster_path)
         }
+
+        holder.itemView.setOnClickListener { view ->
+            val action = PopularFirstFragmentDirections.movieFirstToSecondAction()
+            action.result = item
+            view.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {
         return nowPlayingMovieList.size
     }
 
-    inner class ViewHolder(val binding: NowPlayingRvBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(val binding:NowPlayingRvBinding) : RecyclerView.ViewHolder(binding.root)
 }

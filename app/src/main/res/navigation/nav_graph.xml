@@ -9,10 +9,20 @@
         android:id="@+id/popularFirstFragment"
         android:name="com.flexath.celluloid.ui.movie.PopularFirstFragment"
         android:label="fragment_popular_first"
-        tools:layout="@layout/fragment_popular_first" />
+        tools:layout="@layout/fragment_popular_first" >
+        <action
+            android:id="@+id/movieFirstToSecondAction"
+            app:destination="@id/popularSecondFragment" />
+    </fragment>
     <fragment
         android:id="@+id/popularSecondFragment"
         android:name="com.flexath.celluloid.ui.movie.PopularSecondFragment"
         android:label="fragment_popular_second"
-        tools:layout="@layout/fragment_popular_second" />
+        tools:layout="@layout/fragment_popular_second" >
+        <argument
+            android:name="result"
+            app:nullable="true"
+            app:argType="com.flexath.celluloid.data.database.Result"
+            android:defaultValue="@null" />
+    </fragment>
 </navigation>

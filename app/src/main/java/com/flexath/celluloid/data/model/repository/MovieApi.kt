@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface MovieApi {
 
-    @GET("movie")
+    @GET("discover/movie")
     suspend fun getAllNowPlayingMovies(
         @Query("api_key") api_key:String,
         @Query("sort_by") release_date_sort:String,
@@ -15,7 +15,7 @@ interface MovieApi {
         @Query("with_original_language") language:String
     ) : Response<Movie>
 
-    @GET("movie")
+    @GET("discover/movie")
     suspend fun getAllUpComingMovies(
         @Query("api_key") api_key:String,
         @Query("sort_by") release_date_sort:String,
@@ -23,12 +23,12 @@ interface MovieApi {
         @Query("with_original_language") language:String
     ) : Response<Movie>
 
-    @GET("movie")
+    @GET("discover/movie")
     suspend fun getAllPopularMovies(
         @Query("api_key") api_key:String
     ) : Response<Movie>
 
-    @GET("movie")
+    @GET("discover/movie")
     suspend fun getAllTopRatedMovies(
         @Query("api_key") api_key:String,
         @Query("vote_count.gte") vote_count:Int,

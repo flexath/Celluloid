@@ -59,6 +59,7 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_above="@+id/bottomNvgView"
             android:layout_below="@+id/appTitleLinearLayout"
             app:defaultNavHost="true"

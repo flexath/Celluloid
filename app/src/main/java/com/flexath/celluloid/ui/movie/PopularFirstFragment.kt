@@ -10,10 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.flexath.celluloid.R
-import com.flexath.celluloid.adapters.FirstNowPlayingAdapter
-import com.flexath.celluloid.adapters.FirstPopularAdapter
-import com.flexath.celluloid.adapters.FirstTopRatedAdapter
-import com.flexath.celluloid.adapters.FirstUpComingAdapter
+import com.flexath.celluloid.adapters.movie.first.FirstNowPlayingAdapter
+import com.flexath.celluloid.adapters.movie.first.FirstPopularAdapter
+import com.flexath.celluloid.adapters.movie.first.FirstTopRatedAdapter
+import com.flexath.celluloid.adapters.movie.first.FirstUpComingAdapter
 import com.flexath.celluloid.data.database.Result
 import com.flexath.celluloid.data.database.URL
 import com.flexath.celluloid.data.movie_viewmodel.MovieViewModel
@@ -25,10 +25,10 @@ import java.time.format.DateTimeFormatter
 @AndroidEntryPoint
 class PopularFirstFragment : Fragment() {
 
-    private var adpaterNowPlaying:FirstNowPlayingAdapter? = null
-    private var adpaterUpComing:FirstUpComingAdapter? = null
-    private var adpaterPopular:FirstPopularAdapter? = null
-    private var adapterTopRated:FirstTopRatedAdapter? = null
+    private var adpaterNowPlaying: FirstNowPlayingAdapter? = null
+    private var adpaterUpComing: FirstUpComingAdapter? = null
+    private var adpaterPopular: FirstPopularAdapter? = null
+    private var adapterTopRated: FirstTopRatedAdapter? = null
 
     private lateinit var viewModel:MovieViewModel
     private lateinit var horizontalLinearLayoutNowPlaying:LinearLayoutManager

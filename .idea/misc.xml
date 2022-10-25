@@ -16,6 +16,8 @@
         <entry key="app/src/main/res/drawable/ic_release_date.xml" value="0.131" />
         <entry key="app/src/main/res/drawable/ic_star_rate.xml" value="0.133" />
         <entry key="app/src/main/res/drawable/ic_tv.xml" value="0.1425" />
+        <entry key="app/src/main/res/drawable/outline_genre_style.xml" value="0.1325" />
+        <entry key="app/src/main/res/drawable/outline_second_movie_style.xml" value="0.1325" />
         <entry key="app/src/main/res/drawable/outline_upcoming_style.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/rv_now_playing_style.xml" value="0.131" />
         <entry key="app/src/main/res/font/switzer.xml" value="0.14444444444444443" />
@@ -25,6 +27,7 @@
         <entry key="app/src/main/res/layout/activity_popular_first.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/activity_popular_second.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/fragment_popular_first.xml" value="0.12364353830976653" />
+        <entry key="app/src/main/res/layout/fragment_popular_second.xml" value="0.22" />
         <entry key="app/src/main/res/layout/now_playing_rv.xml" value="0.5" />
         <entry key="app/src/main/res/layout/popular_rv.xml" value="0.22" />
         <entry key="app/src/main/res/layout/top_rated_rv.xml" value="0.19479166666666667" />
