@@ -23,7 +23,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 @AndroidEntryPoint
-class PopularFirstFragment : Fragment() {
+class MovieFirstFragment : Fragment() {
 
     private var adpaterNowPlaying: FirstNowPlayingAdapter? = null
     private var adpaterUpComing: FirstUpComingAdapter? = null

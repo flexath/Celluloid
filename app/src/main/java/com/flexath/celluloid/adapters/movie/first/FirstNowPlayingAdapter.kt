@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.flexath.celluloid.data.database.Result
 import com.flexath.celluloid.databinding.NowPlayingRvBinding
-import com.flexath.celluloid.ui.movie.PopularFirstFragmentDirections
+import com.flexath.celluloid.ui.movie.MovieFirstFragmentDirections
 
 class FirstNowPlayingAdapter(private val nowPlayingMovieList: ArrayList<Result>)
         :RecyclerView.Adapter<FirstNowPlayingAdapter.ViewHolder>() {
@@ -26,7 +26,7 @@ class FirstNowPlayingAdapter(private val nowPlayingMovieList: ArrayList<Result>)
         }
 
         holder.itemView.setOnClickListener { view ->
-            val action = PopularFirstFragmentDirections.movieFirstToSecondAction()
+            val action = MovieFirstFragmentDirections.movieFirstToSecondAction()
             action.result = item
             view.findNavController().navigate(action)
         }

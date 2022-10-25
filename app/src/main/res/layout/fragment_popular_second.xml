@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.movie.PopularSecondFragment">
+    tools:context=".ui.movie.MovieSecondFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/secondMoviePoster"
-                android:layout_width="405dp"
+                android:layout_width="match_parent"
                 android:layout_height="405dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/spiderman"/>
@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
@@ -44,7 +44,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="20dp"
                         android:textSize="25sp"
-                        android:textColor="@color/white"
+                        android:textColor="@color/text_color"
                         android:fontFamily="@font/worksans_medium"
                         android:maxLines="3"/>
 
@@ -66,7 +66,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:textSize="15sp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_color"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/worksans_light"
                     android:drawableStart="@drawable/ic_release_date"
@@ -89,11 +89,9 @@
                         android:paddingEnd="7dp"
                         android:paddingTop="4dp"
                         android:paddingBottom="4dp"
-                        android:text="Science Fiction"
                         android:textAllCaps="false"
-                        android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
-                        android:textColor="@color/white"
+                        android:textColor="@color/text_color"
                         android:textSize="11sp"/>
 
                     <com.google.android.material.textview.MaterialTextView
@@ -105,11 +103,9 @@
                         android:paddingEnd="7dp"
                         android:paddingTop="4dp"
                         android:paddingBottom="4dp"
-                        android:text="Adventure"
                         android:textAllCaps="false"
-                        android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
-                        android:textColor="@color/white"
+                        android:textColor="@color/text_color"
                         android:textSize="11sp"/>
 
                     <com.google.android.material.textview.MaterialTextView
@@ -121,13 +117,10 @@
                         android:paddingEnd="7dp"
                         android:paddingTop="4dp"
                         android:paddingBottom="4dp"
-                        android:text="Adventure"
                         android:textAllCaps="false"
-                        android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
-                        android:textColor="@color/white"
+                        android:textColor="@color/text_color"
                         android:textSize="11sp"/>
-
 
                 </LinearLayout>
 
@@ -138,7 +131,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:text="@string/description_txt"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_color"
                     android:textSize="22sp"
                     android:fontFamily="@font/worksans_regular"/>
 
@@ -149,7 +142,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginTop="10dp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_color"
                     android:textSize="15sp"
                     android:fontFamily="@font/worksans_light"/>
 

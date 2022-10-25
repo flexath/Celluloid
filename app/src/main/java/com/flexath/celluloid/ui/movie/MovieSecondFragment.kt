@@ -1,6 +1,5 @@
 package com.flexath.celluloid.ui.movie
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,12 +13,10 @@ import com.flexath.celluloid.data.database.URL
 import com.flexath.celluloid.data.movie_viewmodel.MovieViewModel
 import kotlinx.android.synthetic.main.fragment_popular_second.*
 
-class PopularSecondFragment : Fragment() {
+class MovieSecondFragment : Fragment() {
 
     private lateinit var viewModel:MovieViewModel
-    //private lateinit var genreIdList:List<Int>
-
-    private val args:PopularSecondFragmentArgs by navArgs()
+    private val args:MovieSecondFragmentArgs by navArgs()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_popular_second, container, false)
@@ -28,9 +25,8 @@ class PopularSecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         secondMovieTitle.text = args.result!!.title
-        secondMovieReleaseDate.text = "Release Date - " + args.result!!.release_date
+        secondMovieReleaseDate.text = " Release Date - " + args.result!!.release_date
         secondMovieDescription.text = args.result!!.overview
         secondMoviePoster.load("https://image.tmdb.org/t/p/original"+args.result!!.poster_path)
 

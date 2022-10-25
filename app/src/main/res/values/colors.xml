@@ -11,4 +11,6 @@
     <color name="primary_color">#000000</color>
     <color name="secondary_color">#AB8923</color>
     <color name="accent_color">#fff8e8</color>
+
+    <color name="text_color">#FFFFFF</color>
 </resources>

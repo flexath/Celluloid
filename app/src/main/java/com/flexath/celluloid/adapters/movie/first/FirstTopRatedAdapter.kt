@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.flexath.celluloid.data.database.Result
 import com.flexath.celluloid.databinding.TopRatedRvBinding
-import com.flexath.celluloid.ui.movie.PopularFirstFragmentDirections
+import com.flexath.celluloid.ui.movie.MovieFirstFragmentDirections
 
 class FirstTopRatedAdapter(private val topRatedMovieList: ArrayList<Result>)
     : RecyclerView.Adapter<FirstTopRatedAdapter.ViewHolder>() {
@@ -26,7 +26,7 @@ class FirstTopRatedAdapter(private val topRatedMovieList: ArrayList<Result>)
             topRatedMoviePoster.load("https://image.tmdb.org/t/p/original"+item.poster_path)
         }
         holder.itemView.setOnClickListener {
-            val action = PopularFirstFragmentDirections.movieFirstToSecondAction()
+            val action = MovieFirstFragmentDirections.movieFirstToSecondAction()
             action.result = item
             it.findNavController().navigate(action)
         }

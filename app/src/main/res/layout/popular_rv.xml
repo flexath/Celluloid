@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/supreme_regular"
                 android:textSize="20sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/text_color"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/popularMovieLanguage"
@@ -44,7 +44,7 @@
                 android:drawableStart="@drawable/ic_language"
                 android:fontFamily="@font/inter_light"
                 android:textSize="11sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/text_color"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/popularMovieReleaseDate"
@@ -54,7 +54,7 @@
                 android:drawableStart="@drawable/ic_release_date"
                 android:fontFamily="@font/inter_light"
                 android:textSize="11sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/text_color"/>
 
         </LinearLayout>
 

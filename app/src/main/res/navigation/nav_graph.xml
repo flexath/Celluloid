@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/movie_nav_graph"
-    app:startDestination="@id/popularFirstFragment">
+    app:startDestination="@id/movieFirstFragment">
 
     <fragment
-        android:id="@+id/popularFirstFragment"
-        android:name="com.flexath.celluloid.ui.movie.PopularFirstFragment"
+        android:id="@+id/movieFirstFragment"
+        android:name="com.flexath.celluloid.ui.movie.MovieFirstFragment"
         android:label="fragment_popular_first"
         tools:layout="@layout/fragment_popular_first" >
         <action
             android:id="@+id/movieFirstToSecondAction"
-            app:destination="@id/popularSecondFragment" />
+            app:destination="@id/movieSecondFragment" />
     </fragment>
     <fragment
-        android:id="@+id/popularSecondFragment"
-        android:name="com.flexath.celluloid.ui.movie.PopularSecondFragment"
+        android:id="@+id/movieSecondFragment"
+        android:name="com.flexath.celluloid.ui.movie.MovieSecondFragment"
         android:label="fragment_popular_second"
         tools:layout="@layout/fragment_popular_second" >
         <argument
