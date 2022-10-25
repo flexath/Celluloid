@@ -16,4 +16,7 @@ class MovieRepository
 
     suspend fun getAllTopRatedMovies(api_key:String,vote_count:Int,vote_average:String,page:Int) =
         api.getAllTopRatedMovies(api_key,vote_count,vote_average,page)
+
+    suspend fun getAllGenres(api_key:String) =
+        api.getAllGenres(api_key)
 }

@@ -1,5 +1,6 @@
 package com.flexath.celluloid.data.model.repository
 
+import com.flexath.celluloid.data.database.Genre
 import com.flexath.celluloid.data.database.Movie
 import retrofit2.Response
 import retrofit2.http.GET
@@ -35,4 +36,9 @@ interface MovieApi {
         @Query("sort_by") vote_average:String,
         @Query("page") page:Int
     ) : Response<Movie>
+
+    @GET("genre/movie/list")
+    suspend fun getAllGenres(
+        @Query("api_key") api_key:String
+    ) : Response<Genre>
 }

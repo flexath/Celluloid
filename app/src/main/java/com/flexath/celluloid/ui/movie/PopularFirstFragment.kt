@@ -30,11 +30,12 @@ class PopularFirstFragment : Fragment() {
     private var adpaterPopular: FirstPopularAdapter? = null
     private var adapterTopRated: FirstTopRatedAdapter? = null
 
-    private lateinit var viewModel:MovieViewModel
     private lateinit var horizontalLinearLayoutNowPlaying:LinearLayoutManager
     private lateinit var horizontalLinearLayoutUpComing:LinearLayoutManager
     private lateinit var horizontalLinearLayoutPopular:LinearLayoutManager
     private lateinit var horizontalLinearLayoutTopRated:LinearLayoutManager
+
+    private lateinit var viewModel:MovieViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_popular_first, container, false)
