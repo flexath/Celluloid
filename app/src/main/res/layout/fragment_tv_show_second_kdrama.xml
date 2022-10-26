@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.tvshow.TvShowSecondFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/app_title_bar_layout"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary_color">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:padding="15dp"
+                android:inputType="text"
+                android:hint="@string/search_tvshow_txt"
+                android:textSize="15sp"
+                android:textColorHint="#847E7E"
+                android:textColor="@color/text_color"
+                android:drawableStart="@drawable/ic_search_two"
+                android:drawablePadding="10dp"
+                android:background="@drawable/outline_tv_search_style"
+                android:autofillHints="name" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/trending_this_week_txt"
+                android:textSize="25sp"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/satoshi_medium"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvKDramaTrendingThisWeek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/tv_kdrama_trending_rv"/>
+
+            <View
+                android:id="@+id/upComingDivider"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                android:background="@drawable/divider_now_playing_style" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginEnd="20dp"
+                android:text="On Air Today"
+                android:textSize="25sp"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/satoshi_medium"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvKDramaOnAirToday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="22dp"
+                tools:listitem="@layout/tv_kdrama_onair_today_rv"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

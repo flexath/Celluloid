@@ -18,7 +18,7 @@ import com.flexath.celluloid.data.database.Result
 import com.flexath.celluloid.data.database.URL
 import com.flexath.celluloid.data.movie_viewmodel.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_popular_first.*
+import kotlinx.android.synthetic.main.fragment_movie_first.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -38,7 +38,7 @@ class MovieFirstFragment : Fragment() {
     private lateinit var viewModel:MovieViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_popular_first, container, false)
+        return inflater.inflate(R.layout.fragment_movie_first, container, false)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

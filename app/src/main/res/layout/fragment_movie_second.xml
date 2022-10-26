@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.movie.MovieSecondFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary_color">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary_color"
+            android:orientation="vertical">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/secondMoviePoster"
+                android:layout_width="match_parent"
+                android:layout_height="405dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/spiderman"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-28dp"
+                android:padding="10dp"
+                android:background="@drawable/outline_second_movie_style"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/secondMovieTitle"
+                        android:layout_width="320dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:textSize="25sp"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/worksans_medium"
+                        android:maxLines="3"/>
+
+                    <ImageButton
+                        android:id="@+id/secondMovieSaved"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:backgroundTint="@color/primary_color"
+                        android:src="@drawable/ic_save"
+                        android:layout_gravity="end|center_vertical"
+                        android:contentDescription="@string/saved_button_txt_second" />
+
+                </LinearLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/secondMovieReleaseDate"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/text_color"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/worksans_light"
+                    android:drawableStart="@drawable/ic_release_date"
+                    android:maxLines="3"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/secondMovieGenre1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background = "@drawable/outline_genre_style"
+                        android:paddingStart="7dp"
+                        android:paddingEnd="7dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:textAllCaps="false"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/text_color"
+                        android:textSize="11sp"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/secondMovieGenre2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background = "@drawable/outline_genre_style"
+                        android:paddingStart="7dp"
+                        android:paddingEnd="7dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:textAllCaps="false"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/text_color"
+                        android:textSize="11sp"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/secondMovieGenre3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background = "@drawable/outline_genre_style"
+                        android:paddingStart="7dp"
+                        android:paddingEnd="7dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:textAllCaps="false"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/text_color"
+                        android:textSize="11sp"/>
+
+                </LinearLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/description_txt"
+                    android:textColor="@color/text_color"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/worksans_regular"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/secondMovieDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/text_color"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/worksans_light"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</com.google.android.material.card.MaterialCardView>

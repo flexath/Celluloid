@@ -19,4 +19,11 @@ class MovieRepository
 
     suspend fun getAllGenres(api_key:String) =
         api.getAllGenres(api_key)
+
+    //Followings are for tv shows
+    suspend fun getAllTrendingThisWeekKDrama(api_key:String,language:String,popularity:String,air_date:String) =
+        api.getAllTrendingThisWeekKDrama(api_key,language,popularity,air_date)
+
+    suspend fun getAllOnAirTodayKDrama(api_key:String,language:String,popularity:String,air_date1:String,air_date2:String) =
+        api.getAllOnAirTodayKDrama(api_key,language,popularity,air_date1,air_date2)
 }

@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/divider_popular_style.xml" value="0.1325" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1425" />
+        <entry key="app/src/main/res/drawable-v24/outline_first_tvshow_style.xml" value="0.1065" />
+        <entry key="app/src/main/res/drawable-v24/outline_recycler_photo_style.xml" value="0.1065" />
         <entry key="app/src/main/res/drawable/bottom_view_style.xml" value="0.131" />
         <entry key="app/src/main/res/drawable/divider_now_playing_style.xml" value="0.147" />
         <entry key="app/src/main/res/drawable/ic_duration.xml" value="0.133" />
@@ -17,7 +20,9 @@
         <entry key="app/src/main/res/drawable/ic_star_rate.xml" value="0.133" />
         <entry key="app/src/main/res/drawable/ic_tv.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/outline_genre_style.xml" value="0.1325" />
+        <entry key="app/src/main/res/drawable/outline_movie_recycler_style.xml" value="0.1065" />
         <entry key="app/src/main/res/drawable/outline_second_movie_style.xml" value="0.1325" />
+        <entry key="app/src/main/res/drawable/outline_tv_search_style.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/outline_upcoming_style.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/rv_now_playing_style.xml" value="0.131" />
         <entry key="app/src/main/res/font/switzer.xml" value="0.14444444444444443" />
@@ -26,11 +31,23 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.27070457354758964" />
         <entry key="app/src/main/res/layout/activity_popular_first.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/activity_popular_second.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/layout/app_title_bar_layout.xml" value="0.19479166666666667" />
+        <entry key="app/src/main/res/layout/fragment_movie_first.xml" value="0.14461538461538462" />
+        <entry key="app/src/main/res/layout/fragment_movie_second.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/fragment_popular_first.xml" value="0.12364353830976653" />
         <entry key="app/src/main/res/layout/fragment_popular_second.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_search_first.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/layout/fragment_tv_show_first.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_tv_show_k_drama_third.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/layout/fragment_tv_show_second.xml" value="0.11247382590487585" />
+        <entry key="app/src/main/res/layout/fragment_tv_show_second_kdrama.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/layout/fragment_tv_show_third_kdrama.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/now_playing_rv.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/popular_rv.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/popular_rv.xml" value="0.2711038961038961" />
         <entry key="app/src/main/res/layout/top_rated_rv.xml" value="0.19479166666666667" />
+        <entry key="app/src/main/res/layout/tv_kdrama_onair_today_rv.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/tv_kdrama_trending_rv.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/tv_trending_rv.xml" value="0.33" />
         <entry key="app/src/main/res/layout/up_coming_rv.xml" value="0.22" />
         <entry key="app/src/main/res/menu/bottom_items.xml" value="0.33" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />

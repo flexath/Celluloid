@@ -9,7 +9,7 @@
         android:id="@+id/movieFirstFragment"
         android:name="com.flexath.celluloid.ui.movie.MovieFirstFragment"
         android:label="fragment_popular_first"
-        tools:layout="@layout/fragment_popular_first" >
+        tools:layout="@layout/fragment_movie_first" >
         <action
             android:id="@+id/movieFirstToSecondAction"
             app:destination="@id/movieSecondFragment" />
@@ -18,11 +18,57 @@
         android:id="@+id/movieSecondFragment"
         android:name="com.flexath.celluloid.ui.movie.MovieSecondFragment"
         android:label="fragment_popular_second"
-        tools:layout="@layout/fragment_popular_second" >
+        tools:layout="@layout/fragment_movie_second" >
         <argument
             android:name="result"
             app:nullable="true"
             app:argType="com.flexath.celluloid.data.database.Result"
             android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/tvShowFirstFragment"
+        android:name="com.flexath.celluloid.ui.tvshow.TvShowFirstFragment"
+        android:label="fragment_tv_show_first"
+        tools:layout="@layout/fragment_tv_show_first" >
+        <action
+            android:id="@+id/tvShowFirstToSecondAction"
+            app:destination="@id/tvShowSecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFirstFragment"
+        android:name="com.flexath.celluloid.ui.search.SearchFirstFragment"
+        android:label="fragment_search_first"
+        tools:layout="@layout/fragment_search_first" />
+    <fragment
+        android:id="@+id/savedFirstFragment"
+        android:name="com.flexath.celluloid.ui.saved.SavedFirstFragment"
+        android:label="fragment_saved_first"
+        tools:layout="@layout/fragment_saved_first" />
+    <fragment
+        android:id="@+id/profileFirstFragment"
+        android:name="com.flexath.celluloid.ui.profile.ProfileFirstFragment"
+        android:label="fragment_profile_first"
+        tools:layout="@layout/fragment_profile_first" />
+    <fragment
+        android:id="@+id/tvShowSecondFragment"
+        android:name="com.flexath.celluloid.ui.tvshow.TvShowSecondFragment"
+        android:label="fragment_tv_show_second"
+        tools:layout="@layout/fragment_tv_show_second_kdrama" >
+        <action
+            android:id="@+id/tvShow_KDrama_SecondToThirdAction"
+            app:destination="@id/tvShowKDramaThirdFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tvShowKDramaThirdFragment"
+        android:name="com.flexath.celluloid.ui.tvshow.TvShowKDramaThirdFragment"
+        android:label="fragment_tv_show_k_drama_third"
+        tools:layout="@layout/fragment_tv_show_k_drama_third">
+
+        <argument
+            android:name="tvShowResult"
+            app:nullable="true"
+            app:argType="com.flexath.celluloid.data.database.tv_show.ResultTvShow"
+            android:defaultValue="@null" />
+
     </fragment>
 </navigation>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:background="@color/primary_color"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tvShowKDramaOnAirTodayPoster"
+            android:layout_width="130dp"
+            android:layout_height="190dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/black_adam"/>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="5dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/divider_now_playing_style" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title - "
+            android:textSize="13sp"
+            android:textColor="@color/text_color"
+            android:fontFamily="@font/supreme_thin"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvShowKDramaOnAirTodayTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:fontFamily="@font/supreme_regular"
+            android:textSize="13sp"
+            android:textColor="@color/text_color"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First on air date - "
+            android:textSize="13sp"
+            android:textColor="@color/text_color"
+            android:fontFamily="@font/supreme_thin"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvShowKDramaOnAirTodayFirstOnAirDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/supreme_regular"
+            android:textSize="13sp"
+            android:textColor="@color/text_color"/>
+
+    </LinearLayout>
+
+</LinearLayout>

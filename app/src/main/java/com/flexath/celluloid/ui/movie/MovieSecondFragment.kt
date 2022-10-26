@@ -11,7 +11,7 @@ import coil.load
 import com.flexath.celluloid.R
 import com.flexath.celluloid.data.database.URL
 import com.flexath.celluloid.data.movie_viewmodel.MovieViewModel
-import kotlinx.android.synthetic.main.fragment_popular_second.*
+import kotlinx.android.synthetic.main.fragment_movie_second.*
 
 class MovieSecondFragment : Fragment() {
 
@@ -19,7 +19,7 @@ class MovieSecondFragment : Fragment() {
     private val args:MovieSecondFragmentArgs by navArgs()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_popular_second, container, false)
+        return inflater.inflate(R.layout.fragment_movie_second, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

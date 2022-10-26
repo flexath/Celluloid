@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/primary_color"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="@color/primary_color"
+        app:cardCornerRadius="20dp"
+        android:elevation="30dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tvShowKDramaTrendingPoster"
+            android:layout_width="220dp"
+            android:layout_height="250dp"
+            android:background="@color/primary_color"
+            android:src="@drawable/our_beloved_summer"
+            android:scaleType="fitXY"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="10dp"
+            android:text="Title - "
+            android:textSize="15sp"
+            android:textColor="@color/text_color"
+            android:fontFamily="@font/supreme_thin"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvShowKDramaTrendingTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:text="Our Beloved Summer"
+            android:textSize="15sp"
+            android:textColor="@color/text_color"
+            android:fontFamily="@font/supreme_regular"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="10dp"
+            android:text="First on air date - "
+            android:textSize="15sp"
+            android:textColor="@color/text_color"
+            android:fontFamily="@font/supreme_thin"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvShowKDramaTrendingFirstOnAirDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:text="10/10/2021"
+            android:textSize="15sp"
+            android:textColor="@color/text_color"
+            android:fontFamily="@font/supreme_regular"/>
+
+    </LinearLayout>
+
+</LinearLayout>

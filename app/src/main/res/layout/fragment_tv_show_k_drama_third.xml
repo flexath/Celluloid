@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.movie.MovieSecondFragment">
+    tools:context=".ui.tvshow.TvShowKDramaThirdFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:orientation="vertical">
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/secondMoviePoster"
+                android:id="@+id/thirdTvShowKDramaPoster"
                 android:layout_width="match_parent"
                 android:layout_height="405dp"
                 android:scaleType="fitXY"
@@ -27,7 +27,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-10dp"
+                android:layout_marginTop="-28dp"
+                android:padding="10dp"
+                android:background="@drawable/outline_second_movie_style"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -39,17 +41,17 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/secondMovieTitle"
+                        android:id="@+id/thirdTvShowKDramaTitle"
                         android:layout_width="320dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
+                        android:layout_marginEnd="10dp"
                         android:textSize="25sp"
                         android:textColor="@color/text_color"
                         android:fontFamily="@font/worksans_medium"
                         android:maxLines="3"/>
 
                     <ImageButton
-                        android:id="@+id/secondMovieSaved"
+                        android:id="@+id/thirdTvShowKDramaSaved"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:backgroundTint="@color/primary_color"
@@ -60,7 +62,7 @@
                 </LinearLayout>
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/secondMovieReleaseDate"
+                    android:id="@+id/thirdTvShowKDramaFirstOnAirDate"
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -81,7 +83,7 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/secondMovieGenre1"
+                        android:id="@+id/thirdTvShowKDramaGenre1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background = "@drawable/outline_genre_style"
@@ -95,7 +97,7 @@
                         android:textSize="11sp"/>
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/secondMovieGenre2"
+                        android:id="@+id/thirdTvShowKDramaGenre2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background = "@drawable/outline_genre_style"
@@ -109,7 +111,7 @@
                         android:textSize="11sp"/>
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/secondMovieGenre3"
+                        android:id="@+id/thirdTvShowKDramaGenre3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background = "@drawable/outline_genre_style"
@@ -136,7 +138,7 @@
                     android:fontFamily="@font/worksans_regular"/>
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/secondMovieDescription"
+                    android:id="@+id/thirdTvShowKDramaDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
