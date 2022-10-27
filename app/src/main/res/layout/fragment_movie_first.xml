@@ -9,6 +9,22 @@
 
     <include layout="@layout/app_title_bar_layout"/>
 
+    <EditText
+        android:id="@+id/searchMovie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:padding="15dp"
+        android:inputType="text"
+        android:hint="@string/search_tvshow_txt"
+        android:textSize="15sp"
+        android:textColorHint="#847E7E"
+        android:textColor="@color/text_color"
+        android:drawableStart="@drawable/ic_search_two"
+        android:drawablePadding="10dp"
+        android:background="@drawable/outline_tv_search_style"
+        android:autofillHints="name"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -59,11 +75,12 @@
                 android:textSize="18sp"
                 android:textColor="@color/text_color"/>
 
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPopular"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
+                android:padding="10dp"
                 tools:listitem="@layout/popular_rv"/>
 
             <com.google.android.material.textview.MaterialTextView
@@ -79,9 +96,9 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTopRated"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
+                android:padding="10dp"
                 tools:listitem="@layout/top_rated_rv"/>
 
             <com.google.android.material.textview.MaterialTextView
@@ -97,9 +114,9 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvUpComing"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
+                android:padding="10dp"
                 tools:listitem="@layout/up_coming_rv"/>
 
         </LinearLayout>

@@ -18,25 +18,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:padding="15dp"
-                android:inputType="text"
-                android:hint="@string/search_tvshow_txt"
-                android:textSize="15sp"
-                android:textColorHint="#847E7E"
-                android:textColor="@color/text_color"
-                android:drawableStart="@drawable/ic_search_two"
-                android:drawablePadding="10dp"
-                android:background="@drawable/outline_tv_search_style"
-                android:autofillHints="name" />
-
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginStart="22dp"
                 android:layout_marginEnd="20dp"
                 android:text="@string/trending_this_week_txt"

@@ -32,22 +32,25 @@
         <entry key="app/src/main/res/layout/activity_popular_first.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/activity_popular_second.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/app_title_bar_layout.xml" value="0.19479166666666667" />
-        <entry key="app/src/main/res/layout/fragment_movie_first.xml" value="0.14461538461538462" />
+        <entry key="app/src/main/res/layout/fragment_movie_first.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fragment_movie_second.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/fragment_popular_first.xml" value="0.12364353830976653" />
         <entry key="app/src/main/res/layout/fragment_popular_second.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_search_first.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/fragment_tv_show_first.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_tv_show_k_drama_third.xml" value="0.19583333333333333" />
-        <entry key="app/src/main/res/layout/fragment_tv_show_second.xml" value="0.11247382590487585" />
+        <entry key="app/src/main/res/layout/fragment_tv_show_search.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_tv_show_second.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_tv_show_second_kdrama.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/fragment_tv_show_third.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/fragment_tv_show_third_kdrama.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/now_playing_rv.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/popular_rv.xml" value="0.2711038961038961" />
+        <entry key="app/src/main/res/layout/popular_rv.xml" value="0.5" />
         <entry key="app/src/main/res/layout/top_rated_rv.xml" value="0.19479166666666667" />
         <entry key="app/src/main/res/layout/tv_kdrama_onair_today_rv.xml" value="0.75" />
         <entry key="app/src/main/res/layout/tv_kdrama_trending_rv.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/tv_onair_today_rv.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/layout/tv_search_rv.xml" value="0.33" />
         <entry key="app/src/main/res/layout/tv_top_rated_rv.xml" value="0.1" />
         <entry key="app/src/main/res/layout/tv_trending_rv.xml" value="0.33" />
         <entry key="app/src/main/res/layout/up_coming_rv.xml" value="0.22" />

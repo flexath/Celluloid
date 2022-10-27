@@ -19,6 +19,7 @@ class TvShowViewModel
     val trendingThisWeekTvShowList:MutableLiveData<TvShow> = MutableLiveData()
     val onAirTodayTvShowList:MutableLiveData<TvShow> = MutableLiveData()
     val topRatedTvShowList:MutableLiveData<TvShow> = MutableLiveData()
+    val searchTvShowList:MutableLiveData<TvShow> = MutableLiveData()
 
     val genreList:MutableLiveData<Genre> = MutableLiveData()
 
@@ -56,6 +57,16 @@ class TvShowViewModel
         repository.getAllTopRatedTvShow(api_key,language,vote_count,vote_average,page).let {
             if(it.isSuccessful) {
                 topRatedTvShowList.postValue(it.body())
+            }else{
+                Log.d("UpComingViewModel",it.errorBody().toString())
+            }
+        }
+    }
+
+    fun getTvSearchResults(api_key:String,tv_title:String) = viewModelScope.launch {
+        repository.getTvSearchResults(api_key,tv_title).let {
+            if(it.isSuccessful) {
+                searchTvShowList.postValue(it.body())
             }else{
                 Log.d("UpComingViewModel",it.errorBody().toString())
             }

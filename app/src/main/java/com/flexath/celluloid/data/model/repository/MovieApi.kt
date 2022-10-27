@@ -43,6 +43,12 @@ interface MovieApi {
         @Query("api_key") api_key:String
     ) : Response<Genre>
 
+    @GET("search/movie")
+    suspend fun getMovieSearchResults(
+        @Query("api_key") api_key:String,
+        @Query("query") tv_title:String
+    ) : Response<Movie>
+
     ////////////////////////////////////////////////////////////////
     ////////////////////// -- Tv Show -- ///////////////////////////
 
@@ -70,6 +76,12 @@ interface MovieApi {
         @Query("vote_count.gte") vote_count:Int,
         @Query("sort_by") vote_average:String,
         @Query("page") page:Int
+    ) : Response<TvShow>
+
+    @GET("search/tv")
+    suspend fun getTvSearchResults(
+        @Query("api_key") api_key:String,
+        @Query("query") tv_title:String
     ) : Response<TvShow>
 
 }

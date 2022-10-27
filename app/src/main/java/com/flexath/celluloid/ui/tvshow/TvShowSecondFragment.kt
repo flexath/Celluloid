@@ -2,12 +2,15 @@ package com.flexath.celluloid.ui.tvshow
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.flexath.celluloid.R
@@ -17,6 +20,7 @@ import com.flexath.celluloid.adapters.tv_show.SecondTvShowTrendingThisWeekAdapte
 import com.flexath.celluloid.data.database.URL
 import com.flexath.celluloid.data.database.tv_show.ResultTvShow
 import com.flexath.celluloid.data.movie_viewmodel.TvShowViewModel
+import kotlinx.android.synthetic.main.fragment_tv_show_first.*
 import kotlinx.android.synthetic.main.fragment_tv_show_second.*
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -50,6 +54,12 @@ class TvShowSecondFragment : Fragment() {
         horizontalLinearLayoutTvShowOnAirToday = LinearLayoutManager(requireActivity(),LinearLayoutManager.HORIZONTAL,false)
         horizontalLinearLayoutTvShowTopRated = LinearLayoutManager(requireActivity(),LinearLayoutManager.HORIZONTAL,false)
 
+        getAllRecyclers()
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun getAllRecyclers() {
         when (args.tvShowLanguage) {
             "american" -> {
                 getTvShowTrendingThisWeekRecyclerSetup("en")
@@ -73,6 +83,7 @@ class TvShowSecondFragment : Fragment() {
             }
         }
     }
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun getTvShowTrendingThisWeekRecyclerSetup(nation:String) {

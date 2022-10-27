@@ -19,6 +19,7 @@ class MovieViewModel
     val upComingMovieList:MutableLiveData<Movie> = MutableLiveData()
     val popularMovieList:MutableLiveData<Movie> = MutableLiveData()
     val topRatedMovieList:MutableLiveData<Movie> = MutableLiveData()
+    val searchMovieList:MutableLiveData<Movie> = MutableLiveData()
 
     val genreList:MutableLiveData<Genre> = MutableLiveData()
 
@@ -66,6 +67,16 @@ class MovieViewModel
         repository.getAllGenres(api_key).let {
             if(it.isSuccessful) {
                 genreList.postValue(it.body())
+            }else{
+                Log.d("UpComingViewModel",it.errorBody().toString())
+            }
+        }
+    }
+
+    fun getMovieSearchResults(api_key:String,tv_title:String) = viewModelScope.launch {
+        repository.getMovieSearchResults(api_key,tv_title).let {
+            if(it.isSuccessful) {
+                searchMovieList.postValue(it.body())
             }else{
                 Log.d("UpComingViewModel",it.errorBody().toString())
             }

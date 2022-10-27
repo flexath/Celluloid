@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.flexath.celluloid.R
 import com.flexath.celluloid.adapters.movie.first.FirstNowPlayingAdapter
@@ -17,8 +19,10 @@ import com.flexath.celluloid.adapters.movie.first.FirstUpComingAdapter
 import com.flexath.celluloid.data.database.movie.Result
 import com.flexath.celluloid.data.database.URL
 import com.flexath.celluloid.data.movie_viewmodel.MovieViewModel
+import com.flexath.celluloid.ui.tvshow.TvShowFirstFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movie_first.*
+import kotlinx.android.synthetic.main.fragment_tv_show_first.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -56,6 +60,14 @@ class MovieFirstFragment : Fragment() {
         getUpComingRecyclerSetup()
         getPopularRecyclerSetup()
         getTopRatedRecyclerSetup()
+
+        val searchText = requireActivity().findViewById<EditText>(R.id.searchMovie)
+
+        searchMovie.setOnClickListener {
+            val action = MovieFirstFragmentDirections.movieFirstToSearchAction()
+            action.searchText = searchText.text.toString()
+            findNavController().navigate(action)
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

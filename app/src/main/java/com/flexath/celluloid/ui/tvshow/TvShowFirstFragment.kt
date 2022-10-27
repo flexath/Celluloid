@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.navigation.fragment.findNavController
 import com.flexath.celluloid.R
 import kotlinx.android.synthetic.main.fragment_tv_show_first.*
@@ -17,6 +18,14 @@ class TvShowFirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val searchText = requireActivity().findViewById<EditText>(R.id.searchTvShow)
+
+        searchTvShow.setOnClickListener {
+            val action = TvShowFirstFragmentDirections.tvShowFirstToSearchAction()
+            action.searchText = searchText.text.toString()
+            findNavController().navigate(action)
+        }
 
         tvShowAmerican.setOnClickListener {
             tvShows("american")

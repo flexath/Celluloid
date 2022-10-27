@@ -20,6 +20,9 @@ class MovieRepository
     suspend fun getAllGenres(api_key:String) =
         api.getAllGenres(api_key)
 
+    suspend fun getMovieSearchResults(api_key:String,tv_title:String) =
+        api.getMovieSearchResults(api_key,tv_title)
+
     //Followings are for tv shows
     suspend fun getAllTrendingThisWeekTvShow(api_key:String,language:String,popularity:String,air_date:String) =
         api.getAllTrendingThisWeekTvShow(api_key,language,popularity,air_date)
@@ -29,4 +32,7 @@ class MovieRepository
 
     suspend fun getAllTopRatedTvShow(api_key:String,language:String,vote_count:Int,vote_average:String,page:Int) =
         api.getAllTopRatedTvShow(api_key,language,vote_count,vote_average,page)
+
+    suspend fun getTvSearchResults(api_key:String,tv_title:String) =
+        api.getTvSearchResults(api_key,tv_title)
 }

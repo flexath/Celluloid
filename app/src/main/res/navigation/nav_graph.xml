@@ -13,6 +13,9 @@
         <action
             android:id="@+id/movieFirstToSecondAction"
             app:destination="@id/movieSecondFragment" />
+        <action
+            android:id="@+id/movieFirstToSearchAction"
+            app:destination="@id/tvShowSearchFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieSecondFragment"
@@ -33,6 +36,9 @@
         <action
             android:id="@+id/tvShowFirstToSecondAction"
             app:destination="@id/tvShowSecondFragment" />
+        <action
+            android:id="@+id/tvShow_FirstToSearchAction"
+            app:destination="@id/tvShowSearchFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFirstFragment"
@@ -74,6 +80,24 @@
             app:nullable="true"
             app:argType="com.flexath.celluloid.data.database.tv_show.ResultTvShow"
             android:defaultValue="@null" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/tvShowSearchFragment"
+        android:name="com.flexath.celluloid.ui.tvshow.TvShowSearchFragment"
+        android:label="TvShowSearchFragment">
+
+        <argument
+            android:name="searchText"
+            app:nullable="true"
+            app:argType="string"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/tvShow_SearchToThirdAction"
+            app:destination="@id/tvShowKDramaThirdFragment" />
+        <action
+            android:id="@+id/movieSearchToSecondAction"
+            app:destination="@id/movieSecondFragment" />
 
     </fragment>
 </navigation>

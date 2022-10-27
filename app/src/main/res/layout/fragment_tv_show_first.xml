@@ -10,6 +10,22 @@
 
     <include layout="@layout/app_title_bar_layout"/>
 
+    <EditText
+        android:id="@+id/searchTvShow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:padding="15dp"
+        android:inputType="text"
+        android:hint="@string/search_tvshow_txt"
+        android:textSize="15sp"
+        android:textColorHint="#847E7E"
+        android:textColor="@color/text_color"
+        android:drawableStart="@drawable/ic_search_two"
+        android:drawablePadding="10dp"
+        android:background="@drawable/outline_tv_search_style"
+        android:autofillHints="name"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,7 +40,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/primary_color"
-                    android:layout_margin="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
                     app:cardBackgroundColor="@color/primary_color"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="40dp">
