@@ -6,23 +6,23 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.flexath.celluloid.data.database.tv_show.ResultTvShow
-import com.flexath.celluloid.databinding.TvTrendingRvBinding
+import com.flexath.celluloid.databinding.TvTopRatedRvBinding
 import com.flexath.celluloid.ui.tvshow.TvShowSecondFragmentDirections
 
-class SecondTvShowTrendingThisWeekAdapter(private val trendingThisWeekTvShowList: ArrayList<ResultTvShow>)
-        :RecyclerView.Adapter<SecondTvShowTrendingThisWeekAdapter.ViewHolder>() {
+class SecondTvShowTopRatedAdapter(private val topRatedTvShowList: ArrayList<ResultTvShow>)
+        :RecyclerView.Adapter<SecondTvShowTopRatedAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val items = TvTrendingRvBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val items = TvTopRatedRvBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ViewHolder(items)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = trendingThisWeekTvShowList[position]
+        val item = topRatedTvShowList[position]
         holder.binding.apply {
-            tvShowKDramaTrendingTitle.text = item.name
-            tvShowKDramaTrendingFirstOnAirDate.text = item.first_air_date
-            tvShowKDramaTrendingPoster.load("https://image.tmdb.org/t/p/original"+item.poster_path)
+            tvShowTopRatedTitle.text = item.name
+            tvShowTopRatedFirstOnAirDate.text = item.first_air_date
+            tvShowTopRatedPoster.load("https://image.tmdb.org/t/p/original"+item.poster_path)
         }
 
         holder.itemView.setOnClickListener {
@@ -33,8 +33,8 @@ class SecondTvShowTrendingThisWeekAdapter(private val trendingThisWeekTvShowList
     }
 
     override fun getItemCount(): Int {
-        return trendingThisWeekTvShowList.size
+        return topRatedTvShowList.size
     }
 
-    inner class ViewHolder(val binding:TvTrendingRvBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(val binding:TvTopRatedRvBinding) : RecyclerView.ViewHolder(binding.root)
 }

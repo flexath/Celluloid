@@ -22,7 +22,7 @@
         <argument
             android:name="result"
             app:nullable="true"
-            app:argType="com.flexath.celluloid.data.database.Result"
+            app:argType="com.flexath.celluloid.data.database.movie.Result"
             android:defaultValue="@null" />
     </fragment>
     <fragment
@@ -53,16 +53,21 @@
         android:id="@+id/tvShowSecondFragment"
         android:name="com.flexath.celluloid.ui.tvshow.TvShowSecondFragment"
         android:label="fragment_tv_show_second"
-        tools:layout="@layout/fragment_tv_show_second_kdrama" >
+        tools:layout="@layout/fragment_tv_show_second" >
         <action
             android:id="@+id/tvShow_KDrama_SecondToThirdAction"
             app:destination="@id/tvShowKDramaThirdFragment" />
+        <argument
+            android:name="tvShowLanguage"
+            app:nullable="true"
+            app:argType="string"
+            android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/tvShowKDramaThirdFragment"
-        android:name="com.flexath.celluloid.ui.tvshow.TvShowKDramaThirdFragment"
+        android:name="com.flexath.celluloid.ui.tvshow.TvShowThirdFragment"
         android:label="fragment_tv_show_k_drama_third"
-        tools:layout="@layout/fragment_tv_show_k_drama_third">
+        tools:layout="@layout/fragment_tv_show_third">
 
         <argument
             android:name="tvShowResult"

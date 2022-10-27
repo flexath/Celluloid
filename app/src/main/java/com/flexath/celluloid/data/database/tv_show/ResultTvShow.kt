@@ -9,5 +9,5 @@ data class ResultTvShow(
     val name: String,
     val original_language: String,
     val overview: String,
-    val poster_path: String
+    val poster_path: String?
 ): Serializable

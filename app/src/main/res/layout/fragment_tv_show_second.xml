@@ -48,7 +48,7 @@
                 android:id="@+id/rvKDramaTrendingThisWeek"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/tv_kdrama_trending_rv"/>
+                tools:listitem="@layout/tv_trending_rv"/>
 
             <View
                 android:id="@+id/upComingDivider"
@@ -75,8 +75,26 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="22dp"
-                tools:listitem="@layout/tv_kdrama_onair_today_rv"/>
+                tools:listitem="@layout/tv_onair_today_rv"/>
 
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginEnd="20dp"
+                android:text="Top Rated"
+                android:textSize="25sp"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/satoshi_medium"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTvShowTopRated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="22dp"
+                tools:listitem="@layout/tv_top_rated_rv"/>
 
         </LinearLayout>
 

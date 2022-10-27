@@ -19,24 +19,25 @@ class TvShowFirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         tvShowAmerican.setOnClickListener {
-            tvShows()
+            tvShows("american")
         }
 
         tvShowKorean.setOnClickListener {
-            tvShows()
+            tvShows("korea")
         }
 
         tvShowThai.setOnClickListener {
-            tvShows()
+            tvShows("thailand")
         }
 
         tvShowIndian.setOnClickListener {
-            tvShows()
+            tvShows("india")
         }
     }
 
-    private fun tvShows() {
+    private fun tvShows(nation:String) {
         val action = TvShowFirstFragmentDirections.tvShowFirstToSecondAction()
+        action.tvShowLanguage = nation
         findNavController().navigate(action)
     }
 }

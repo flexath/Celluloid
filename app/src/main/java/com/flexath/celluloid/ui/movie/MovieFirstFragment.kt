@@ -14,7 +14,7 @@ import com.flexath.celluloid.adapters.movie.first.FirstNowPlayingAdapter
 import com.flexath.celluloid.adapters.movie.first.FirstPopularAdapter
 import com.flexath.celluloid.adapters.movie.first.FirstTopRatedAdapter
 import com.flexath.celluloid.adapters.movie.first.FirstUpComingAdapter
-import com.flexath.celluloid.data.database.Result
+import com.flexath.celluloid.data.database.movie.Result
 import com.flexath.celluloid.data.database.URL
 import com.flexath.celluloid.data.movie_viewmodel.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -113,6 +113,5 @@ class MovieFirstFragment : Fragment() {
             rvTopRated.adapter = adapterTopRated
             adapterTopRated?.notifyDataSetChanged()
         }
-
     }
 }

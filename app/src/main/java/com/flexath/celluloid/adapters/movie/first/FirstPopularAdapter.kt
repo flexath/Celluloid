@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.flexath.celluloid.data.database.Result
+import com.flexath.celluloid.data.database.movie.Result
 import com.flexath.celluloid.databinding.PopularRvBinding
 import com.flexath.celluloid.ui.movie.MovieFirstFragmentDirections
 

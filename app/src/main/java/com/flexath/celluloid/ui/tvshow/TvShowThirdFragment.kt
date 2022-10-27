@@ -11,24 +11,24 @@ import coil.load
 import com.flexath.celluloid.R
 import com.flexath.celluloid.data.database.URL
 import com.flexath.celluloid.data.movie_viewmodel.TvShowViewModel
-import kotlinx.android.synthetic.main.fragment_tv_show_k_drama_third.*
+import kotlinx.android.synthetic.main.fragment_tv_show_third.*
 
-class TvShowKDramaThirdFragment : Fragment() {
+class TvShowThirdFragment : Fragment() {
 
     private lateinit var viewModel:TvShowViewModel
-    private val args:TvShowKDramaThirdFragmentArgs by navArgs()
+    private val args:TvShowThirdFragmentArgs by navArgs()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_tv_show_k_drama_third, container, false)
+        return inflater.inflate(R.layout.fragment_tv_show_third, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        thirdTvShowKDramaTitle.text = args.tvShowResult!!.name
-        thirdTvShowKDramaFirstOnAirDate.text = " First Air Date - " + args.tvShowResult!!.first_air_date
-        thirdTvShowKDramaDescription.text = args.tvShowResult!!.overview
-        thirdTvShowKDramaPoster.load("https://image.tmdb.org/t/p/original"+args.tvShowResult!!.poster_path)
+        thirdTvShowTitle.text = args.tvShowResult!!.name
+        thirdTvShowFirstOnAirDate.text = " First Air Date - " + args.tvShowResult!!.first_air_date
+        thirdTvShowDescription.text = args.tvShowResult!!.overview
+        thirdTvShowPoster.load("https://image.tmdb.org/t/p/original"+args.tvShowResult!!.poster_path)
 
         getAllGenres()
 
@@ -56,6 +56,11 @@ class TvShowKDramaThirdFragment : Fragment() {
 
     private fun genreVisibility() {
         when(args.tvShowResult!!.genre_ids.size) {
+            0 -> {
+                thirdTvShowKDramaGenre1.visibility = View.GONE
+                thirdTvShowKDramaGenre2.visibility = View.GONE
+                thirdTvShowKDramaGenre3.visibility = View.GONE
+            }
             1 -> {
                 thirdTvShowKDramaGenre2.visibility = View.GONE
                 thirdTvShowKDramaGenre3.visibility = View.GONE

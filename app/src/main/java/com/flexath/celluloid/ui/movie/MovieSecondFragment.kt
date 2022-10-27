@@ -55,6 +55,11 @@ class MovieSecondFragment : Fragment() {
 
     private fun genreVisibility() {
         when(args.result!!.genre_ids!!.size) {
+            0 -> {
+                secondMovieGenre1.visibility = View.GONE
+                secondMovieGenre2.visibility = View.GONE
+                secondMovieGenre3.visibility = View.GONE
+            }
             1 -> {
                 secondMovieGenre2.visibility = View.GONE
                 secondMovieGenre3.visibility = View.GONE

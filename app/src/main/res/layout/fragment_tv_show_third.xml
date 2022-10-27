@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.tvshow.TvShowKDramaThirdFragment">
+    tools:context=".ui.tvshow.TvShowThirdFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:orientation="vertical">
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/thirdTvShowKDramaPoster"
+                android:id="@+id/thirdTvShowPoster"
                 android:layout_width="match_parent"
                 android:layout_height="405dp"
                 android:scaleType="fitXY"
@@ -41,7 +41,7 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/thirdTvShowKDramaTitle"
+                        android:id="@+id/thirdTvShowTitle"
                         android:layout_width="320dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
@@ -62,7 +62,7 @@
                 </LinearLayout>
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/thirdTvShowKDramaFirstOnAirDate"
+                    android:id="@+id/thirdTvShowFirstOnAirDate"
                     android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -138,7 +138,7 @@
                     android:fontFamily="@font/worksans_regular"/>
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/thirdTvShowKDramaDescription"
+                    android:id="@+id/thirdTvShowDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"

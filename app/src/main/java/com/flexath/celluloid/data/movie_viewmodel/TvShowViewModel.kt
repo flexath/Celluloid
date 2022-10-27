@@ -16,25 +16,26 @@ class TvShowViewModel
 @Inject constructor(private val repository: MovieRepository) : ViewModel() {
 
     // For tv show tab
-    val trendingThisWeekKDramaList:MutableLiveData<TvShow> = MutableLiveData()
-    val onAirTodayKDramaList:MutableLiveData<TvShow> = MutableLiveData()
+    val trendingThisWeekTvShowList:MutableLiveData<TvShow> = MutableLiveData()
+    val onAirTodayTvShowList:MutableLiveData<TvShow> = MutableLiveData()
+    val topRatedTvShowList:MutableLiveData<TvShow> = MutableLiveData()
 
     val genreList:MutableLiveData<Genre> = MutableLiveData()
 
-    fun getAllTrendingThisWeekKDrama(api_key:String,language:String,popularity:String,air_date:String) = viewModelScope.launch {
-        repository.getAllTrendingThisWeekKDrama(api_key,language,popularity,air_date).let {
+    fun getAllTrendingThisWeekTvShow(api_key:String,language:String,popularity:String,air_date:String) = viewModelScope.launch {
+        repository.getAllTrendingThisWeekTvShow(api_key,language,popularity,air_date).let {
             if(it.isSuccessful) {
-                trendingThisWeekKDramaList.postValue(it.body())
+                trendingThisWeekTvShowList.postValue(it.body())
             }else{
                 Log.d("UpComingViewModel",it.errorBody().toString())
             }
         }
     }
 
-    fun getAllOnAirTodayKDrama(api_key:String,language:String,popularity:String,air_date1:String,air_date2:String) = viewModelScope.launch {
-        repository.getAllOnAirTodayKDrama(api_key,language,popularity,air_date1,air_date2).let {
+    fun getAllOnAirTodayTvShow(api_key:String,language:String,popularity:String,air_date1:String,air_date2:String) = viewModelScope.launch {
+        repository.getAllOnAirTodayTvShow(api_key,language,popularity,air_date1,air_date2).let {
             if(it.isSuccessful) {
-                onAirTodayKDramaList.postValue(it.body())
+                onAirTodayTvShowList.postValue(it.body())
             }else{
                 Log.d("UpComingViewModel",it.errorBody().toString())
             }
@@ -45,6 +46,16 @@ class TvShowViewModel
         repository.getAllGenres(api_key).let {
             if(it.isSuccessful) {
                 genreList.postValue(it.body())
+            }else{
+                Log.d("UpComingViewModel",it.errorBody().toString())
+            }
+        }
+    }
+
+    fun getAllTopRatedTvShow(api_key:String,language:String,vote_count:Int,vote_average:String,page:Int) = viewModelScope.launch {
+        repository.getAllTopRatedTvShow(api_key,language,vote_count,vote_average,page).let {
+            if(it.isSuccessful) {
+                topRatedTvShowList.postValue(it.body())
             }else{
                 Log.d("UpComingViewModel",it.errorBody().toString())
             }

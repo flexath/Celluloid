@@ -6,14 +6,14 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.flexath.celluloid.data.database.tv_show.ResultTvShow
-import com.flexath.celluloid.databinding.TvKdramaOnairTodayRvBinding
+import com.flexath.celluloid.databinding.TvOnairTodayRvBinding
 import com.flexath.celluloid.ui.tvshow.TvShowSecondFragmentDirections
 
 class SecondTvShowOnAirTodayAdapter(private val onAirTodayTvShowList: ArrayList<ResultTvShow>)
         :RecyclerView.Adapter<SecondTvShowOnAirTodayAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val items = TvKdramaOnairTodayRvBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val items = TvOnairTodayRvBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ViewHolder(items)
     }
 
@@ -36,5 +36,5 @@ class SecondTvShowOnAirTodayAdapter(private val onAirTodayTvShowList: ArrayList<
         return onAirTodayTvShowList.size
     }
 
-    inner class ViewHolder(val binding:TvKdramaOnairTodayRvBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(val binding:TvOnairTodayRvBinding) : RecyclerView.ViewHolder(binding.root)
 }

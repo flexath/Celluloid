@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.flexath.celluloid.data.database.Genre
 import com.flexath.celluloid.data.model.repository.MovieRepository
-import com.flexath.celluloid.data.database.Movie
+import com.flexath.celluloid.data.database.movie.Movie
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

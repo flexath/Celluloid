@@ -1,7 +1,7 @@
 package com.flexath.celluloid.data.model.repository
 
 import com.flexath.celluloid.data.database.Genre
-import com.flexath.celluloid.data.database.Movie
+import com.flexath.celluloid.data.database.movie.Movie
 import com.flexath.celluloid.data.database.tv_show.TvShow
 import retrofit2.Response
 import retrofit2.http.GET
@@ -47,7 +47,7 @@ interface MovieApi {
     ////////////////////// -- Tv Show -- ///////////////////////////
 
     @GET("discover/tv")
-    suspend fun getAllTrendingThisWeekKDrama(
+    suspend fun getAllTrendingThisWeekTvShow(
         @Query("api_key") api_key:String,
         @Query("with_original_language") language:String,
         @Query("sort_by") popularity:String,
@@ -55,12 +55,21 @@ interface MovieApi {
     ) : Response<TvShow>
 
     @GET("discover/tv")
-    suspend fun getAllOnAirTodayKDrama(
+    suspend fun getAllOnAirTodayTvShow(
         @Query("api_key") api_key:String,
         @Query("with_original_language") language:String,
         @Query("sort_by") popularity:String,
         @Query("air_date.gte") air_date1:String,
         @Query("air_date.lte") air_date2:String
+    ) : Response<TvShow>
+
+    @GET("discover/tv")
+    suspend fun getAllTopRatedTvShow(
+        @Query("api_key") api_key:String,
+        @Query("with_original_language") language:String,
+        @Query("vote_count.gte") vote_count:Int,
+        @Query("sort_by") vote_average:String,
+        @Query("page") page:Int
     ) : Response<TvShow>
 
 }
