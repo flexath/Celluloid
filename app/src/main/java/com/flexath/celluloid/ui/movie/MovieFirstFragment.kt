@@ -65,7 +65,7 @@ class MovieFirstFragment : Fragment() {
 
         searchMovie.setOnClickListener {
             val action = MovieFirstFragmentDirections.movieFirstToSearchAction()
-            action.searchText = searchText.text.toString()
+            action.searchMovieText = searchText.text.toString()
             findNavController().navigate(action)
         }
     }

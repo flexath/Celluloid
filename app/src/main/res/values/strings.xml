@@ -15,4 +15,6 @@
     <string name="profile_bottom_txt">Profile</string>
     <string name="search_tvshow_txt">Search</string>
     <string name="trending_this_week_txt">Trending this week</string>
+    <string name="search_movie_title_txt">Search Movie Title</string>
+    <string name="search_tv_shows_txt">Search Tv Shows</string>
 </resources>

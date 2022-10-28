@@ -6,28 +6,29 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.flexath.celluloid.data.database.movie.Result
+import com.flexath.celluloid.databinding.MovieSearchRvBinding
 import com.flexath.celluloid.databinding.TvSearchRvBinding
+import com.flexath.celluloid.ui.movie.MovieSearchFragmentDirections
 import com.flexath.celluloid.ui.tvshow.TvShowSearchFragmentDirections
 
 class FirstMovieSearchAdapter(private val searchMovieList: ArrayList<Result>)
         :RecyclerView.Adapter<FirstMovieSearchAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val items = TvSearchRvBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val items = MovieSearchRvBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ViewHolder(items)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = searchMovieList[position]
         holder.binding.apply {
-            tvShowSearchTitle.text = item.title
-            tvShowSearchFirstOnAirDate.text = item.release_date
-            tvShowSearchPoster.load("https://image.tmdb.org/t/p/original"+item.poster_path)
-            day.text = "Release Date"
+            movieSearchTitle.text = item.title
+            movieSearchReleaseDate.text = item.release_date
+            movieSearchPoster.load("https://image.tmdb.org/t/p/original"+item.poster_path)
         }
 
         holder.itemView.setOnClickListener {
-            val action = TvShowSearchFragmentDirections.movieSearchToSecondAction()
+            val action = MovieSearchFragmentDirections.movieSearchToSecondAction()
             action.result = item
             it.findNavController().navigate(action)
         }
@@ -37,5 +38,5 @@ class FirstMovieSearchAdapter(private val searchMovieList: ArrayList<Result>)
         return searchMovieList.size
     }
 
-    inner class ViewHolder(val binding:TvSearchRvBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(val binding:MovieSearchRvBinding) : RecyclerView.ViewHolder(binding.root)
 }

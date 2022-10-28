@@ -18,7 +18,7 @@
             android:orientation="vertical">
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/searchTextTitle"
+                android:id="@+id/searchMovieTextTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_color"
@@ -31,10 +31,10 @@
                 android:layout_margin="20dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvTvShowSearch"
+                android:id="@+id/rvMovieSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/tv_search_rv"/>
+                tools:listitem="@layout/movie_search_rv"/>
 
 
         </LinearLayout>

@@ -23,7 +23,7 @@ class TvShowFirstFragment : Fragment() {
 
         searchTvShow.setOnClickListener {
             val action = TvShowFirstFragmentDirections.tvShowFirstToSearchAction()
-            action.searchText = searchText.text.toString()
+            action.searchTvShowText = searchText.text.toString()
             findNavController().navigate(action)
         }
 

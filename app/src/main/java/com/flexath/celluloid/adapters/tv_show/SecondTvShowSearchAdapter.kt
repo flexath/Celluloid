@@ -36,6 +36,9 @@ class SecondTvShowSearchAdapter(private val searchTvShowList: ArrayList<ResultTv
     override fun getItemCount(): Int {
         return searchTvShowList.size
     }
+    fun clearTv() {
+        searchTvShowList.clear()
+    }
 
     inner class ViewHolder(val binding:TvSearchRvBinding) : RecyclerView.ViewHolder(binding.root)
 }

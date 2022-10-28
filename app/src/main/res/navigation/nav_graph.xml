@@ -15,7 +15,7 @@
             app:destination="@id/movieSecondFragment" />
         <action
             android:id="@+id/movieFirstToSearchAction"
-            app:destination="@id/tvShowSearchFragment" />
+            app:destination="@id/movieSearchFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieSecondFragment"
@@ -88,15 +88,27 @@
         android:label="TvShowSearchFragment">
 
         <argument
-            android:name="searchText"
+            android:name="searchTvShowText"
             app:nullable="true"
             app:argType="string"
             android:defaultValue="@null" />
         <action
             android:id="@+id/tvShow_SearchToThirdAction"
             app:destination="@id/tvShowKDramaThirdFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/movieSearchFragment"
+        android:name="com.flexath.celluloid.ui.movie.MovieSearchFragment"
+        android:label="MovieSearchFragment" >
+
+        <argument
+            android:name="searchMovieText"
+            app:nullable="true"
+            app:argType="string"
+            android:defaultValue="@null" />
         <action
-            android:id="@+id/movieSearchToSecondAction"
+            android:id="@+id/movie_SearchToSecondAction"
             app:destination="@id/movieSecondFragment" />
 
     </fragment>

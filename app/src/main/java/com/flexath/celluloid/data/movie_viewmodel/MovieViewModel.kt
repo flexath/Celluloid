@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.flexath.celluloid.data.database.Genre
+import com.flexath.celluloid.data.database.URL
 import com.flexath.celluloid.data.model.repository.MovieRepository
 import com.flexath.celluloid.data.database.movie.Movie
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,7 +20,7 @@ class MovieViewModel
     val upComingMovieList:MutableLiveData<Movie> = MutableLiveData()
     val popularMovieList:MutableLiveData<Movie> = MutableLiveData()
     val topRatedMovieList:MutableLiveData<Movie> = MutableLiveData()
-    val searchMovieList:MutableLiveData<Movie> = MutableLiveData()
+    var searchMovieList:MutableLiveData<Movie> = MutableLiveData()
 
     val genreList:MutableLiveData<Genre> = MutableLiveData()
 

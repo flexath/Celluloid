@@ -9,12 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.flexath.celluloid.R
-import com.flexath.celluloid.adapters.movie.first.FirstMovieSearchAdapter
 import com.flexath.celluloid.adapters.tv_show.SecondTvShowSearchAdapter
 import com.flexath.celluloid.data.database.URL
-import com.flexath.celluloid.data.database.movie.Result
 import com.flexath.celluloid.data.database.tv_show.ResultTvShow
-import com.flexath.celluloid.data.movie_viewmodel.MovieViewModel
 import com.flexath.celluloid.data.movie_viewmodel.TvShowViewModel
 import kotlinx.android.synthetic.main.fragment_tv_show_search.*
 
@@ -22,11 +19,9 @@ class TvShowSearchFragment : Fragment() {
 
     private val args:TvShowSearchFragmentArgs by navArgs()
     private lateinit var viewModelTvShow:TvShowViewModel
-    private lateinit var viewModelMovie: MovieViewModel
 
-    private lateinit var gridLinearLayoutSearch: GridLayoutManager
+    private lateinit var gridLinearLayoutSearchTvShow: GridLayoutManager
     private lateinit var adapterSearchTvShow: SecondTvShowSearchAdapter
-    private lateinit var adapterSearchMovie: FirstMovieSearchAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_tv_show_search, container, false)
@@ -36,40 +31,24 @@ class TvShowSearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModelTvShow = ViewModelProvider(requireActivity())[TvShowViewModel::class.java]
-        viewModelMovie = ViewModelProvider(requireActivity())[MovieViewModel::class.java]
 
-        gridLinearLayoutSearch = GridLayoutManager(requireActivity(),2)
+        gridLinearLayoutSearchTvShow = GridLayoutManager(requireActivity(),2)
 
-        searchTextTitle.text = "Results for \"" + args.searchText + "\""
+        searchTextTitle.text = "Results for \"" + args.searchTvShowText + "\""
 
         getTvSearchResultRecyclerSetup()
-        getMovieSearchResultRecyclerSetup()
-    }
-
-    private fun getMovieSearchResultRecyclerSetup() {
-        rvSearch.layoutManager = gridLinearLayoutSearch
-        rvSearch.setHasFixedSize(true)
-
-        val tvTitle = args.searchText.toString()
-
-        viewModelMovie.getMovieSearchResults(URL.api_key,tvTitle)
-        viewModelMovie.searchMovieList.observe(viewLifecycleOwner) {
-            adapterSearchMovie = FirstMovieSearchAdapter(it.results as ArrayList<Result>)
-            rvSearch.adapter = adapterSearchMovie
-            adapterSearchMovie.notifyDataSetChanged()
-        }
     }
 
     private fun getTvSearchResultRecyclerSetup() {
-        rvSearch.layoutManager = gridLinearLayoutSearch
-        rvSearch.setHasFixedSize(true)
+        rvTvShowSearch.layoutManager = gridLinearLayoutSearchTvShow
+        rvTvShowSearch.setHasFixedSize(true)
 
-        val tvTitle = args.searchText.toString()
+        val tvTitle = args.searchTvShowText.toString()
 
         viewModelTvShow.getTvSearchResults(URL.api_key,tvTitle)
         viewModelTvShow.searchTvShowList.observe(viewLifecycleOwner) {
             adapterSearchTvShow = SecondTvShowSearchAdapter(it.results as ArrayList<ResultTvShow>)
-            rvSearch.adapter = adapterSearchTvShow
+            rvTvShowSearch.adapter = adapterSearchTvShow
             adapterSearchTvShow.notifyDataSetChanged()
         }
     }
