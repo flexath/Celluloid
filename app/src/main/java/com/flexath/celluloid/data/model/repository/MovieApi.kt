@@ -1,10 +1,12 @@
 package com.flexath.celluloid.data.model.repository
 
 import com.flexath.celluloid.data.database.Genre
+import com.flexath.celluloid.data.database.credits.Credits
 import com.flexath.celluloid.data.database.movie.Movie
 import com.flexath.celluloid.data.database.tv_show.TvShow
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MovieApi {
@@ -49,6 +51,12 @@ interface MovieApi {
         @Query("query") tv_title:String
     ) : Response<Movie>
 
+    @GET("movie/{movie_id}/credits")
+    suspend fun getMovieCredits(
+        @Path("movie_id") movie_id:Int,
+        @Query("api_key") api_key:String
+    ) : Response<Credits>
+
     ////////////////////////////////////////////////////////////////
     ////////////////////// -- Tv Show -- ///////////////////////////
 
@@ -83,5 +91,7 @@ interface MovieApi {
         @Query("api_key") api_key:String,
         @Query("query") tv_title:String
     ) : Response<TvShow>
+
+
 
 }

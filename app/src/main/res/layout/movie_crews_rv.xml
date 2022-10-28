@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/primary_color"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:cardCornerRadius="300dp"
+        app:cardElevation="100dp"
+        app:cardBackgroundColor="@color/primary_color">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/crewProfilePicture"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/black_adam"
+            android:background="@color/primary_color"
+            android:scaleType="fitXY"/>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/crewName"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Dwayne Johnson"
+            android:textSize="16sp"
+            android:textColor="@color/text_color"
+            android:fontFamily="@font/worksans_medium"
+            android:maxLines="3"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/crewJobName"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:text="Teth Adam / Black Adam"
+            android:textSize="11sp"
+            android:textColor="@color/text_color"
+            android:fontFamily="@font/worksans_light"
+            android:maxLines="3"/>
+
+    </LinearLayout>
+
+</LinearLayout>

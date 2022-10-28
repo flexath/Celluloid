@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.flexath.celluloid.data.database.Genre
-import com.flexath.celluloid.data.database.URL
-import com.flexath.celluloid.data.model.repository.MovieRepository
+import com.flexath.celluloid.data.database.credits.Credits
 import com.flexath.celluloid.data.database.movie.Movie
+import com.flexath.celluloid.data.model.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,6 +23,7 @@ class MovieViewModel
     var searchMovieList:MutableLiveData<Movie> = MutableLiveData()
 
     val genreList:MutableLiveData<Genre> = MutableLiveData()
+    val creditsMovieList:MutableLiveData<Credits> = MutableLiveData()
 
     fun getAllNowPlayingMovies(api_key:String,release_date_sort:String,release_date:String,language:String) = viewModelScope.launch {
         repository.getAllNowPlayingMovies(api_key,release_date_sort,release_date,language).let {
@@ -78,6 +79,16 @@ class MovieViewModel
         repository.getMovieSearchResults(api_key,tv_title).let {
             if(it.isSuccessful) {
                 searchMovieList.postValue(it.body())
+            }else{
+                Log.d("UpComingViewModel",it.errorBody().toString())
+            }
+        }
+    }
+
+    fun getMovieCredits(movie_id:Int,api_key:String) = viewModelScope.launch {
+        repository.getMovieCredits(movie_id,api_key).let {
+            if(it.isSuccessful) {
+                creditsMovieList.postValue(it.body())
             }else{
                 Log.d("UpComingViewModel",it.errorBody().toString())
             }
