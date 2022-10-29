@@ -2,7 +2,9 @@ package com.flexath.celluloid.data.model.repository
 
 import com.flexath.celluloid.data.database.Genre
 import com.flexath.celluloid.data.database.credits.Credits
+import com.flexath.celluloid.data.database.details.Details
 import com.flexath.celluloid.data.database.movie.Movie
+import com.flexath.celluloid.data.database.people.Person
 import com.flexath.celluloid.data.database.tv_show.TvShow
 import retrofit2.Response
 import retrofit2.http.GET
@@ -56,6 +58,18 @@ interface MovieApi {
         @Path("movie_id") movie_id:Int,
         @Query("api_key") api_key:String
     ) : Response<Credits>
+
+    @GET("movie/{movie_id}")
+    suspend fun getMovieDetails(
+        @Path("movie_id") movie_id:Int,
+        @Query("api_key") api_key:String
+    ) : Response<Details>
+
+    @GET("person/{person_id}")
+    suspend fun getMoviePerson(
+        @Path("person_id") person_id:Int,
+        @Query("api_key") api_key:String
+    ) : Response<Person>
 
     ////////////////////////////////////////////////////////////////
     ////////////////////// -- Tv Show -- ///////////////////////////

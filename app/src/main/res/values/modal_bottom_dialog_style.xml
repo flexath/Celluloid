@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ModalBottomDialog" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/ModalBottomDialogBackground</item>
+        <item name="background">@android:color/white</item>
+    </style>
+    
+    <style name="ModalBottomDialogBackground" parent="Widget.Design.BottomSheet.Modal">
+        <item name="background">@drawable/outline_movie_details_style</item>
+        <item name="android:layout_height">700dp</item>
+    </style>
+</resources>

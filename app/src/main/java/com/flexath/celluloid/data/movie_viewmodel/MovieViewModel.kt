@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.flexath.celluloid.data.database.Genre
 import com.flexath.celluloid.data.database.credits.Credits
+import com.flexath.celluloid.data.database.details.Details
 import com.flexath.celluloid.data.database.movie.Movie
+import com.flexath.celluloid.data.database.people.Person
 import com.flexath.celluloid.data.model.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -24,6 +26,8 @@ class MovieViewModel
 
     val genreList:MutableLiveData<Genre> = MutableLiveData()
     val creditsMovieList:MutableLiveData<Credits> = MutableLiveData()
+    val detailsMovieList:MutableLiveData<Details> = MutableLiveData()
+    val personMovieList:MutableLiveData<Person> = MutableLiveData()
 
     fun getAllNowPlayingMovies(api_key:String,release_date_sort:String,release_date:String,language:String) = viewModelScope.launch {
         repository.getAllNowPlayingMovies(api_key,release_date_sort,release_date,language).let {
@@ -89,6 +93,26 @@ class MovieViewModel
         repository.getMovieCredits(movie_id,api_key).let {
             if(it.isSuccessful) {
                 creditsMovieList.postValue(it.body())
+            }else{
+                Log.d("UpComingViewModel",it.errorBody().toString())
+            }
+        }
+    }
+
+    fun getMovieDetails(movie_id:Int,api_key:String) = viewModelScope.launch {
+        repository.getMovieDetails(movie_id,api_key).let {
+            if(it.isSuccessful) {
+                detailsMovieList.postValue(it.body())
+            }else{
+                Log.d("UpComingViewModel",it.errorBody().toString())
+            }
+        }
+    }
+
+    fun getMoviePerson(person_id:Int,api_key:String) = viewModelScope.launch {
+        repository.getMoviePerson(person_id,api_key).let {
+            if(it.isSuccessful) {
+                personMovieList.postValue(it.body())
             }else{
                 Log.d("UpComingViewModel",it.errorBody().toString())
             }

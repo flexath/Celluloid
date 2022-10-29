@@ -1,8 +1,9 @@
 package com.flexath.celluloid.data.database.credits
 
+import java.io.Serializable
+
 data class Crew(
     val adult: Boolean,
-    val credit_id: String,
     val department: String,
     val gender: Int,
     val id: Int,
@@ -12,4 +13,4 @@ data class Crew(
     val original_name: String?,
     val popularity: Double,
     val profile_path: String?
-)
+):Serializable

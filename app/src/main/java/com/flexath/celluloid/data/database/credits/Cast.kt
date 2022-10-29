@@ -1,8 +1,9 @@
 package com.flexath.celluloid.data.database.credits
 
+import java.io.Serializable
+
 data class Cast(
     val adult: Boolean,
-    val cast_id: Int,
     val character: String?,
     val credit_id: String,
     val gender: Int,
@@ -13,4 +14,4 @@ data class Cast(
     val original_name: String?,
     val popularity: Double,
     val profile_path: String?
-)
+):Serializable

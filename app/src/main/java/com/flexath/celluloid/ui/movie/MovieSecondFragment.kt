@@ -1,9 +1,15 @@
 package com.flexath.celluloid.ui.movie
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.Toast
+import androidx.core.view.marginTop
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
@@ -14,10 +20,15 @@ import com.flexath.celluloid.adapters.movie.second.SecondMovieCastsAdapter
 import com.flexath.celluloid.adapters.movie.second.SecondMovieCrewsAdapter
 import com.flexath.celluloid.data.database.URL
 import com.flexath.celluloid.data.database.credits.Cast
+import com.flexath.celluloid.data.database.credits.Credits
 import com.flexath.celluloid.data.database.credits.Crew
+import com.flexath.celluloid.data.database.details.Details
 import com.flexath.celluloid.data.movie_viewmodel.MovieViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.fragment_movie_second.*
+import kotlinx.android.synthetic.main.modal_bottom_dialog.*
 import kotlinx.android.synthetic.main.movie_casts_rv.*
+import java.lang.StringBuilder
 
 class MovieSecondFragment : Fragment() {
 
@@ -41,43 +52,56 @@ class MovieSecondFragment : Fragment() {
         horizontalLinearLayoutMovieCasts = LinearLayoutManager(requireActivity(),LinearLayoutManager.HORIZONTAL,false)
         horizontalLinearLayoutMovieCrews = LinearLayoutManager(requireActivity(),LinearLayoutManager.HORIZONTAL,false)
 
-        secondMovieTitle.text = args.result!!.title
-        secondMovieReleaseDate.text = " Release Date - " + args.result!!.release_date
-        secondMovieDescription.text = args.result!!.overview
-        secondMoviePoster.load("https://image.tmdb.org/t/p/original"+args.result!!.poster_path)
+        // Details
+        getMovieDetails()
+        btnGetMoreDetails.setOnClickListener {
+            val modalBottomDialog = BottomSheetDialog(requireActivity(),R.style.ModalBottomDialog)
+            val bottomView = layoutInflater.inflate(R.layout.modal_bottom_dialog,null,true)
+            modalBottomDialog.setContentView(bottomView)
+            modalBottomDialog.setCancelable(true)
 
-        getAllGenres()
+            viewModel.getMovieDetails(args.result!!.id,URL.api_key)
+            viewModel.detailsMovieList.observe(viewLifecycleOwner) {
+                modalBottomDialog.secondMovieLanguage.text = it.original_language
+                modalBottomDialog.secondMovieStatus.text = it.status
+                modalBottomDialog.secondMovieTagline.text = it.tagline
+                modalBottomDialog.secondMovieHomePage.text = it.homepage
+                modalBottomDialog.secondMovieBudget.text = it.budget.toString()
+                modalBottomDialog.secondMovieRevenue.text = it.revenue.toLong().toString()
+                getProductionCompanies(it,modalBottomDialog)
+                getProductionCountries(it,modalBottomDialog)
+            }
 
+            val btnHide = modalBottomDialog.findViewById<Button>(R.id.btnHideDetails)
+            btnHide?.setOnClickListener {
+                modalBottomDialog.dismiss()
+            }
+            modalBottomDialog.show()
+        }
+
+        // Credits
         viewModel.getMovieCredits(args.result!!.id,URL.api_key)
         getMovieCasts()
         getMovieCrews()
     }
 
-    private fun getAllGenres() {
-        genreVisibility()
+    private fun getMovieDetails() {
 
-        viewModel.getAllGenres(URL.api_key)
-        viewModel.genreList.observe(viewLifecycleOwner) {
-            for(i in args.result!!.genre_ids!!.indices) {
-                for(j in it.genres.indices){
-                    if(args.result!!.genre_ids!![i] == it.genres[j].id) {
-                        when (i) {
-                            0 -> secondMovieGenre1.text = it.genres[j].name
-                            1 -> secondMovieGenre2.text = it.genres[j].name
-                            2 -> secondMovieGenre3.text = it.genres[j].name
-                            else -> break
-                        }
-                    }
-                }
-            }
+        viewModel.getMovieDetails(args.result!!.id,URL.api_key)
+        viewModel.detailsMovieList.observe(viewLifecycleOwner) {
+            Log.i("MovieId",it.id.toString())
+            secondMoviePoster.load("https://image.tmdb.org/t/p/original"+it.poster_path)
+            secondMovieTitle.text = it.original_title
+            secondMovieReleaseDate.text = " Release Date - " + it.release_date
+            secondMovieRunTime.text = " Run Time     - " + it.runtime + " min"
+            genreVisibility(it)
+            secondMovieDescription.text = it.overview
         }
     }
 
     private fun getMovieCasts() {
         rvMovieCasts.layoutManager = horizontalLinearLayoutMovieCasts
         rvMovieCasts.setHasFixedSize(true)
-
-
         viewModel.creditsMovieList.observe(viewLifecycleOwner) {
             adapterMovieCasts = SecondMovieCastsAdapter(it.cast as ArrayList<Cast>)
             rvMovieCasts.adapter = adapterMovieCasts
@@ -88,34 +112,74 @@ class MovieSecondFragment : Fragment() {
     private fun getMovieCrews() {
         rvMovieCrews.layoutManager = horizontalLinearLayoutMovieCrews
         rvMovieCrews.setHasFixedSize(true)
-
         viewModel.creditsMovieList.observe(viewLifecycleOwner) {
             adapterMovieCrews = SecondMovieCrewsAdapter(it.crew as ArrayList<Crew>)
-
-            for(i in it.crew.indices) {
-                if(it.crew[i].job == "Director") {
-                    movieDirectorName.text = it.crew[i].original_name
-                    movieDirectorProfilePicture.load("https://image.tmdb.org/t/p/original"+it.crew[i].profile_path)
-                }
-            }
+            getDirectorName(it)
             rvMovieCrews.adapter = adapterMovieCrews
             adapterMovieCrews.notifyDataSetChanged()
         }
     }
 
-    private fun genreVisibility() {
-        when(args.result!!.genre_ids!!.size) {
+    private fun getDirectorName(credits: Credits) {
+        for(i in credits.crew.indices) {
+            if(credits.crew[i].job == "Director") {
+                movieDirectorName.text = credits.crew[i].original_name
+                movieDirectorProfilePicture.load("https://image.tmdb.org/t/p/original"+credits.crew[i].profile_path)
+            }
+        }
+    }
+
+    private fun getProductionCompanies(details:Details,bottomDialog: BottomSheetDialog) {
+        if(details.production_companies.isEmpty()) {
+            bottomDialog.secondMovieProductionCompanies.text = "-"
+        }
+        else {
+            bottomDialog.secondMovieProductionCompanies.text = ""
+            for(i in details.production_companies.indices) {
+                bottomDialog.secondMovieProductionCompanies.append(details.production_companies[i].name + " , ")
+            }
+            bottomDialog.secondMovieProductionCompanies.text = StringBuilder(bottomDialog.secondMovieProductionCompanies.text.toString())
+                .deleteRange(bottomDialog.secondMovieProductionCompanies.text.lastIndex-1,
+                    bottomDialog.secondMovieProductionCompanies.text.lastIndex)
+        }
+    }
+
+    private fun getProductionCountries(details:Details,bottomDialog: BottomSheetDialog) {
+        if(details.production_countries.isEmpty()){
+            bottomDialog.secondMovieProductionCountries.text = "-"
+        }
+        else {
+            bottomDialog.secondMovieProductionCountries.text = ""
+            for(i in details.production_countries.indices) {
+                bottomDialog.secondMovieProductionCountries.append(details.production_countries[i].name + " , ")
+            }
+            bottomDialog.secondMovieProductionCountries.text = StringBuilder(bottomDialog.secondMovieProductionCountries.text.toString())
+                    .deleteRange(bottomDialog.secondMovieProductionCountries.text.lastIndex-1,bottomDialog.secondMovieProductionCountries.text.lastIndex)
+        }
+    }
+
+
+    private fun genreVisibility(details:Details) {
+        when(details.genres.size) {
             0 -> {
                 secondMovieGenre1.visibility = View.GONE
                 secondMovieGenre2.visibility = View.GONE
                 secondMovieGenre3.visibility = View.GONE
             }
             1 -> {
+                secondMovieGenre1.text = details.genres[0].name
                 secondMovieGenre2.visibility = View.GONE
                 secondMovieGenre3.visibility = View.GONE
             }
             2 -> {
+                secondMovieGenre1.text = details.genres[0].name
+                secondMovieGenre2.text = details.genres[1].name
                 secondMovieGenre3.visibility = View.GONE
+            }
+            3 -> {
+                secondMovieGenre1.text = details.genres[0].name
+                secondMovieGenre2.text = details.genres[1].name
+                secondMovieGenre3.text = details.genres[2].name
             }
         }
     }

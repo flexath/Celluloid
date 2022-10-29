@@ -2,10 +2,12 @@ package com.flexath.celluloid.adapters.movie.second
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.flexath.celluloid.data.database.credits.Cast
 import com.flexath.celluloid.databinding.MovieCastsRvBinding
+import com.flexath.celluloid.ui.movie.MovieSecondFragmentDirections
 
 class SecondMovieCastsAdapter(private val castsMovieList: ArrayList<Cast>)
         :RecyclerView.Adapter<SecondMovieCastsAdapter.ViewHolder>() {
@@ -23,11 +25,12 @@ class SecondMovieCastsAdapter(private val castsMovieList: ArrayList<Cast>)
             castProfilePicture.load("https://image.tmdb.org/t/p/original"+item.profile_path)
         }
 
-//        holder.itemView.setOnClickListener {
-//            val action = MovieSearchFragmentDirections.movieSearchToSecondAction()
-//            action.result = item
-//            it.findNavController().navigate(action)
-//        }
+        holder.itemView.setOnClickListener {
+            val action = MovieSecondFragmentDirections.movieSecondToPersonAction()
+            action.personCast = item
+            action.personString = "cast"
+            it.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {

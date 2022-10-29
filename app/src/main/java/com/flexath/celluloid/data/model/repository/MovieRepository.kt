@@ -26,6 +26,12 @@ class MovieRepository
     suspend fun getMovieCredits(movie_id:Int,api_key:String) =
         api.getMovieCredits(movie_id,api_key)
 
+    suspend fun getMovieDetails(movie_id:Int,api_key:String) =
+        api.getMovieDetails(movie_id,api_key)
+
+    suspend fun getMoviePerson(person_id:Int,api_key:String) =
+        api.getMoviePerson(person_id,api_key)
+
     //Followings are for tv shows
     suspend fun getAllTrendingThisWeekTvShow(api_key:String,language:String,popularity:String,air_date:String) =
         api.getAllTrendingThisWeekTvShow(api_key,language,popularity,air_date)

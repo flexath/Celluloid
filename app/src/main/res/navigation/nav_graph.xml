@@ -27,6 +27,9 @@
             app:nullable="true"
             app:argType="com.flexath.celluloid.data.database.movie.Result"
             android:defaultValue="@null" />
+        <action
+            android:id="@+id/movieSecondToPersonAction"
+            app:destination="@id/moviePersonFragment" />
     </fragment>
     <fragment
         android:id="@+id/tvShowFirstFragment"
@@ -110,6 +113,30 @@
         <action
             android:id="@+id/movie_SearchToSecondAction"
             app:destination="@id/movieSecondFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/moviePersonFragment"
+        android:name="com.flexath.celluloid.ui.movie.MoviePersonFragment"
+        android:label="MoviePersonFragment">
+
+        <argument
+            android:name="personCast"
+            app:nullable="true"
+            app:argType="com.flexath.celluloid.data.database.credits.Cast"
+            android:defaultValue="@null" />
+
+        <argument
+            android:name="personCrew"
+            app:nullable="true"
+            app:argType="com.flexath.celluloid.data.database.credits.Crew"
+            android:defaultValue="@null" />
+
+        <argument
+            android:name="personString"
+            app:nullable="true"
+            app:argType="string"
+            android:defaultValue="@null" />
 
     </fragment>
 </navigation>

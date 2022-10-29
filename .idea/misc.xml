@@ -6,6 +6,8 @@
         <entry key="app/src/main/res/drawable-v24/divider_popular_style.xml" value="0.1325" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable-v24/outline_first_tvshow_style.xml" value="0.1065" />
+        <entry key="app/src/main/res/drawable-v24/outline_movie_details_style.xml" value="0.1505" />
+        <entry key="app/src/main/res/drawable-v24/outline_movie_person_style.xml" value="0.1375" />
         <entry key="app/src/main/res/drawable-v24/outline_recycler_photo_style.xml" value="0.1065" />
         <entry key="app/src/main/res/drawable/bottom_view_style.xml" value="0.131" />
         <entry key="app/src/main/res/drawable/divider_now_playing_style.xml" value="0.147" />
@@ -30,14 +32,16 @@
         <entry key="app/src/main/res/drawable/rv_now_playing_style.xml" value="0.131" />
         <entry key="app/src/main/res/font/switzer.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/font/switzer_bold.xml" value="0.225" />
+        <entry key="app/src/main/res/layout-v23/fragment_movie_second.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout-v28/activity_main.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.27070457354758964" />
         <entry key="app/src/main/res/layout/activity_popular_first.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/activity_popular_second.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/app_title_bar_layout.xml" value="0.19479166666666667" />
         <entry key="app/src/main/res/layout/fragment_movie_first.xml" value="0.21" />
+        <entry key="app/src/main/res/layout/fragment_movie_person.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_movie_search.xml" value="0.19583333333333333" />
-        <entry key="app/src/main/res/layout/fragment_movie_second.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_movie_second.xml" value="0.15" />
         <entry key="app/src/main/res/layout/fragment_popular_first.xml" value="0.12364353830976653" />
         <entry key="app/src/main/res/layout/fragment_popular_second.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_profile_first.xml" value="0.19583333333333333" />
@@ -49,7 +53,8 @@
         <entry key="app/src/main/res/layout/fragment_tv_show_second_kdrama.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/fragment_tv_show_third.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/fragment_tv_show_third_kdrama.xml" value="0.19583333333333333" />
-        <entry key="app/src/main/res/layout/movie_casts_rv.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/modal_bottom_dialog.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/movie_casts_rv.xml" value="0.5" />
         <entry key="app/src/main/res/layout/movie_crews_rv.xml" value="0.5" />
         <entry key="app/src/main/res/layout/movie_search_rv.xml" value="0.19479166666666667" />
         <entry key="app/src/main/res/layout/now_playing_rv.xml" value="0.5" />

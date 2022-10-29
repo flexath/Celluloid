@@ -31,7 +31,6 @@ class TvShowThirdFragment : Fragment() {
         thirdTvShowPoster.load("https://image.tmdb.org/t/p/original"+args.tvShowResult!!.poster_path)
 
         getAllGenres()
-
     }
 
     private fun getAllGenres() {
