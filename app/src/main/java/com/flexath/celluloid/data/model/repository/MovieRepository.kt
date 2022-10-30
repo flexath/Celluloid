@@ -44,4 +44,7 @@ class MovieRepository
 
     suspend fun getTvSearchResults(api_key:String,tv_title:String) =
         api.getTvSearchResults(api_key,tv_title)
+
+    suspend fun getTvShowDetails(tv_id:Int,api_key:String) =
+        api.getTvShowDetails(tv_id,api_key)
 }

@@ -17,6 +17,7 @@
         <entry key="app/src/main/res/drawable/ic_language.xml" value="0.1325" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/ic_movie.xml" value="0.131" />
+        <entry key="app/src/main/res/drawable/ic_numbers.xml" value="0.1375" />
         <entry key="app/src/main/res/drawable/ic_people.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.179" />
         <entry key="app/src/main/res/drawable/ic_release_date.xml" value="0.131" />
@@ -51,7 +52,7 @@
         <entry key="app/src/main/res/layout/fragment_tv_show_search.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_tv_show_second.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_tv_show_second_kdrama.xml" value="0.19583333333333333" />
-        <entry key="app/src/main/res/layout/fragment_tv_show_third.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/layout/fragment_tv_show_third.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_tv_show_third_kdrama.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/modal_bottom_dialog.xml" value="0.22" />
         <entry key="app/src/main/res/layout/movie_casts_rv.xml" value="0.5" />
@@ -60,10 +61,12 @@
         <entry key="app/src/main/res/layout/now_playing_rv.xml" value="0.5" />
         <entry key="app/src/main/res/layout/popular_rv.xml" value="0.5" />
         <entry key="app/src/main/res/layout/top_rated_rv.xml" value="0.19479166666666667" />
+        <entry key="app/src/main/res/layout/tv_creators_rv.xml" value="0.25" />
         <entry key="app/src/main/res/layout/tv_kdrama_onair_today_rv.xml" value="0.75" />
         <entry key="app/src/main/res/layout/tv_kdrama_trending_rv.xml" value="0.25" />
         <entry key="app/src/main/res/layout/tv_onair_today_rv.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/tv_search_rv.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/tv_seasons_rv.xml" value="0.5" />
         <entry key="app/src/main/res/layout/tv_top_rated_rv.xml" value="0.1" />
         <entry key="app/src/main/res/layout/tv_trending_rv.xml" value="0.33" />
         <entry key="app/src/main/res/layout/up_coming_rv.xml" value="0.22" />

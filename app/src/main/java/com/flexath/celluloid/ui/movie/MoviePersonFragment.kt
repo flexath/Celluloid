@@ -36,8 +36,6 @@ class MoviePersonFragment : Fragment() {
             getPersonCrewInformation()
         }
 
-        getPersonCastInformation()
-
     }
 
     private fun getPersonCastInformation() {

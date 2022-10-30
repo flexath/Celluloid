@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -21,8 +22,7 @@
                 android:id="@+id/thirdTvShowPoster"
                 android:layout_width="match_parent"
                 android:layout_height="405dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/spiderman"/>
+                android:scaleType="fitXY" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -45,13 +45,13 @@
                         android:layout_width="320dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
-                        android:textSize="25sp"
+                        android:textSize="30sp"
                         android:textColor="@color/text_color"
                         android:fontFamily="@font/worksans_medium"
                         android:maxLines="3"/>
 
                     <ImageButton
-                        android:id="@+id/thirdTvShowKDramaSaved"
+                        android:id="@+id/thirdTvShowSaved"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:backgroundTint="@color/primary_color"
@@ -61,29 +61,176 @@
 
                 </LinearLayout>
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/thirdTvShowFirstOnAirDate"
-                    android:layout_width="320dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:textSize="15sp"
-                    android:textColor="@color/text_color"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/worksans_light"
-                    android:drawableStart="@drawable/ic_release_date"
-                    android:maxLines="3"/>
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text=" First Air Date"
+                            android:textSize="15sp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/worksans_light"
+                            android:drawableStart="@drawable/ic_date"
+                            android:maxLines="3"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/thirdTvShowFirstAirDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="- 1998/10/4"
+                            android:textSize="15sp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/worksans_medium"
+                            android:maxLines="3"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text=" Last Air Date"
+                            android:textSize="15sp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/worksans_light"
+                            android:drawableStart="@drawable/ic_date"
+                            android:maxLines="3"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/thirdTvShowLastAirDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="- 1998/10/4"
+                            android:textSize="15sp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/worksans_medium"
+                            android:maxLines="3"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text=" Run Time per Episode"
+                            android:textSize="15sp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/worksans_light"
+                            android:drawableStart="@drawable/ic_release_date"
+                            android:maxLines="3"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/thirdTvShowEpisodeRunTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="- 60 min"
+                            android:textSize="15sp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/worksans_medium"
+                            android:maxLines="3"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text=" Number of Seasons"
+                            android:textSize="15sp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/worksans_light"
+                            android:drawableStart="@drawable/ic_numbers"
+                            android:maxLines="3"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/thirdTvShowNumberOfSeasons"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="- 8"
+                            android:textSize="15sp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/worksans_medium"
+                            android:maxLines="3"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text=" Number of Episodes"
+                            android:textSize="15sp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/worksans_light"
+                            android:drawableStart="@drawable/ic_numbers"
+                            android:maxLines="3"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/thirdTvShowNumberOfEpisodes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="- 70"
+                            android:textSize="15sp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/worksans_medium"
+                            android:maxLines="3"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:orientation="horizontal">
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/thirdTvShowKDramaGenre1"
+                        android:id="@+id/thirdTvShowGenre1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background = "@drawable/outline_genre_style"
@@ -97,7 +244,7 @@
                         android:textSize="11sp"/>
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/thirdTvShowKDramaGenre2"
+                        android:id="@+id/thirdTvShowGenre2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background = "@drawable/outline_genre_style"
@@ -111,7 +258,7 @@
                         android:textSize="11sp"/>
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/thirdTvShowKDramaGenre3"
+                        android:id="@+id/thirdTvShowGenre3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background = "@drawable/outline_genre_style"
@@ -134,7 +281,7 @@
                     android:layout_marginEnd="10dp"
                     android:text="@string/description_txt"
                     android:textColor="@color/text_color"
-                    android:textSize="22sp"
+                    android:textSize="25sp"
                     android:fontFamily="@font/worksans_regular"/>
 
                 <com.google.android.material.textview.MaterialTextView
@@ -148,6 +295,72 @@
                     android:textSize="15sp"
                     android:fontFamily="@font/worksans_light"/>
 
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Seasons"
+                    android:textColor="@color/text_color"
+                    android:textSize="28sp"
+                    android:fontFamily="@font/worksans_regular"/>
+
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/divider_now_playing_style" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTvShowSeasons"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    tools:listitem="@layout/tv_seasons_rv"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Creators"
+                    android:textColor="@color/text_color"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/worksans_regular"/>
+
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/divider_now_playing_style" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTvShowCreators"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/tv_creators_rv"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnTvShowGetMoreDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_gravity="center"
+                    android:padding="15dp"
+                    android:text="See More Details"
+                    android:textColor="@color/secondary_color"
+                    android:textSize="20sp"
+                    android:textAllCaps="true"
+                    android:fontFamily="@font/worksans_bold"
+                    app:cornerRadius="30dp"
+                    android:shadowColor="@color/teal_200"
+                    app:rippleColor="@color/teal_200"
+                    app:elevation="30dp"
+                    app:backgroundTint="@color/black"/>
             </LinearLayout>
 
         </LinearLayout>

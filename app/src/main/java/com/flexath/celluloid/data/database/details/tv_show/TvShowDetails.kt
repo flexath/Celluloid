@@ -1,36 +1,32 @@
 package com.flexath.celluloid.data.database.details.tv_show
 
 data class TvShowDetails(
-    val adult: Boolean,
-    val backdrop_path: String,
-    val created_by: List<CreatedBy>,
-    val episode_run_time: List<Int>,
-    val first_air_date: String,
-    val genres: List<Genre>,
-    val homepage: String,
     val id: Int,
-    val in_production: Boolean,
-    val languages: List<String>,
-    val last_air_date: String,
-    val last_episode_to_air: LastEpisodeToAir,
-    val name: String,
-    val networks: List<Network>,
-    val next_episode_to_air: Any,
-    val number_of_episodes: Int,
-    val number_of_seasons: Int,
-    val origin_country: List<String>,
+    val poster_path: String?,
+    val name: String?,
+    val first_air_date: String?,
+    val last_air_date: String?,
+    val episode_run_time: List<Int>?,         // runtime per episode
+    val number_of_episodes: Int?,
+    val number_of_seasons: Int?,
+    val genres: List<Genre>?,
+    val overview: String?,
+
+    // In Bottom Dialog
     val original_language: String,
-    val original_name: String,
-    val overview: String,
-    val popularity: Double,
-    val poster_path: String,
-    val production_companies: List<ProductionCompany>,
-    val production_countries: List<ProductionCountry>,
-    val seasons: List<Season>,
-    val spoken_languages: List<SpokenLanguage>,
     val status: String,
     val tagline: String,
+    val homepage: String,
     val type: String,
-    val vote_average: Double,
-    val vote_count: Int
+    val networks: List<Network>,
+    val production_companies: List<ProductionCompany>,
+    val production_countries: List<ProductionCountry>,
+
+    val spoken_languages: List<SpokenLanguage>,
+
+    // In Credits
+    val created_by: List<CreatedBy>,
+
+    val seasons: List<Season>,
+    val last_episode_to_air: LastEpisodeToAir
 )

@@ -4,10 +4,16 @@
     android:id="@+id/secondMovieDetailsLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="1dp"
-    android:layout_marginEnd="1dp"
-    android:background="@drawable/outline_movie_details_style"
+    android:background="@color/primary_color"
     android:orientation="vertical">
+
+    <View
+        android:layout_width="60dp"
+        android:layout_height="2.5dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/secondary_color"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -140,6 +146,71 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/secondMovieTypeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:padding="5dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Type"
+                android:textSize="18sp"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/worksans_light"
+                android:maxLines="1"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/secondMovieType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="20dp"
+                android:textSize="18sp"
+                android:textColor="@color/text_color"
+                android:textIsSelectable="true"
+                android:fontFamily="@font/worksans_medium"
+                android:maxLines="2"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secondMovieNetworkLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:padding="5dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Network"
+                android:textSize="18sp"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/worksans_light"
+                android:maxLines="1"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/secondMovieNetwork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="20dp"
+                android:textSize="18sp"
+                android:textColor="@color/text_color"
+                android:textIsSelectable="true"
+                android:fontFamily="@font/worksans_medium"
+                android:maxLines="2"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secondMovieBudgetLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -171,6 +242,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/secondMovieRevenueLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"

@@ -11,6 +11,4 @@ data class LastEpisodeToAir(
     val season_number: Int,
     val show_id: Int,
     val still_path: String,
-    val vote_average: Double,
-    val vote_count: Int
 )

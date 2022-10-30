@@ -2,7 +2,8 @@ package com.flexath.celluloid.data.model.repository
 
 import com.flexath.celluloid.data.database.Genre
 import com.flexath.celluloid.data.database.credits.Credits
-import com.flexath.celluloid.data.database.details.Details
+import com.flexath.celluloid.data.database.details.movie.Details
+import com.flexath.celluloid.data.database.details.tv_show.TvShowDetails
 import com.flexath.celluloid.data.database.movie.Movie
 import com.flexath.celluloid.data.database.people.Person
 import com.flexath.celluloid.data.database.tv_show.TvShow
@@ -106,6 +107,10 @@ interface MovieApi {
         @Query("query") tv_title:String
     ) : Response<TvShow>
 
-
+    @GET("tv/{tv_id}")
+    suspend fun getTvShowDetails(
+        @Path("tv_id") tv_id:Int,
+        @Query("api_key") api_key:String
+    ) : Response<TvShowDetails>
 
 }

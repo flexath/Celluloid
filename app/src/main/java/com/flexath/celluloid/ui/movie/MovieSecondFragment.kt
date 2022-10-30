@@ -1,15 +1,11 @@
 package com.flexath.celluloid.ui.movie
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.Toast
-import androidx.core.view.marginTop
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
@@ -22,12 +18,11 @@ import com.flexath.celluloid.data.database.URL
 import com.flexath.celluloid.data.database.credits.Cast
 import com.flexath.celluloid.data.database.credits.Credits
 import com.flexath.celluloid.data.database.credits.Crew
-import com.flexath.celluloid.data.database.details.Details
+import com.flexath.celluloid.data.database.details.movie.Details
 import com.flexath.celluloid.data.movie_viewmodel.MovieViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.fragment_movie_second.*
 import kotlinx.android.synthetic.main.modal_bottom_dialog.*
-import kotlinx.android.synthetic.main.movie_casts_rv.*
 import java.lang.StringBuilder
 
 class MovieSecondFragment : Fragment() {
@@ -54,9 +49,18 @@ class MovieSecondFragment : Fragment() {
 
         // Details
         getMovieDetails()
+        getBottomDialogMovieDetails()
+
+        // Credits
+        viewModel.getMovieCredits(args.result!!.id,URL.api_key)
+        getMovieCasts()
+        getMovieCrews()
+    }
+
+    private fun getBottomDialogMovieDetails() {
         btnGetMoreDetails.setOnClickListener {
             val modalBottomDialog = BottomSheetDialog(requireActivity(),R.style.ModalBottomDialog)
-            val bottomView = layoutInflater.inflate(R.layout.modal_bottom_dialog,null,true)
+            val bottomView = layoutInflater.inflate(R.layout.modal_bottom_dialog,null,false)
             modalBottomDialog.setContentView(bottomView)
             modalBottomDialog.setCancelable(true)
 
@@ -66,6 +70,12 @@ class MovieSecondFragment : Fragment() {
                 modalBottomDialog.secondMovieStatus.text = it.status
                 modalBottomDialog.secondMovieTagline.text = it.tagline
                 modalBottomDialog.secondMovieHomePage.text = it.homepage
+
+                modalBottomDialog.secondMovieType.visibility = View.GONE
+                modalBottomDialog.secondMovieTypeLayout.visibility = View.GONE
+                modalBottomDialog.secondMovieNetwork.visibility = View.GONE
+                modalBottomDialog.secondMovieNetworkLayout.visibility = View.GONE
+
                 modalBottomDialog.secondMovieBudget.text = it.budget.toString()
                 modalBottomDialog.secondMovieRevenue.text = it.revenue.toLong().toString()
                 getProductionCompanies(it,modalBottomDialog)
@@ -78,11 +88,6 @@ class MovieSecondFragment : Fragment() {
             }
             modalBottomDialog.show()
         }
-
-        // Credits
-        viewModel.getMovieCredits(args.result!!.id,URL.api_key)
-        getMovieCasts()
-        getMovieCrews()
     }
 
     private fun getMovieDetails() {
@@ -129,7 +134,7 @@ class MovieSecondFragment : Fragment() {
         }
     }
 
-    private fun getProductionCompanies(details:Details,bottomDialog: BottomSheetDialog) {
+    private fun getProductionCompanies(details: Details, bottomDialog: BottomSheetDialog) {
         if(details.production_companies.isEmpty()) {
             bottomDialog.secondMovieProductionCompanies.text = "-"
         }
@@ -144,7 +149,7 @@ class MovieSecondFragment : Fragment() {
         }
     }
 
-    private fun getProductionCountries(details:Details,bottomDialog: BottomSheetDialog) {
+    private fun getProductionCountries(details: Details, bottomDialog: BottomSheetDialog) {
         if(details.production_countries.isEmpty()){
             bottomDialog.secondMovieProductionCountries.text = "-"
         }
@@ -159,7 +164,7 @@ class MovieSecondFragment : Fragment() {
     }
 
 
-    private fun genreVisibility(details:Details) {
+    private fun genreVisibility(details: Details) {
         when(details.genres.size) {
             0 -> {
                 secondMovieGenre1.visibility = View.GONE

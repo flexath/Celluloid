@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.flexath.celluloid.data.database.Genre
 import com.flexath.celluloid.data.database.credits.Credits
-import com.flexath.celluloid.data.database.details.Details
+import com.flexath.celluloid.data.database.details.movie.Details
 import com.flexath.celluloid.data.database.movie.Movie
 import com.flexath.celluloid.data.database.people.Person
 import com.flexath.celluloid.data.model.repository.MovieRepository

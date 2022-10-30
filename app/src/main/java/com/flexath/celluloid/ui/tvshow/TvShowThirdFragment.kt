@@ -4,19 +4,31 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.flexath.celluloid.R
+import com.flexath.celluloid.adapters.tv_show.ThirdTvShowCreatorsAdapter
+import com.flexath.celluloid.adapters.tv_show.ThirdTvShowSeasonsAdapter
 import com.flexath.celluloid.data.database.URL
+import com.flexath.celluloid.data.database.details.tv_show.TvShowDetails
 import com.flexath.celluloid.data.movie_viewmodel.TvShowViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.fragment_tv_show_third.*
+import kotlinx.android.synthetic.main.modal_bottom_dialog.*
 
 class TvShowThirdFragment : Fragment() {
 
     private lateinit var viewModel:TvShowViewModel
     private val args:TvShowThirdFragmentArgs by navArgs()
+
+    private lateinit var horizontalLinearLayoutCreators:LinearLayoutManager
+    private lateinit var horizontalLinearLayoutSeasons:LinearLayoutManager
+    private lateinit var adapterTvShowCreators:ThirdTvShowCreatorsAdapter
+    private lateinit var adapterTvShowSeasons:ThirdTvShowSeasonsAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_tv_show_third, container, false)
@@ -25,47 +37,167 @@ class TvShowThirdFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        thirdTvShowTitle.text = args.tvShowResult!!.name
-        thirdTvShowFirstOnAirDate.text = " First Air Date - " + args.tvShowResult!!.first_air_date
-        thirdTvShowDescription.text = args.tvShowResult!!.overview
-        thirdTvShowPoster.load("https://image.tmdb.org/t/p/original"+args.tvShowResult!!.poster_path)
+        viewModel = ViewModelProvider(requireActivity())[TvShowViewModel::class.java]
+        viewModel.getTvShowDetails(args.tvShowResult!!.id, URL.api_key)
 
-        getAllGenres()
+        horizontalLinearLayoutCreators = LinearLayoutManager(requireActivity(),LinearLayoutManager.HORIZONTAL,false)
+        horizontalLinearLayoutSeasons = LinearLayoutManager(requireActivity(),LinearLayoutManager.HORIZONTAL,false)
+
+        getTvShowDetails()
+        getBottomDialogMovieDetails()
+        getTvShowSeasonsRecyclerSetup()
+        getTvShowCreatorsRecyclerSetup()
     }
 
-    private fun getAllGenres() {
-        genreVisibility()
-        viewModel = ViewModelProvider(requireActivity())[TvShowViewModel::class.java]
-        viewModel.getAllGenres(URL.api_key)
-        viewModel.genreList.observe(viewLifecycleOwner) {
-            for(i in args.tvShowResult!!.genre_ids.indices) {
-                for(j in it.genres.indices){
-                    if(args.tvShowResult!!.genre_ids[i] == it.genres[j].id) {
-                        when (i) {
-                            0 -> thirdTvShowKDramaGenre1.text = it.genres[j].name
-                            1 -> thirdTvShowKDramaGenre2.text = it.genres[j].name
-                            2 -> thirdTvShowKDramaGenre3.text = it.genres[j].name
-                            else -> break
-                        }
-                    }
-                }
+    private fun getBottomDialogMovieDetails() {
+        btnTvShowGetMoreDetails.setOnClickListener {
+            val modalBottomDialog = BottomSheetDialog(requireActivity(),R.style.ModalBottomDialog)
+            val bottomView = layoutInflater.inflate(R.layout.modal_bottom_dialog,null,false)
+            modalBottomDialog.setContentView(bottomView)
+            modalBottomDialog.setCancelable(true)
+
+            viewModel.getTvShowDetails(args.tvShowResult!!.id,URL.api_key)
+            viewModel.detailsTvList.observe(viewLifecycleOwner) {
+                modalBottomDialog.secondMovieLanguage.text = it.original_language
+                modalBottomDialog.secondMovieStatus.text = it.status
+                modalBottomDialog.secondMovieTagline.text = it.tagline
+                modalBottomDialog.secondMovieHomePage.text = it.homepage
+                modalBottomDialog.secondMovieType.text = it.type
+                getTvShowNetwork(it,modalBottomDialog)
+                getTvShowProductionCompanies(it,modalBottomDialog)
+                getTvShowProductionCountries(it,modalBottomDialog)
+
+                modalBottomDialog.secondMovieBudgetLayout.visibility = View.GONE
+                modalBottomDialog.secondMovieBudget.visibility = View.GONE
+                modalBottomDialog.secondMovieRevenueLayout.visibility = View.GONE
+                modalBottomDialog.secondMovieRevenue.visibility = View.GONE
             }
+
+            val btnHide = modalBottomDialog.findViewById<Button>(R.id.btnHideDetails)
+            btnHide?.setOnClickListener {
+                modalBottomDialog.dismiss()
+            }
+            modalBottomDialog.show()
         }
     }
 
-    private fun genreVisibility() {
-        when(args.tvShowResult!!.genre_ids.size) {
+    private fun getTvShowSeasonsRecyclerSetup() {
+        rvTvShowSeasons.layoutManager = horizontalLinearLayoutSeasons
+        rvTvShowSeasons.setHasFixedSize(true)
+
+        viewModel.detailsTvList.observe(viewLifecycleOwner) {
+            adapterTvShowSeasons = ThirdTvShowSeasonsAdapter(it.seasons)
+            rvTvShowSeasons.adapter = adapterTvShowSeasons
+            adapterTvShowSeasons.notifyDataSetChanged()
+        }
+    }
+
+    private fun getTvShowCreatorsRecyclerSetup() {
+        rvTvShowCreators.layoutManager = horizontalLinearLayoutCreators
+        rvTvShowCreators.setHasFixedSize(true)
+
+        viewModel.detailsTvList.observe(viewLifecycleOwner) {
+            adapterTvShowCreators = ThirdTvShowCreatorsAdapter(it.created_by)
+            rvTvShowCreators.adapter = adapterTvShowCreators
+            adapterTvShowCreators.notifyDataSetChanged()
+        }
+    }
+
+    private fun getTvShowDetails() {
+
+        viewModel.detailsTvList.observe(viewLifecycleOwner) {
+            thirdTvShowPoster.load("https://image.tmdb.org/t/p/original"+it.poster_path)
+            thirdTvShowTitle.text = it.name
+            thirdTvShowFirstAirDate.text = "- " + it.first_air_date
+            thirdTvShowLastAirDate.text = "- " + it.last_air_date
+            getRuntimePerEpisode(it)
+            thirdTvShowNumberOfSeasons.text = "- " + it.number_of_seasons.toString()
+            thirdTvShowNumberOfEpisodes.text = "- " + it.number_of_episodes.toString()
+            genreTvShowVisibility(it)
+            thirdTvShowDescription.text = it.overview
+        }
+    }
+
+    private fun getTvShowNetwork(details: TvShowDetails, bottomDialog: BottomSheetDialog) {
+        if(details.networks.isEmpty()) {
+            bottomDialog.secondMovieNetwork.text = "-"
+        }
+        else {
+            bottomDialog.secondMovieNetwork.text = ""
+            for(i in details.networks.indices) {
+                bottomDialog.secondMovieNetwork.append(details.networks[i].name + " , ")
+            }
+            bottomDialog.secondMovieNetwork.text = StringBuilder(bottomDialog.secondMovieNetwork.text.toString())
+                .deleteRange(bottomDialog.secondMovieNetwork.text.lastIndex-1,
+                    bottomDialog.secondMovieNetwork.text.lastIndex)
+        }
+    }
+
+    private fun getRuntimePerEpisode(details:TvShowDetails) {
+        if(details.episode_run_time!!.isEmpty()){
+            thirdTvShowEpisodeRunTime.text = "-"
+        }
+        else {
+            thirdTvShowEpisodeRunTime.text = ""
+            for(i in details.episode_run_time.indices) {
+                thirdTvShowEpisodeRunTime.text = "- "
+                thirdTvShowEpisodeRunTime.append(details.episode_run_time[i].toString() + " min , ")
+            }
+            thirdTvShowEpisodeRunTime.text = StringBuilder(thirdTvShowEpisodeRunTime.text.toString())
+                .deleteRange(thirdTvShowEpisodeRunTime.text.lastIndex-1,thirdTvShowEpisodeRunTime.text.lastIndex)
+        }
+    }
+
+    private fun getTvShowProductionCompanies(details: TvShowDetails, bottomDialog: BottomSheetDialog) {
+        if(details.production_companies.isEmpty()) {
+            bottomDialog.secondMovieProductionCompanies.text = "-"
+        }
+        else {
+            bottomDialog.secondMovieProductionCompanies.text = ""
+            for(i in details.production_companies.indices) {
+                bottomDialog.secondMovieProductionCompanies.append(details.production_companies[i].name + " , ")
+            }
+            bottomDialog.secondMovieProductionCompanies.text = StringBuilder(bottomDialog.secondMovieProductionCompanies.text.toString())
+                .deleteRange(bottomDialog.secondMovieProductionCompanies.text.lastIndex-1,
+                    bottomDialog.secondMovieProductionCompanies.text.lastIndex)
+        }
+    }
+
+    private fun getTvShowProductionCountries(details: TvShowDetails, bottomDialog: BottomSheetDialog) {
+        if(details.production_countries.isEmpty()){
+            bottomDialog.secondMovieProductionCountries.text = "-"
+        }
+        else {
+            bottomDialog.secondMovieProductionCountries.text = ""
+            for(i in details.production_countries.indices) {
+                bottomDialog.secondMovieProductionCountries.append(details.production_countries[i].name + " , ")
+            }
+            bottomDialog.secondMovieProductionCountries.text = StringBuilder(bottomDialog.secondMovieProductionCountries.text.toString())
+                .deleteRange(bottomDialog.secondMovieProductionCountries.text.lastIndex-1,bottomDialog.secondMovieProductionCountries.text.lastIndex)
+        }
+    }
+
+    private fun genreTvShowVisibility(details: TvShowDetails) {
+        when(details.genres!!.size) {
             0 -> {
-                thirdTvShowKDramaGenre1.visibility = View.GONE
-                thirdTvShowKDramaGenre2.visibility = View.GONE
-                thirdTvShowKDramaGenre3.visibility = View.GONE
+                thirdTvShowGenre1.visibility = View.GONE
+                thirdTvShowGenre2.visibility = View.GONE
+                thirdTvShowGenre3.visibility = View.GONE
             }
             1 -> {
-                thirdTvShowKDramaGenre2.visibility = View.GONE
-                thirdTvShowKDramaGenre3.visibility = View.GONE
+                thirdTvShowGenre1.text = details.genres[0].name
+                thirdTvShowGenre2.visibility = View.GONE
+                thirdTvShowGenre3.visibility = View.GONE
             }
             2 -> {
-                thirdTvShowKDramaGenre3.visibility = View.GONE
+                thirdTvShowGenre1.text = details.genres[0].name
+                thirdTvShowGenre2.text = details.genres[1].name
+                thirdTvShowGenre3.visibility = View.GONE
+            }
+            3 -> {
+                thirdTvShowGenre1.text = details.genres[0].name
+                thirdTvShowGenre2.text = details.genres[1].name
+                thirdTvShowGenre3.text = details.genres[2].name
             }
         }
     }

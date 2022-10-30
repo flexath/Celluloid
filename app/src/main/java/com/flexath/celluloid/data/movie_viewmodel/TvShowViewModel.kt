@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.flexath.celluloid.data.database.Genre
+import com.flexath.celluloid.data.database.details.tv_show.TvShowDetails
 import com.flexath.celluloid.data.database.tv_show.TvShow
 import com.flexath.celluloid.data.model.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,6 +23,7 @@ class TvShowViewModel
     val searchTvShowList:MutableLiveData<TvShow> = MutableLiveData()
 
     val genreList:MutableLiveData<Genre> = MutableLiveData()
+    val detailsTvList:MutableLiveData<TvShowDetails> = MutableLiveData()
 
     fun getAllTrendingThisWeekTvShow(api_key:String,language:String,popularity:String,air_date:String) = viewModelScope.launch {
         repository.getAllTrendingThisWeekTvShow(api_key,language,popularity,air_date).let {
@@ -67,6 +69,16 @@ class TvShowViewModel
         repository.getTvSearchResults(api_key,tv_title).let {
             if(it.isSuccessful) {
                 searchTvShowList.postValue(it.body())
+            }else{
+                Log.d("UpComingViewModel",it.errorBody().toString())
+            }
+        }
+    }
+
+    fun getTvShowDetails(tv_id:Int,api_key:String) = viewModelScope.launch {
+        repository.getTvShowDetails(tv_id,api_key).let {
+            if(it.isSuccessful) {
+                detailsTvList.postValue(it.body())
             }else{
                 Log.d("UpComingViewModel",it.errorBody().toString())
             }
