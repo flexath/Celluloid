@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.flexath.celluloid.data.database.Genre
 import com.flexath.celluloid.data.database.credits.Credits
 import com.flexath.celluloid.data.database.details.movie.Details
 import com.flexath.celluloid.data.database.movie.Movie
@@ -24,7 +23,6 @@ class MovieViewModel
     val topRatedMovieList:MutableLiveData<Movie> = MutableLiveData()
     var searchMovieList:MutableLiveData<Movie> = MutableLiveData()
 
-    val genreList:MutableLiveData<Genre> = MutableLiveData()
     val creditsMovieList:MutableLiveData<Credits> = MutableLiveData()
     val detailsMovieList:MutableLiveData<Details> = MutableLiveData()
     val personMovieList:MutableLiveData<Person> = MutableLiveData()
@@ -63,16 +61,6 @@ class MovieViewModel
         repository.getAllTopRatedMovies(api_key,vote_count,vote_average,page).let {
             if(it.isSuccessful) {
                 topRatedMovieList.postValue(it.body())
-            }else{
-                Log.d("UpComingViewModel",it.errorBody().toString())
-            }
-        }
-    }
-
-    fun getAllGenres(api_key:String) = viewModelScope.launch {
-        repository.getAllGenres(api_key).let {
-            if(it.isSuccessful) {
-                genreList.postValue(it.body())
             }else{
                 Log.d("UpComingViewModel",it.errorBody().toString())
             }

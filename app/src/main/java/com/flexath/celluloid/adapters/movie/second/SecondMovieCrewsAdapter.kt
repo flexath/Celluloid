@@ -5,9 +5,12 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.flexath.celluloid.adapters.CreditSwitch
+import com.flexath.celluloid.adapters.CreditSwitch.Companion.switchOnMovie
 import com.flexath.celluloid.data.database.credits.Crew
 import com.flexath.celluloid.databinding.MovieCrewsRvBinding
 import com.flexath.celluloid.ui.movie.MovieSecondFragmentDirections
+import com.flexath.celluloid.ui.tvshow.TvShowFourthFragmentDirections
 
 class SecondMovieCrewsAdapter(private val crewsMovieList: ArrayList<Crew>)
         :RecyclerView.Adapter<SecondMovieCrewsAdapter.ViewHolder>() {
@@ -26,10 +29,19 @@ class SecondMovieCrewsAdapter(private val crewsMovieList: ArrayList<Crew>)
         }
 
         holder.itemView.setOnClickListener {
-            val action = MovieSecondFragmentDirections.movieSecondToPersonAction()
-            action.personCrew = item
-            action.personString = "crew"
-            it.findNavController().navigate(action)
+
+            if(switchOnMovie) {
+                val action = MovieSecondFragmentDirections.movieSecondToPersonAction()
+                action.personCrew = item
+                action.personString = "crew"
+                it.findNavController().navigate(action)
+            }else{
+                val action = TvShowFourthFragmentDirections.tvShowFourthToPersonAction()
+                action.personCrew = item
+                action.personString = "crew"
+                it.findNavController().navigate(action)
+            }
+
         }
     }
 

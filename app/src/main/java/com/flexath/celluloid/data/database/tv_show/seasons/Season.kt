@@ -1,13 +1,11 @@
-package com.flexath.celluloid.data.database.details.tv_show
-
-import java.io.Serializable
+package com.flexath.celluloid.data.database.tv_show.seasons
 
 data class Season(
     val air_date: String,
-    val episode_count: Int,
+    val episodes: List<Episode>,
     val id: Int,
     val name: String,
     val overview: String,
     val poster_path: String?,
     val season_number: Int
-):Serializable
+)

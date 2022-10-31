@@ -1,5 +1,6 @@
 package com.flexath.celluloid.ui.tvshow
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -86,7 +87,7 @@ class TvShowThirdFragment : Fragment() {
         rvTvShowSeasons.setHasFixedSize(true)
 
         viewModel.detailsTvList.observe(viewLifecycleOwner) {
-            adapterTvShowSeasons = ThirdTvShowSeasonsAdapter(it.seasons)
+            adapterTvShowSeasons = ThirdTvShowSeasonsAdapter(it.seasons,it)
             rvTvShowSeasons.adapter = adapterTvShowSeasons
             adapterTvShowSeasons.notifyDataSetChanged()
         }

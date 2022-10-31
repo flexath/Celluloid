@@ -12,6 +12,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.flexath.celluloid.R
+import com.flexath.celluloid.adapters.CreditSwitch
+import com.flexath.celluloid.adapters.CreditSwitch.Companion.switchOnMovie
 import com.flexath.celluloid.adapters.movie.second.SecondMovieCastsAdapter
 import com.flexath.celluloid.adapters.movie.second.SecondMovieCrewsAdapter
 import com.flexath.celluloid.data.database.URL
@@ -52,9 +54,12 @@ class MovieSecondFragment : Fragment() {
         getBottomDialogMovieDetails()
 
         // Credits
+        switchOnMovie = true
         viewModel.getMovieCredits(args.result!!.id,URL.api_key)
         getMovieCasts()
         getMovieCrews()
+
+        Log.i("SwitchMovie",switchOnMovie.toString())
     }
 
     private fun getBottomDialogMovieDetails() {

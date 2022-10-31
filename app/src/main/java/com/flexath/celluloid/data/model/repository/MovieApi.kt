@@ -1,12 +1,12 @@
 package com.flexath.celluloid.data.model.repository
 
-import com.flexath.celluloid.data.database.Genre
 import com.flexath.celluloid.data.database.credits.Credits
 import com.flexath.celluloid.data.database.details.movie.Details
 import com.flexath.celluloid.data.database.details.tv_show.TvShowDetails
 import com.flexath.celluloid.data.database.movie.Movie
 import com.flexath.celluloid.data.database.people.Person
 import com.flexath.celluloid.data.database.tv_show.TvShow
+import com.flexath.celluloid.data.database.tv_show.seasons.Season
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -42,11 +42,6 @@ interface MovieApi {
         @Query("sort_by") vote_average:String,
         @Query("page") page:Int
     ) : Response<Movie>
-
-    @GET("genre/movie/list")
-    suspend fun getAllGenres(
-        @Query("api_key") api_key:String
-    ) : Response<Genre>
 
     @GET("search/movie")
     suspend fun getMovieSearchResults(
@@ -112,5 +107,19 @@ interface MovieApi {
         @Path("tv_id") tv_id:Int,
         @Query("api_key") api_key:String
     ) : Response<TvShowDetails>
+
+    @GET("tv/{tv_id}/season/{season_number}")
+    suspend fun getTvShowSeason(
+        @Path("tv_id") tv_id:Int,
+        @Path("season_number") season_number:Int,
+        @Query("api_key") api_key:String
+    ) : Response<Season>
+
+    @GET("tv/{tv_id}/season/{season_number}/credits")
+    suspend fun getTvShowSeasonCredits(
+        @Path("tv_id") tv_id:Int,
+        @Path("season_number") season_number:Int,
+        @Query("api_key") api_key:String
+    ) : Response<Credits>
 
 }

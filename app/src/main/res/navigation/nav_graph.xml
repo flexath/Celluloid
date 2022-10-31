@@ -65,7 +65,7 @@
         tools:layout="@layout/fragment_tv_show_second" >
         <action
             android:id="@+id/tvShow_KDrama_SecondToThirdAction"
-            app:destination="@id/tvShowKDramaThirdFragment" />
+            app:destination="@id/tvShowThirdFragment" />
         <argument
             android:name="tvShowLanguage"
             app:nullable="true"
@@ -73,7 +73,7 @@
             android:defaultValue="@null" />
     </fragment>
     <fragment
-        android:id="@+id/tvShowKDramaThirdFragment"
+        android:id="@+id/tvShowThirdFragment"
         android:name="com.flexath.celluloid.ui.tvshow.TvShowThirdFragment"
         android:label="fragment_tv_show_k_drama_third"
         tools:layout="@layout/fragment_tv_show_third">
@@ -83,6 +83,9 @@
             app:nullable="true"
             app:argType="com.flexath.celluloid.data.database.tv_show.ResultTvShow"
             android:defaultValue="@null" />
+        <action
+            android:id="@+id/tvShow_ThirdToFourthAction"
+            app:destination="@id/tvShowFourthFragment" />
 
     </fragment>
     <fragment
@@ -97,7 +100,7 @@
             android:defaultValue="@null" />
         <action
             android:id="@+id/tvShow_SearchToThirdAction"
-            app:destination="@id/tvShowKDramaThirdFragment" />
+            app:destination="@id/tvShowThirdFragment" />
 
     </fragment>
     <fragment
@@ -137,6 +140,28 @@
             app:nullable="true"
             app:argType="string"
             android:defaultValue="@null" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/tvShowFourthFragment"
+        android:name="com.flexath.celluloid.ui.tvshow.TvShowFourthFragment"
+        android:label="fragment_tv_show_fourth"
+        tools:layout="@layout/fragment_tv_show_fourth" >
+
+        <argument
+            android:name="tvShowSeason"
+            app:nullable="true"
+            app:argType="com.flexath.celluloid.data.database.details.tv_show.Season"
+            android:defaultValue="@null"/>
+
+        <argument
+            android:name="tvShowSeasonResult"
+            app:nullable="true"
+            app:argType="string"
+            android:defaultValue="@null"/>
+        <action
+            android:id="@+id/tvShowFourthToPersonAction"
+            app:destination="@id/moviePersonFragment" />
 
     </fragment>
 </navigation>

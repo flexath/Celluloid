@@ -4,9 +4,10 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.flexath.celluloid.data.database.Genre
+import com.flexath.celluloid.data.database.credits.Credits
 import com.flexath.celluloid.data.database.details.tv_show.TvShowDetails
 import com.flexath.celluloid.data.database.tv_show.TvShow
+import com.flexath.celluloid.data.database.tv_show.seasons.Season
 import com.flexath.celluloid.data.model.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -22,8 +23,9 @@ class TvShowViewModel
     val topRatedTvShowList:MutableLiveData<TvShow> = MutableLiveData()
     val searchTvShowList:MutableLiveData<TvShow> = MutableLiveData()
 
-    val genreList:MutableLiveData<Genre> = MutableLiveData()
     val detailsTvList:MutableLiveData<TvShowDetails> = MutableLiveData()
+    val seasonTvShowList:MutableLiveData<Season> = MutableLiveData()
+    val creditsTvShowList:MutableLiveData<Credits> = MutableLiveData()
 
     fun getAllTrendingThisWeekTvShow(api_key:String,language:String,popularity:String,air_date:String) = viewModelScope.launch {
         repository.getAllTrendingThisWeekTvShow(api_key,language,popularity,air_date).let {
@@ -39,16 +41,6 @@ class TvShowViewModel
         repository.getAllOnAirTodayTvShow(api_key,language,popularity,air_date1,air_date2).let {
             if(it.isSuccessful) {
                 onAirTodayTvShowList.postValue(it.body())
-            }else{
-                Log.d("UpComingViewModel",it.errorBody().toString())
-            }
-        }
-    }
-
-    fun getAllGenres(api_key:String) = viewModelScope.launch {
-        repository.getAllGenres(api_key).let {
-            if(it.isSuccessful) {
-                genreList.postValue(it.body())
             }else{
                 Log.d("UpComingViewModel",it.errorBody().toString())
             }
@@ -79,6 +71,26 @@ class TvShowViewModel
         repository.getTvShowDetails(tv_id,api_key).let {
             if(it.isSuccessful) {
                 detailsTvList.postValue(it.body())
+            }else{
+                Log.d("UpComingViewModel",it.errorBody().toString())
+            }
+        }
+    }
+
+    fun getTvShowSeason(tv_id:Int,season_number:Int,api_key:String) = viewModelScope.launch {
+        repository.getTvShowSeason(tv_id,season_number,api_key).let {
+            if(it.isSuccessful) {
+                seasonTvShowList.postValue(it.body())
+            }else{
+                Log.d("UpComingViewModel",it.errorBody().toString())
+            }
+        }
+    }
+
+    fun getTvShowSeasonCredits(tv_id:Int,season_number:Int,api_key:String) = viewModelScope.launch {
+        repository.getTvShowSeasonCredits(tv_id,season_number,api_key).let {
+            if(it.isSuccessful) {
+                creditsTvShowList.postValue(it.body())
             }else{
                 Log.d("UpComingViewModel",it.errorBody().toString())
             }

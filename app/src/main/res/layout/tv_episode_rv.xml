@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    app:cardBackgroundColor="@color/black"
+    app:cardElevation="20dp"
+    android:layout_marginTop="20dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:background="@color/primary_color"
+        android:orientation="horizontal">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tvShowEpisodePoster"
+            android:layout_width="130dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitXY"
+            android:src="@drawable/black_adam"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text=" Episode"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/worksans_light"
+                    android:drawableStart="@drawable/ic_numbers"
+                    android:maxLines="1"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvShowEpisodeNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="- 10"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/worksans_medium"
+                    android:maxLines="1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text=" Name"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/worksans_light"
+                    android:drawableStart="@drawable/ic_name"
+                    android:maxLines="1"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvShowEpisodeName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="- Winter is coming"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/worksans_medium"
+                    android:maxLines="4"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text=" Air Date"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/worksans_light"
+                    android:drawableStart="@drawable/ic_date"
+                    android:maxLines="1"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvShowEpisodeAirDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="- 2022/10/31"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/worksans_medium"
+                    android:maxLines="1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text=" RunTime"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/worksans_light"
+                    android:drawableStart="@drawable/ic_release_date"
+                    android:maxLines="1"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvShowEpisodeRuntime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="- 60 min"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/worksans_medium"
+                    android:maxLines="1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

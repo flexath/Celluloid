@@ -1,19 +1,16 @@
-package com.flexath.celluloid.adapters.movie.second
+package com.flexath.celluloid.adapters.tv_show
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.flexath.celluloid.adapters.CreditSwitch
-import com.flexath.celluloid.adapters.CreditSwitch.Companion.switchOnMovie
 import com.flexath.celluloid.data.database.credits.Cast
 import com.flexath.celluloid.databinding.MovieCastsRvBinding
 import com.flexath.celluloid.ui.movie.MovieSecondFragmentDirections
-import com.flexath.celluloid.ui.tvshow.TvShowFourthFragmentDirections
 
-class SecondMovieCastsAdapter(private val castsMovieList: ArrayList<Cast>)
-        :RecyclerView.Adapter<SecondMovieCastsAdapter.ViewHolder>() {
+class FourthTvShowSeasonCastsAdapter(private val castsMovieList: ArrayList<Cast>)
+        :RecyclerView.Adapter<FourthTvShowSeasonCastsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val items = MovieCastsRvBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -29,19 +26,10 @@ class SecondMovieCastsAdapter(private val castsMovieList: ArrayList<Cast>)
         }
 
         holder.itemView.setOnClickListener {
-
-            if(switchOnMovie) {
-                val action = MovieSecondFragmentDirections.movieSecondToPersonAction()
-                action.personCast = item
-                action.personString = "cast"
-                it.findNavController().navigate(action)
-            }else{
-                val action = TvShowFourthFragmentDirections.tvShowFourthToPersonAction()
-                action.personCast = item
-                action.personString = "cast"
-                it.findNavController().navigate(action)
-            }
-
+            val action = MovieSecondFragmentDirections.movieSecondToPersonAction()
+            action.personCast = item
+            action.personString = "cast"
+            it.findNavController().navigate(action)
         }
     }
 
