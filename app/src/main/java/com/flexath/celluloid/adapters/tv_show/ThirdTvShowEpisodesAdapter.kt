@@ -23,7 +23,7 @@ class ThirdTvShowEpisodesAdapter(private val episodesTvShowList: List<Episode>)
             tvShowEpisodeNumber.text = item.episode_number.toString()
             tvShowEpisodeName.text = item.name
             tvShowEpisodeAirDate.text = item.air_date
-            tvShowEpisodeRuntime.text = item.runtime.toString()
+            tvShowEpisodeRuntime.text = item.runtime.toString() + " min"
             tvShowEpisodePoster.load("https://image.tmdb.org/t/p/original"+item.still_path)
         }
     }
