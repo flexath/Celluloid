@@ -195,7 +195,6 @@
                         android:id="@+id/movieDirectorProfilePicture"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/kimdami"
                         android:background="@color/primary_color"
                         android:scaleType="fitXY"/>
 
@@ -221,7 +220,6 @@
                         android:id="@+id/movieDirectorName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Jaume Collet-Serra"
                         android:textSize="16sp"
                         android:textColor="@color/text_color"
                         android:fontFamily="@font/worksans_medium"

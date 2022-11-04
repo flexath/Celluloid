@@ -1,14 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/primary_color"
     tools:context=".ui.saved.SavedFirstFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
 
-</FrameLayout>
+        <include layout="@layout/app_title_bar_layout"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/savedFirstTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Your Favourites"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:textColor="@color/text_color"
+            android:fontFamily="@font/worksans_regular"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/savedFirstTabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/outline_tab_layout"
+                app:tabIndicatorAnimationMode="elastic"
+                app:tabIndicatorColor="@color/secondary_color"
+                app:tabIndicatorFullWidth="false"
+                app:tabTextColor="@color/text_color"
+                app:tabRippleColor="@color/secondary_color"
+                app:tabUnboundedRipple="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/savedFirstTitle"
+                tools:ignore="NotSibling" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/savedFirstViewPager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/savedFirstTabLayout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</ScrollView>

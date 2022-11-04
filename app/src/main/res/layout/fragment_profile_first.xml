@@ -54,6 +54,7 @@
                 android:text="( flexath11@gmail.com )"
                 android:textColor="@color/text_color"
                 android:textSize="15sp"
+                android:textIsSelectable="true"
                 android:fontFamily="@font/worksans_light"/>
 
             <LinearLayout
