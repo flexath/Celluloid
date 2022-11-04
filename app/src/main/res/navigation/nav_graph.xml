@@ -44,11 +44,6 @@
             app:destination="@id/tvShowSearchFragment" />
     </fragment>
     <fragment
-        android:id="@+id/searchFirstFragment"
-        android:name="com.flexath.celluloid.ui.search.SearchFirstFragment"
-        android:label="fragment_search_first"
-        tools:layout="@layout/fragment_search_first" />
-    <fragment
         android:id="@+id/savedFirstFragment"
         android:name="com.flexath.celluloid.ui.saved.SavedFirstFragment"
         android:label="fragment_saved_first"

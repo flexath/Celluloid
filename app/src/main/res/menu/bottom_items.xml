@@ -15,12 +15,6 @@
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/searchFirstFragment"
-        android:title="@string/search_bottom_txt"
-        android:icon="@drawable/ic_search_two"
-        app:showAsAction="ifRoom"/>
-
-    <item
         android:id="@+id/savedFirstFragment"
         android:title="@string/saved_bottom_txt"
         android:icon="@drawable/ic_save"

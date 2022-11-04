@@ -279,7 +279,7 @@
                     android:fontFamily="@font/worksans_bold"
                     app:cornerRadius="30dp"
                     android:shadowColor="@color/teal_200"
-                    app:rippleColor="@color/teal_200"
+                    app:rippleColor="@color/secondary_color"
                     app:elevation="30dp"
                     app:backgroundTint="@color/black"/>
             </LinearLayout>

@@ -1,14 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/primary_color"
     tools:context=".ui.profile.ProfileFirstFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/outline_profile_photo"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_gravity="center_horizontal"
+                app:cardElevation="50dp"
+                app:cardCornerRadius="100dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:src="@drawable/ath"
+                    android:scaleType="fitXY" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="Aung Thiha"
+                android:textColor="@color/text_color"
+                android:textSize="20sp"
+                android:fontFamily="@font/worksans_regular"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="( flexath11@gmail.com )"
+                android:textColor="@color/text_color"
+                android:textSize="15sp"
+                android:fontFamily="@font/worksans_light"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageFacebookIcon"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginEnd="60dp"
+                    android:src="@drawable/facebook"
+                    android:scaleType="fitXY"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageInstagramIcon"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginEnd="60dp"
+                    android:src="@drawable/instagram"
+                    android:scaleType="fitXY"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imagePhoneIcon"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginEnd="60dp"
+                    android:src="@drawable/phone"
+                    android:scaleType="fitXY"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageYoutubeIcon"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/youtube"
+                    android:scaleType="fitXY"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="@color/white"
+                android:layout_gravity="center_horizontal"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:textAllCaps="false"
+                android:text="About me !"
+                android:textColor="@color/text_color"
+                android:textSize="20sp"
+                android:fontFamily="@font/worksans_regular"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="@color/white"
+                android:layout_gravity="center_horizontal"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textAllCaps="false"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/worksans_light"
+                android:textSize="15sp"
+                android:text="@string/about_me_profile_txt"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:layout_marginTop="30dp"
+                android:background="@color/white"
+                android:layout_gravity="center_horizontal"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:textAllCaps="false"
+                android:text="About this project !"
+                android:textColor="@color/text_color"
+                android:textSize="20sp"
+                android:fontFamily="@font/worksans_regular"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.3dp"
+                android:background="@color/white"
+                android:layout_gravity="center_horizontal"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textAllCaps="false"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/worksans_light"
+                android:textSize="15sp"
+                android:text="@string/about_this_project_profile_text1"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textAllCaps="false"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/worksans_medium"
+                android:textSize="15sp"
+                android:text="@string/about_this_project_profile_text2"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGithubRepository"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:text="Project Github Repository"
+                android:textColor="@color/secondary_color"
+                app:cornerRadius="20dp"
+                android:backgroundTint="#1b1b1b"
+                app:rippleColor="@color/secondary_color"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

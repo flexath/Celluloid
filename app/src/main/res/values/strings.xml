@@ -17,4 +17,7 @@
     <string name="trending_this_week_txt">Trending this week</string>
     <string name="search_movie_title_txt">Search Movie Title</string>
     <string name="search_tv_shows_txt">Search Tv Shows</string>
+    <string name="about_me_profile_txt">\t\tI\'ve learned native android development in 1st week, May, 2022.Firstly,I learned kotlin programming language.Later,I\'ve started learning android development and still enjoying it a lot.\n\t\tI apply this project for my junior android developer job position and hope you enjoy it.</string>
+    <string name="about_this_project_profile_text1">\t\tThis project shows detailed information of movies and tv series.And you can easily search them and can add to your favourite collections.\n\t\tIt uses following features and concepts of android development.</string>
+    <string name="about_this_project_profile_text2">\t\t1 - MVVM\n\t\t2 - Retrofit\n\t\t3 - Room\n\t\t4 - Dagger Hilt\n\t\t5 - ViewModel , LiveData and Coroutines\n\t\t6 - Navigation Components and Safe Args Plugin\n\t\t7 - Many UI Components</string>
 </resources>
