@@ -2,25 +2,20 @@ package com.flexath.celluloid.ui.tvshow
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.flexath.celluloid.R
 import com.flexath.celluloid.adapters.tv_show.SecondTvShowOnAirTodayAdapter
 import com.flexath.celluloid.adapters.tv_show.SecondTvShowTopRatedAdapter
 import com.flexath.celluloid.adapters.tv_show.SecondTvShowTrendingThisWeekAdapter
-import com.flexath.celluloid.data.database.URL
-import com.flexath.celluloid.data.database.tv_show.ResultTvShow
+import com.flexath.celluloid.data.URL
 import com.flexath.celluloid.data.movie_viewmodel.TvShowViewModel
-import kotlinx.android.synthetic.main.fragment_tv_show_first.*
 import kotlinx.android.synthetic.main.fragment_tv_show_second.*
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -93,7 +88,7 @@ class TvShowSecondFragment : Fragment() {
         val previousSevenDays = LocalDate.now().minusDays(7)
         viewModel.getAllTrendingThisWeekTvShow(URL.api_key,nation,"popularity.desc",previousSevenDays.toString())
         viewModel.trendingThisWeekTvShowList.observe(viewLifecycleOwner) {
-            adpaterTvShowTrendingThisWeek = SecondTvShowTrendingThisWeekAdapter(it.results as ArrayList<ResultTvShow>)
+            adpaterTvShowTrendingThisWeek = SecondTvShowTrendingThisWeekAdapter(it.results as ArrayList<com.flexath.celluloid.data.retrofit.tv_show.ResultTvShow>)
             rvKDramaTrendingThisWeek.adapter = adpaterTvShowTrendingThisWeek
             adpaterTvShowTrendingThisWeek.notifyDataSetChanged()
         }
@@ -108,7 +103,7 @@ class TvShowSecondFragment : Fragment() {
         val currentDate = LocalDateTime.now().format(formatter)
         viewModel.getAllOnAirTodayTvShow(URL.api_key,nation,"popularity.desc",currentDate,currentDate)
         viewModel.onAirTodayTvShowList.observe(viewLifecycleOwner) {
-            adpaterTvShowOnAirToday = SecondTvShowOnAirTodayAdapter(it.results as ArrayList<ResultTvShow>)
+            adpaterTvShowOnAirToday = SecondTvShowOnAirTodayAdapter(it.results as ArrayList<com.flexath.celluloid.data.retrofit.tv_show.ResultTvShow>)
             rvKDramaOnAirToday.adapter = adpaterTvShowOnAirToday
             adpaterTvShowOnAirToday.notifyDataSetChanged()
         }
@@ -120,7 +115,7 @@ class TvShowSecondFragment : Fragment() {
 
         viewModel.getAllTopRatedTvShow(URL.api_key,nation,300,"vote_average.desc",1)
         viewModel.topRatedTvShowList.observe(viewLifecycleOwner) {
-            adpaterTvShowTopRated = SecondTvShowTopRatedAdapter(it.results as ArrayList<ResultTvShow>)
+            adpaterTvShowTopRated = SecondTvShowTopRatedAdapter(it.results as ArrayList<com.flexath.celluloid.data.retrofit.tv_show.ResultTvShow>)
             rvTvShowTopRated.adapter = adpaterTvShowTopRated
             adpaterTvShowTopRated.notifyDataSetChanged()
         }

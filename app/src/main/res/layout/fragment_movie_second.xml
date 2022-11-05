@@ -50,11 +50,10 @@
                         android:fontFamily="@font/worksans_medium"
                         android:maxLines="3"/>
 
-                    <ImageButton
+                    <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/secondMovieSaved"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:backgroundTint="@color/primary_color"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:src="@drawable/ic_save"
                         android:layout_gravity="end|center_vertical"
                         android:contentDescription="@string/saved_button_txt_second" />

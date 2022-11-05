@@ -5,11 +5,10 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.flexath.celluloid.data.database.credits.Cast
 import com.flexath.celluloid.databinding.MovieCastsRvBinding
 import com.flexath.celluloid.ui.movie.MovieSecondFragmentDirections
 
-class FourthTvShowSeasonCastsAdapter(private val castsMovieList: ArrayList<Cast>)
+class FourthTvShowSeasonCastsAdapter(private val castsMovieList: ArrayList<com.flexath.celluloid.data.retrofit.credits.Cast>)
         :RecyclerView.Adapter<FourthTvShowSeasonCastsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

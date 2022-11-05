@@ -5,11 +5,10 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.flexath.celluloid.data.database.tv_show.ResultTvShow
 import com.flexath.celluloid.databinding.TvTrendingRvBinding
 import com.flexath.celluloid.ui.tvshow.TvShowSecondFragmentDirections
 
-class SecondTvShowTrendingThisWeekAdapter(private val trendingThisWeekTvShowList: ArrayList<ResultTvShow>)
+class SecondTvShowTrendingThisWeekAdapter(private val trendingThisWeekTvShowList: ArrayList<com.flexath.celluloid.data.retrofit.tv_show.ResultTvShow>)
         :RecyclerView.Adapter<SecondTvShowTrendingThisWeekAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

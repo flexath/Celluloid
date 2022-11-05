@@ -5,12 +5,11 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.flexath.celluloid.data.database.tv_show.ResultTvShow
+import com.flexath.celluloid.data.retrofit.tv_show.ResultTvShow
 import com.flexath.celluloid.databinding.TvSearchRvBinding
 import com.flexath.celluloid.ui.tvshow.TvShowSearchFragmentDirections
-import com.flexath.celluloid.ui.tvshow.TvShowSecondFragmentDirections
 
-class SecondTvShowSearchAdapter(private val searchTvShowList: ArrayList<ResultTvShow>)
+class SecondTvShowSearchAdapter(private val searchTvShowList: ArrayList<com.flexath.celluloid.data.retrofit.tv_show.ResultTvShow>)
         :RecyclerView.Adapter<SecondTvShowSearchAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

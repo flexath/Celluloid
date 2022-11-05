@@ -6,26 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.flexath.celluloid.R
-import com.flexath.celluloid.adapters.CreditSwitch
 import com.flexath.celluloid.adapters.CreditSwitch.Companion.switchOnMovie
 import com.flexath.celluloid.adapters.movie.second.SecondMovieCastsAdapter
 import com.flexath.celluloid.adapters.movie.second.SecondMovieCrewsAdapter
-import com.flexath.celluloid.data.database.URL
-import com.flexath.celluloid.data.database.credits.Cast
-import com.flexath.celluloid.data.database.credits.Credits
-import com.flexath.celluloid.data.database.credits.Crew
-import com.flexath.celluloid.data.database.details.movie.Details
+import com.flexath.celluloid.data.URL
 import com.flexath.celluloid.data.movie_viewmodel.MovieViewModel
+import com.flexath.celluloid.data.room.MovieEntity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.fragment_movie_second.*
 import kotlinx.android.synthetic.main.modal_bottom_dialog.*
-import java.lang.StringBuilder
 
 class MovieSecondFragment : Fragment() {
 
@@ -36,6 +32,17 @@ class MovieSecondFragment : Fragment() {
     private lateinit var horizontalLinearLayoutMovieCrews:LinearLayoutManager
     private lateinit var adapterMovieCasts:SecondMovieCastsAdapter
     private lateinit var adapterMovieCrews:SecondMovieCrewsAdapter
+
+    private lateinit var movieEntity:MovieEntity
+
+    companion object{
+        private var redHeartOnMovie = false
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_movie_second, container, false)
@@ -55,11 +62,24 @@ class MovieSecondFragment : Fragment() {
 
         // Credits
         switchOnMovie = true
-        viewModel.getMovieCredits(args.result!!.id,URL.api_key)
+        viewModel.getMovieCredits(args.result!!.id, URL.api_key)
         getMovieCasts()
         getMovieCrews()
 
-        Log.i("SwitchMovie",switchOnMovie.toString())
+        secondMovieSaved.setOnClickListener {
+
+            redHeartOnMovie = if(!redHeartOnMovie) {
+                viewModel.insertMovieFavourite(movieEntity)
+                secondMovieSaved.setImageResource(R.drawable.ic_red_heart)
+                Toast.makeText(requireActivity(),"Movie's saved", Toast.LENGTH_SHORT).show()
+                true
+            }else{
+                viewModel.deleteMovieFavourite(movieEntity)
+                secondMovieSaved.setImageResource(R.drawable.ic_save)
+                Toast.makeText(requireActivity(),"Movie's unsaved", Toast.LENGTH_SHORT).show()
+                false
+            }
+        }
     }
 
     private fun getBottomDialogMovieDetails() {
@@ -69,7 +89,8 @@ class MovieSecondFragment : Fragment() {
             modalBottomDialog.setContentView(bottomView)
             modalBottomDialog.setCancelable(true)
 
-            viewModel.getMovieDetails(args.result!!.id,URL.api_key)
+            viewModel.getMovieDetails(args.result!!.id,
+                URL.api_key)
             viewModel.detailsMovieList.observe(viewLifecycleOwner) {
                 modalBottomDialog.secondMovieLanguage.text = it.original_language
                 modalBottomDialog.secondMovieStatus.text = it.status
@@ -106,6 +127,8 @@ class MovieSecondFragment : Fragment() {
             secondMovieRunTime.text = " Run Time     - " + it.runtime + " min"
             genreVisibility(it)
             secondMovieDescription.text = it.overview
+
+            movieEntity = MovieEntity(it.id,it.original_title,it.release_date,it.poster_path,args.result!!)
         }
     }
 
@@ -113,7 +136,7 @@ class MovieSecondFragment : Fragment() {
         rvMovieCasts.layoutManager = horizontalLinearLayoutMovieCasts
         rvMovieCasts.setHasFixedSize(true)
         viewModel.creditsMovieList.observe(viewLifecycleOwner) {
-            adapterMovieCasts = SecondMovieCastsAdapter(it.cast as ArrayList<Cast>)
+            adapterMovieCasts = SecondMovieCastsAdapter(it.cast as ArrayList<com.flexath.celluloid.data.retrofit.credits.Cast>)
             rvMovieCasts.adapter = adapterMovieCasts
             adapterMovieCasts.notifyDataSetChanged()
         }
@@ -123,14 +146,14 @@ class MovieSecondFragment : Fragment() {
         rvMovieCrews.layoutManager = horizontalLinearLayoutMovieCrews
         rvMovieCrews.setHasFixedSize(true)
         viewModel.creditsMovieList.observe(viewLifecycleOwner) {
-            adapterMovieCrews = SecondMovieCrewsAdapter(it.crew as ArrayList<Crew>)
+            adapterMovieCrews = SecondMovieCrewsAdapter(it.crew as ArrayList<com.flexath.celluloid.data.retrofit.credits.Crew>)
             getDirectorName(it)
             rvMovieCrews.adapter = adapterMovieCrews
             adapterMovieCrews.notifyDataSetChanged()
         }
     }
 
-    private fun getDirectorName(credits: Credits) {
+    private fun getDirectorName(credits: com.flexath.celluloid.data.retrofit.credits.Credits) {
         for(i in credits.crew.indices) {
             if(credits.crew[i].job == "Director") {
                 movieDirectorName.text = credits.crew[i].original_name
@@ -139,7 +162,7 @@ class MovieSecondFragment : Fragment() {
         }
     }
 
-    private fun getProductionCompanies(details: Details, bottomDialog: BottomSheetDialog) {
+    private fun getProductionCompanies(details: com.flexath.celluloid.data.retrofit.details.movie.Details, bottomDialog: BottomSheetDialog) {
         if(details.production_companies.isEmpty()) {
             bottomDialog.secondMovieProductionCompanies.text = "-"
         }
@@ -154,7 +177,7 @@ class MovieSecondFragment : Fragment() {
         }
     }
 
-    private fun getProductionCountries(details: Details, bottomDialog: BottomSheetDialog) {
+    private fun getProductionCountries(details: com.flexath.celluloid.data.retrofit.details.movie.Details, bottomDialog: BottomSheetDialog) {
         if(details.production_countries.isEmpty()){
             bottomDialog.secondMovieProductionCountries.text = "-"
         }
@@ -169,7 +192,7 @@ class MovieSecondFragment : Fragment() {
     }
 
 
-    private fun genreVisibility(details: Details) {
+    private fun genreVisibility(details: com.flexath.celluloid.data.retrofit.details.movie.Details) {
         when(details.genres.size) {
             0 -> {
                 secondMovieGenre1.visibility = View.GONE

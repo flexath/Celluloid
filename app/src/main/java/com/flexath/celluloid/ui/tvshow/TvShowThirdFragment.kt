@@ -1,11 +1,11 @@
 package com.flexath.celluloid.ui.tvshow
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
@@ -14,9 +14,9 @@ import coil.load
 import com.flexath.celluloid.R
 import com.flexath.celluloid.adapters.tv_show.ThirdTvShowCreatorsAdapter
 import com.flexath.celluloid.adapters.tv_show.ThirdTvShowSeasonsAdapter
-import com.flexath.celluloid.data.database.URL
-import com.flexath.celluloid.data.database.details.tv_show.TvShowDetails
+import com.flexath.celluloid.data.URL
 import com.flexath.celluloid.data.movie_viewmodel.TvShowViewModel
+import com.flexath.celluloid.data.room.TvShowEntity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.fragment_tv_show_third.*
 import kotlinx.android.synthetic.main.modal_bottom_dialog.*
@@ -30,6 +30,12 @@ class TvShowThirdFragment : Fragment() {
     private lateinit var horizontalLinearLayoutSeasons:LinearLayoutManager
     private lateinit var adapterTvShowCreators:ThirdTvShowCreatorsAdapter
     private lateinit var adapterTvShowSeasons:ThirdTvShowSeasonsAdapter
+
+    private lateinit var tvShowEntity: TvShowEntity
+
+    companion object{
+        private var redHeartOnTvShow = false
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_tv_show_third, container, false)
@@ -48,6 +54,21 @@ class TvShowThirdFragment : Fragment() {
         getBottomDialogMovieDetails()
         getTvShowSeasonsRecyclerSetup()
         getTvShowCreatorsRecyclerSetup()
+
+        thirdTvShowSaved.setOnClickListener {
+
+            redHeartOnTvShow = if(!redHeartOnTvShow) {
+                viewModel.insertTvShowFavourite(tvShowEntity)
+                thirdTvShowSaved.setImageResource(R.drawable.ic_red_heart)
+                Toast.makeText(requireActivity(),"Tv Show's saved", Toast.LENGTH_SHORT).show()
+                true
+            }else{
+                viewModel.deleteTvShowFavourite(tvShowEntity)
+                thirdTvShowSaved.setImageResource(R.drawable.ic_save)
+                Toast.makeText(requireActivity(),"Tv Show's unsaved", Toast.LENGTH_SHORT).show()
+                false
+            }
+        }
     }
 
     private fun getBottomDialogMovieDetails() {
@@ -57,7 +78,8 @@ class TvShowThirdFragment : Fragment() {
             modalBottomDialog.setContentView(bottomView)
             modalBottomDialog.setCancelable(true)
 
-            viewModel.getTvShowDetails(args.tvShowResult!!.id,URL.api_key)
+            viewModel.getTvShowDetails(args.tvShowResult!!.id,
+                URL.api_key)
             viewModel.detailsTvList.observe(viewLifecycleOwner) {
                 modalBottomDialog.secondMovieLanguage.text = it.original_language
                 modalBottomDialog.secondMovieStatus.text = it.status
@@ -116,10 +138,12 @@ class TvShowThirdFragment : Fragment() {
             thirdTvShowNumberOfEpisodes.text = "- " + it.number_of_episodes.toString()
             genreTvShowVisibility(it)
             thirdTvShowDescription.text = it.overview
+
+            tvShowEntity = TvShowEntity(it.id,it.name,it.first_air_date,it.poster_path,args.tvShowResult!!)
         }
     }
 
-    private fun getTvShowNetwork(details: TvShowDetails, bottomDialog: BottomSheetDialog) {
+    private fun getTvShowNetwork(details: com.flexath.celluloid.data.retrofit.details.tv_show.TvShowDetails, bottomDialog: BottomSheetDialog) {
         if(details.networks.isEmpty()) {
             bottomDialog.secondMovieNetwork.text = "-"
         }
@@ -134,7 +158,7 @@ class TvShowThirdFragment : Fragment() {
         }
     }
 
-    private fun getRuntimePerEpisode(details:TvShowDetails) {
+    private fun getRuntimePerEpisode(details: com.flexath.celluloid.data.retrofit.details.tv_show.TvShowDetails) {
         if(details.episode_run_time!!.isEmpty()){
             thirdTvShowEpisodeRunTime.text = "-"
         }
@@ -149,7 +173,7 @@ class TvShowThirdFragment : Fragment() {
         }
     }
 
-    private fun getTvShowProductionCompanies(details: TvShowDetails, bottomDialog: BottomSheetDialog) {
+    private fun getTvShowProductionCompanies(details: com.flexath.celluloid.data.retrofit.details.tv_show.TvShowDetails, bottomDialog: BottomSheetDialog) {
         if(details.production_companies.isEmpty()) {
             bottomDialog.secondMovieProductionCompanies.text = "-"
         }
@@ -164,7 +188,7 @@ class TvShowThirdFragment : Fragment() {
         }
     }
 
-    private fun getTvShowProductionCountries(details: TvShowDetails, bottomDialog: BottomSheetDialog) {
+    private fun getTvShowProductionCountries(details: com.flexath.celluloid.data.retrofit.details.tv_show.TvShowDetails, bottomDialog: BottomSheetDialog) {
         if(details.production_countries.isEmpty()){
             bottomDialog.secondMovieProductionCountries.text = "-"
         }
@@ -178,7 +202,7 @@ class TvShowThirdFragment : Fragment() {
         }
     }
 
-    private fun genreTvShowVisibility(details: TvShowDetails) {
+    private fun genreTvShowVisibility(details: com.flexath.celluloid.data.retrofit.details.tv_show.TvShowDetails) {
         when(details.genres!!.size) {
             0 -> {
                 thirdTvShowGenre1.visibility = View.GONE

@@ -9,8 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.flexath.celluloid.R
-import com.flexath.celluloid.data.database.URL
-import com.flexath.celluloid.data.database.people.Person
+import com.flexath.celluloid.data.URL
 import com.flexath.celluloid.data.movie_viewmodel.MovieViewModel
 import kotlinx.android.synthetic.main.fragment_movie_person.*
 
@@ -62,7 +61,7 @@ class MoviePersonFragment : Fragment() {
         }
     }
 
-    private fun getGender(person:Person) {
+    private fun getGender(person: com.flexath.celluloid.data.retrofit.people.Person) {
         when (person.gender) {
             1 -> personGender.text = "Female"
             2 -> personGender.text = "Male"

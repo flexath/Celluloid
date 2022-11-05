@@ -5,13 +5,10 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.flexath.celluloid.data.database.movie.Result
 import com.flexath.celluloid.databinding.MovieSearchRvBinding
-import com.flexath.celluloid.databinding.TvSearchRvBinding
 import com.flexath.celluloid.ui.movie.MovieSearchFragmentDirections
-import com.flexath.celluloid.ui.tvshow.TvShowSearchFragmentDirections
 
-class FirstMovieSearchAdapter(private val searchMovieList: ArrayList<Result>)
+class FirstMovieSearchAdapter(private val searchMovieList: ArrayList<com.flexath.celluloid.data.retrofit.movie.Result>)
         :RecyclerView.Adapter<FirstMovieSearchAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

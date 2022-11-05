@@ -10,8 +10,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.flexath.celluloid.R
 import com.flexath.celluloid.adapters.tv_show.SecondTvShowSearchAdapter
-import com.flexath.celluloid.data.database.URL
-import com.flexath.celluloid.data.database.tv_show.ResultTvShow
+import com.flexath.celluloid.data.URL
 import com.flexath.celluloid.data.movie_viewmodel.TvShowViewModel
 import kotlinx.android.synthetic.main.fragment_tv_show_search.*
 
@@ -47,7 +46,7 @@ class TvShowSearchFragment : Fragment() {
 
         viewModelTvShow.getTvSearchResults(URL.api_key,tvTitle)
         viewModelTvShow.searchTvShowList.observe(viewLifecycleOwner) {
-            adapterSearchTvShow = SecondTvShowSearchAdapter(it.results as ArrayList<ResultTvShow>)
+            adapterSearchTvShow = SecondTvShowSearchAdapter(it.results as ArrayList<com.flexath.celluloid.data.retrofit.tv_show.ResultTvShow>)
             rvTvShowSearch.adapter = adapterSearchTvShow
             adapterSearchTvShow.notifyDataSetChanged()
         }

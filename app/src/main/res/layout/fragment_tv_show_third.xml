@@ -52,8 +52,8 @@
 
                     <ImageButton
                         android:id="@+id/thirdTvShowSaved"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
                         android:backgroundTint="@color/primary_color"
                         android:src="@drawable/ic_save"
                         android:layout_gravity="end|center_vertical"

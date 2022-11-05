@@ -5,14 +5,12 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.flexath.celluloid.adapters.CreditSwitch
 import com.flexath.celluloid.adapters.CreditSwitch.Companion.switchOnMovie
-import com.flexath.celluloid.data.database.credits.Cast
 import com.flexath.celluloid.databinding.MovieCastsRvBinding
 import com.flexath.celluloid.ui.movie.MovieSecondFragmentDirections
 import com.flexath.celluloid.ui.tvshow.TvShowFourthFragmentDirections
 
-class SecondMovieCastsAdapter(private val castsMovieList: ArrayList<Cast>)
+class SecondMovieCastsAdapter(private val castsMovieList: ArrayList<com.flexath.celluloid.data.retrofit.credits.Cast>)
         :RecyclerView.Adapter<SecondMovieCastsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

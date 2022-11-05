@@ -1,31 +1,31 @@
 package com.flexath.celluloid.data.movie_viewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.flexath.celluloid.data.database.credits.Credits
-import com.flexath.celluloid.data.database.details.movie.Details
-import com.flexath.celluloid.data.database.movie.Movie
-import com.flexath.celluloid.data.database.people.Person
-import com.flexath.celluloid.data.model.repository.MovieRepository
+import com.flexath.celluloid.data.model.repository.Repository
+import com.flexath.celluloid.data.room.MovieEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MovieViewModel
-@Inject constructor(private val repository: MovieRepository) : ViewModel() {
+@Inject constructor(private val repository: Repository) : ViewModel() {
 
-    val nowPlayingMovieList:MutableLiveData<Movie> = MutableLiveData()
-    val upComingMovieList:MutableLiveData<Movie> = MutableLiveData()
-    val popularMovieList:MutableLiveData<Movie> = MutableLiveData()
-    val topRatedMovieList:MutableLiveData<Movie> = MutableLiveData()
-    var searchMovieList:MutableLiveData<Movie> = MutableLiveData()
+    val nowPlayingMovieList:MutableLiveData<com.flexath.celluloid.data.retrofit.movie.Movie> = MutableLiveData()
+    val upComingMovieList:MutableLiveData<com.flexath.celluloid.data.retrofit.movie.Movie> = MutableLiveData()
+    val popularMovieList:MutableLiveData<com.flexath.celluloid.data.retrofit.movie.Movie> = MutableLiveData()
+    val topRatedMovieList:MutableLiveData<com.flexath.celluloid.data.retrofit.movie.Movie> = MutableLiveData()
+    var searchMovieList:MutableLiveData<com.flexath.celluloid.data.retrofit.movie.Movie> = MutableLiveData()
 
-    val creditsMovieList:MutableLiveData<Credits> = MutableLiveData()
-    val detailsMovieList:MutableLiveData<Details> = MutableLiveData()
-    val personMovieList:MutableLiveData<Person> = MutableLiveData()
+    val creditsMovieList:MutableLiveData<com.flexath.celluloid.data.retrofit.credits.Credits> = MutableLiveData()
+    val detailsMovieList:MutableLiveData<com.flexath.celluloid.data.retrofit.details.movie.Details> = MutableLiveData()
+    val personMovieList:MutableLiveData<com.flexath.celluloid.data.retrofit.people.Person> = MutableLiveData()
+
+    lateinit var movieFavouriteList:LiveData<List<MovieEntity>>
 
     fun getAllNowPlayingMovies(api_key:String,release_date_sort:String,release_date:String,language:String) = viewModelScope.launch {
         repository.getAllNowPlayingMovies(api_key,release_date_sort,release_date,language).let {
@@ -105,5 +105,17 @@ class MovieViewModel
                 Log.d("UpComingViewModel",it.errorBody().toString())
             }
         }
+    }
+
+    fun insertMovieFavourite(result:MovieEntity) = viewModelScope.launch {
+        repository.insertMovieFavourite(result)
+    }
+
+    fun deleteMovieFavourite(result:MovieEntity) = viewModelScope.launch {
+        repository.deleteMovieFavourite(result)
+    }
+
+    fun getAllMovieFavourites() = viewModelScope.launch {
+        movieFavouriteList = repository.getAllMovieFavourites()
     }
 }

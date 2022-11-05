@@ -2,14 +2,11 @@ package com.flexath.celluloid.adapters.tv_show
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.flexath.celluloid.data.database.tv_show.seasons.Episode
 import com.flexath.celluloid.databinding.TvEpisodeRvBinding
-import com.flexath.celluloid.ui.tvshow.TvShowThirdFragmentDirections
 
-class ThirdTvShowEpisodesAdapter(private val episodesTvShowList: List<Episode>)
+class ThirdTvShowEpisodesAdapter(private val episodesTvShowList: List<com.flexath.celluloid.data.retrofit.tv_show.seasons.Episode>)
         :RecyclerView.Adapter<ThirdTvShowEpisodesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

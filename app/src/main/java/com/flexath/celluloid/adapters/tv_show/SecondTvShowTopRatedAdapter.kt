@@ -5,11 +5,10 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.flexath.celluloid.data.database.tv_show.ResultTvShow
 import com.flexath.celluloid.databinding.TvTopRatedRvBinding
 import com.flexath.celluloid.ui.tvshow.TvShowSecondFragmentDirections
 
-class SecondTvShowTopRatedAdapter(private val topRatedTvShowList: ArrayList<ResultTvShow>)
+class SecondTvShowTopRatedAdapter(private val topRatedTvShowList: ArrayList<com.flexath.celluloid.data.retrofit.tv_show.ResultTvShow>)
         :RecyclerView.Adapter<SecondTvShowTopRatedAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

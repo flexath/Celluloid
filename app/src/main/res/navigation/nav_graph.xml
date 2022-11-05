@@ -25,7 +25,7 @@
         <argument
             android:name="result"
             app:nullable="true"
-            app:argType="com.flexath.celluloid.data.database.movie.Result"
+            app:argType="com.flexath.celluloid.data.retrofit.movie.Result"
             android:defaultValue="@null" />
         <action
             android:id="@+id/movieSecondToPersonAction"
@@ -47,7 +47,14 @@
         android:id="@+id/savedFirstFragment"
         android:name="com.flexath.celluloid.ui.saved.SavedFirstFragment"
         android:label="fragment_saved_first"
-        tools:layout="@layout/fragment_saved_first" />
+        tools:layout="@layout/fragment_saved_first" >
+        <action
+            android:id="@+id/savedFirstToMovieSecondAction"
+            app:destination="@id/movieSecondFragment" />
+        <action
+            android:id="@+id/savedFirstToTvShowThirdAction"
+            app:destination="@id/tvShowThirdFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFirstFragment"
         android:name="com.flexath.celluloid.ui.profile.ProfileFirstFragment"
@@ -76,7 +83,7 @@
         <argument
             android:name="tvShowResult"
             app:nullable="true"
-            app:argType="com.flexath.celluloid.data.database.tv_show.ResultTvShow"
+            app:argType="com.flexath.celluloid.data.retrofit.tv_show.ResultTvShow"
             android:defaultValue="@null" />
         <action
             android:id="@+id/tvShow_ThirdToFourthAction"
@@ -121,13 +128,13 @@
         <argument
             android:name="personCast"
             app:nullable="true"
-            app:argType="com.flexath.celluloid.data.database.credits.Cast"
+            app:argType="com.flexath.celluloid.data.retrofit.credits.Cast"
             android:defaultValue="@null" />
 
         <argument
             android:name="personCrew"
             app:nullable="true"
-            app:argType="com.flexath.celluloid.data.database.credits.Crew"
+            app:argType="com.flexath.celluloid.data.retrofit.credits.Crew"
             android:defaultValue="@null" />
 
         <argument
@@ -146,7 +153,7 @@
         <argument
             android:name="tvShowSeason"
             app:nullable="true"
-            app:argType="com.flexath.celluloid.data.database.details.tv_show.Season"
+            app:argType="com.flexath.celluloid.data.retrofit.details.tv_show.Season"
             android:defaultValue="@null"/>
 
         <argument

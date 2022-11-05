@@ -10,8 +10,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.flexath.celluloid.R
 import com.flexath.celluloid.adapters.movie.first.FirstMovieSearchAdapter
-import com.flexath.celluloid.data.database.URL
-import com.flexath.celluloid.data.database.movie.Result
+import com.flexath.celluloid.data.URL
 import com.flexath.celluloid.data.movie_viewmodel.MovieViewModel
 import kotlinx.android.synthetic.main.fragment_movie_search.*
 
@@ -47,7 +46,7 @@ class MovieSearchFragment : Fragment() {
 
         viewModelMovie.getMovieSearchResults(URL.api_key,tvTitle)
         viewModelMovie.searchMovieList.observe(viewLifecycleOwner) {
-            adapterSearchMovie = FirstMovieSearchAdapter(it.results as ArrayList<Result>)
+            adapterSearchMovie = FirstMovieSearchAdapter(it.results as ArrayList<com.flexath.celluloid.data.retrofit.movie.Result>)
             rvMovieSearch.adapter = adapterSearchMovie
             adapterSearchMovie.notifyDataSetChanged()
         }

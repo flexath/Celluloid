@@ -1,6 +1,6 @@
 package com.flexath.celluloid.data.model.repository
 
-import com.flexath.celluloid.data.database.URL
+import com.flexath.celluloid.data.URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

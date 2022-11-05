@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.flexath.celluloid.data.database.movie.Result
+import com.flexath.celluloid.data.retrofit.movie.Result
 import com.flexath.celluloid.databinding.NowPlayingRvBinding
 import com.flexath.celluloid.ui.movie.MovieFirstFragmentDirections
 
-class FirstNowPlayingAdapter(private val nowPlayingMovieList: ArrayList<Result>)
+class FirstNowPlayingAdapter(private val nowPlayingMovieList: ArrayList<com.flexath.celluloid.data.retrofit.movie.Result>)
         :RecyclerView.Adapter<FirstNowPlayingAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

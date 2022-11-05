@@ -16,13 +16,10 @@ import com.flexath.celluloid.adapters.movie.first.FirstNowPlayingAdapter
 import com.flexath.celluloid.adapters.movie.first.FirstPopularAdapter
 import com.flexath.celluloid.adapters.movie.first.FirstTopRatedAdapter
 import com.flexath.celluloid.adapters.movie.first.FirstUpComingAdapter
-import com.flexath.celluloid.data.database.movie.Result
-import com.flexath.celluloid.data.database.URL
+import com.flexath.celluloid.data.URL
 import com.flexath.celluloid.data.movie_viewmodel.MovieViewModel
-import com.flexath.celluloid.ui.tvshow.TvShowFirstFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movie_first.*
-import kotlinx.android.synthetic.main.fragment_tv_show_first.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -80,7 +77,7 @@ class MovieFirstFragment : Fragment() {
         // api link -> https://api.themoviedb.org/3/discover/movie?api_key=ad1e17e27becb3abedf8eaccc61b8d5d&release_date.gte=2022-10-24&sort_by=release_date.asc&with_original_language=en
         viewModel.getAllNowPlayingMovies(URL.api_key,"release_date.asc",current,"en")
         viewModel.nowPlayingMovieList.observe(viewLifecycleOwner) {
-            adpaterNowPlaying = FirstNowPlayingAdapter(it.results as ArrayList<Result>)
+            adpaterNowPlaying = FirstNowPlayingAdapter(it.results as ArrayList<com.flexath.celluloid.data.retrofit.movie.Result>)
             rvNowPlaying.adapter = adpaterNowPlaying
             adpaterNowPlaying?.notifyDataSetChanged()
         }
@@ -96,7 +93,7 @@ class MovieFirstFragment : Fragment() {
         // api link -> https://api.themoviedb.org/3/discover/movie?api_key=ad1e17e27becb3abedf8eaccc61b8d5d&primary_release_date.gte=2022-10-23&sort_by=release_date.asc&with_original_language=en
         viewModel.getAllUpComingMovies(URL.api_key,"release_date.asc",current,"en")
         viewModel.upComingMovieList.observe(viewLifecycleOwner) {
-            adpaterUpComing = FirstUpComingAdapter(it.results as ArrayList<Result>)
+            adpaterUpComing = FirstUpComingAdapter(it.results as ArrayList<com.flexath.celluloid.data.retrofit.movie.Result>)
             rvUpComing.adapter = adpaterUpComing
             adpaterUpComing?.notifyDataSetChanged()
         }
@@ -109,7 +106,7 @@ class MovieFirstFragment : Fragment() {
         // api link -> https://api.themoviedb.org/3/discover/movie?api_key=ad1e17e27becb3abedf8eaccc61b8d5d
         viewModel.getAllPopularMovies(URL.api_key)
         viewModel.popularMovieList.observe(viewLifecycleOwner) {
-            adpaterPopular = FirstPopularAdapter(it.results as ArrayList<Result>)
+            adpaterPopular = FirstPopularAdapter(it.results as ArrayList<com.flexath.celluloid.data.retrofit.movie.Result>)
             rvPopular.adapter = adpaterPopular
             adpaterPopular?.notifyDataSetChanged()
         }
@@ -121,7 +118,7 @@ class MovieFirstFragment : Fragment() {
         // api link -> https://api.themoviedb.org/3/discover/movie?api_key=ad1e17e27becb3abedf8eaccc61b8d5d&vote_count.gte=300&sort_by=vote_average.desc
         viewModel.getAllTopRatedMovies(URL.api_key,300,"vote_average.desc",1)
         viewModel.topRatedMovieList.observe(viewLifecycleOwner) {
-            adapterTopRated = FirstTopRatedAdapter(it.results as ArrayList<Result>)
+            adapterTopRated = FirstTopRatedAdapter(it.results as ArrayList<com.flexath.celluloid.data.retrofit.movie.Result>)
             rvTopRated.adapter = adapterTopRated
             adapterTopRated?.notifyDataSetChanged()
         }

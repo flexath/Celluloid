@@ -1,38 +1,38 @@
 package com.flexath.celluloid.data.movie_viewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.flexath.celluloid.data.database.credits.Credits
-import com.flexath.celluloid.data.database.details.tv_show.TvShowDetails
-import com.flexath.celluloid.data.database.tv_show.TvShow
-import com.flexath.celluloid.data.database.tv_show.seasons.Season
-import com.flexath.celluloid.data.model.repository.MovieRepository
+import com.flexath.celluloid.data.model.repository.Repository
+import com.flexath.celluloid.data.room.TvShowEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class TvShowViewModel
-@Inject constructor(private val repository: MovieRepository) : ViewModel() {
+@Inject constructor(private val repository: Repository) : ViewModel() {
 
     // For tv show tab
-    val trendingThisWeekTvShowList:MutableLiveData<TvShow> = MutableLiveData()
-    val onAirTodayTvShowList:MutableLiveData<TvShow> = MutableLiveData()
-    val topRatedTvShowList:MutableLiveData<TvShow> = MutableLiveData()
-    val searchTvShowList:MutableLiveData<TvShow> = MutableLiveData()
+    val trendingThisWeekTvShowList:MutableLiveData<com.flexath.celluloid.data.retrofit.tv_show.TvShow> = MutableLiveData()
+    val onAirTodayTvShowList:MutableLiveData<com.flexath.celluloid.data.retrofit.tv_show.TvShow> = MutableLiveData()
+    val topRatedTvShowList:MutableLiveData<com.flexath.celluloid.data.retrofit.tv_show.TvShow> = MutableLiveData()
+    val searchTvShowList:MutableLiveData<com.flexath.celluloid.data.retrofit.tv_show.TvShow> = MutableLiveData()
 
-    val detailsTvList:MutableLiveData<TvShowDetails> = MutableLiveData()
-    val seasonTvShowList:MutableLiveData<Season> = MutableLiveData()
-    val creditsTvShowList:MutableLiveData<Credits> = MutableLiveData()
+    val detailsTvList:MutableLiveData<com.flexath.celluloid.data.retrofit.details.tv_show.TvShowDetails> = MutableLiveData()
+    val seasonTvShowList:MutableLiveData<com.flexath.celluloid.data.retrofit.tv_show.seasons.Season> = MutableLiveData()
+    val creditsTvShowList:MutableLiveData<com.flexath.celluloid.data.retrofit.credits.Credits> = MutableLiveData()
+
+    lateinit var tvShowFavouriteList: LiveData<List<TvShowEntity>>
 
     fun getAllTrendingThisWeekTvShow(api_key:String,language:String,popularity:String,air_date:String) = viewModelScope.launch {
         repository.getAllTrendingThisWeekTvShow(api_key,language,popularity,air_date).let {
             if(it.isSuccessful) {
                 trendingThisWeekTvShowList.postValue(it.body())
             }else{
-                Log.d("UpComingViewModel",it.errorBody().toString())
+                Log.d("TvShowTrendingViewModel",it.errorBody().toString())
             }
         }
     }
@@ -42,7 +42,7 @@ class TvShowViewModel
             if(it.isSuccessful) {
                 onAirTodayTvShowList.postValue(it.body())
             }else{
-                Log.d("UpComingViewModel",it.errorBody().toString())
+                Log.d("TvShowOnAirViewModel",it.errorBody().toString())
             }
         }
     }
@@ -52,7 +52,7 @@ class TvShowViewModel
             if(it.isSuccessful) {
                 topRatedTvShowList.postValue(it.body())
             }else{
-                Log.d("UpComingViewModel",it.errorBody().toString())
+                Log.d("TvShowTopRatedViewModel",it.errorBody().toString())
             }
         }
     }
@@ -62,7 +62,7 @@ class TvShowViewModel
             if(it.isSuccessful) {
                 searchTvShowList.postValue(it.body())
             }else{
-                Log.d("UpComingViewModel",it.errorBody().toString())
+                Log.d("TvShowSearchViewModel",it.errorBody().toString())
             }
         }
     }
@@ -72,7 +72,7 @@ class TvShowViewModel
             if(it.isSuccessful) {
                 detailsTvList.postValue(it.body())
             }else{
-                Log.d("UpComingViewModel",it.errorBody().toString())
+                Log.d("TvShowDetailsViewModel",it.errorBody().toString())
             }
         }
     }
@@ -82,7 +82,7 @@ class TvShowViewModel
             if(it.isSuccessful) {
                 seasonTvShowList.postValue(it.body())
             }else{
-                Log.d("UpComingViewModel",it.errorBody().toString())
+                Log.d("TvShowSeasonViewModel",it.errorBody().toString())
             }
         }
     }
@@ -92,8 +92,20 @@ class TvShowViewModel
             if(it.isSuccessful) {
                 creditsTvShowList.postValue(it.body())
             }else{
-                Log.d("UpComingViewModel",it.errorBody().toString())
+                Log.d("TvShowCreditsViewModel",it.errorBody().toString())
             }
         }
+    }
+
+    fun insertTvShowFavourite(result:TvShowEntity) = viewModelScope.launch {
+        repository.insertTvShowFavourite(result)
+    }
+
+    fun deleteTvShowFavourite(result:TvShowEntity) = viewModelScope.launch {
+        repository.deleteTvShowFavourite(result)
+    }
+
+    fun getAllTvShowFavourites() = viewModelScope.launch {
+        tvShowFavouriteList = repository.getAllTvShowFavourites()
     }
 }
