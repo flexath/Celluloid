@@ -55,20 +55,6 @@ class TvShowThirdFragment : Fragment() {
         getTvShowSeasonsRecyclerSetup()
         getTvShowCreatorsRecyclerSetup()
 
-        thirdTvShowSaved.setOnClickListener {
-
-            redHeartOnTvShow = if(!redHeartOnTvShow) {
-                viewModel.insertTvShowFavourite(tvShowEntity)
-                thirdTvShowSaved.setImageResource(R.drawable.ic_red_heart)
-                Toast.makeText(requireActivity(),"Tv Show's saved", Toast.LENGTH_SHORT).show()
-                true
-            }else{
-                viewModel.deleteTvShowFavourite(tvShowEntity)
-                thirdTvShowSaved.setImageResource(R.drawable.ic_save)
-                Toast.makeText(requireActivity(),"Tv Show's unsaved", Toast.LENGTH_SHORT).show()
-                false
-            }
-        }
     }
 
     private fun getBottomDialogMovieDetails() {
@@ -78,8 +64,7 @@ class TvShowThirdFragment : Fragment() {
             modalBottomDialog.setContentView(bottomView)
             modalBottomDialog.setCancelable(true)
 
-            viewModel.getTvShowDetails(args.tvShowResult!!.id,
-                URL.api_key)
+            viewModel.getTvShowDetails(args.tvShowResult!!.id,URL.api_key)
             viewModel.detailsTvList.observe(viewLifecycleOwner) {
                 modalBottomDialog.secondMovieLanguage.text = it.original_language
                 modalBottomDialog.secondMovieStatus.text = it.status
@@ -126,6 +111,22 @@ class TvShowThirdFragment : Fragment() {
         }
     }
 
+    private fun setTvShowFavourite() {
+        viewModel.getAllTvShowFavourites()
+        viewModel.tvShowFavouriteList.observe(viewLifecycleOwner) { entity ->
+            for(i in entity.indices) {
+                if(args.tvShowResult!!.id == entity[i].tv_id) {
+                    thirdTvShowSaved.setImageResource(R.drawable.ic_red_heart)
+                    redHeartOnTvShow = true
+                    break
+                }
+                else{
+                    redHeartOnTvShow = false
+                }
+            }
+        }
+    }
+
     private fun getTvShowDetails() {
 
         viewModel.detailsTvList.observe(viewLifecycleOwner) {
@@ -140,6 +141,24 @@ class TvShowThirdFragment : Fragment() {
             thirdTvShowDescription.text = it.overview
 
             tvShowEntity = TvShowEntity(it.id,it.name,it.first_air_date,it.poster_path,args.tvShowResult!!)
+
+            setTvShowFavourite()
+
+            thirdTvShowSaved.setOnClickListener {
+
+                redHeartOnTvShow = if(!redHeartOnTvShow) {
+                    viewModel.insertTvShowFavourite(tvShowEntity)
+                    thirdTvShowSaved.setImageResource(R.drawable.ic_red_heart)
+                    Toast.makeText(requireActivity(),"Tv Show's saved", Toast.LENGTH_SHORT).show()
+                    true
+
+                }else{
+                    viewModel.deleteTvShowFavourite(tvShowEntity)
+                    thirdTvShowSaved.setImageResource(R.drawable.ic_save)
+                    Toast.makeText(requireActivity(),"Tv Show's unsaved", Toast.LENGTH_SHORT).show()
+                    false
+                }
+            }
         }
     }
 

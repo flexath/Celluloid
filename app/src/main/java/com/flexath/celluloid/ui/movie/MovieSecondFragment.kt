@@ -135,18 +135,16 @@ class MovieSecondFragment : Fragment() {
 
             secondMovieSaved.setOnClickListener { _ ->
 
-                if(!redHeartOnMovie){
-                    movieEntity = MovieEntity(it.id,it.original_title,it.release_date,it.poster_path,args.result!!)
+                redHeartOnMovie = if(!redHeartOnMovie){
                     viewModel.insertMovieFavourite(movieEntity)
                     secondMovieSaved.setImageResource(R.drawable.ic_red_heart)
                     Toast.makeText(requireActivity(),"Movie's saved", Toast.LENGTH_SHORT).show()
-                    redHeartOnMovie = true
+                    true
                 }else{
-
                     viewModel.deleteMovieFavourite(movieEntity)
                     secondMovieSaved.setImageResource(R.drawable.ic_save)
                     Toast.makeText(requireActivity(),"Movie's unsaved", Toast.LENGTH_SHORT).show()
-                    redHeartOnMovie = false
+                    false
                 }
             }
         }
