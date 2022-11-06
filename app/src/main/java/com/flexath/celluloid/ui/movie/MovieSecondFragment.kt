@@ -35,7 +35,7 @@ class MovieSecondFragment : Fragment() {
 
     private lateinit var movieEntity:MovieEntity
 
-    companion object{
+    companion object {
         private var redHeartOnMovie = false
     }
 
@@ -66,20 +66,6 @@ class MovieSecondFragment : Fragment() {
         getMovieCasts()
         getMovieCrews()
 
-        secondMovieSaved.setOnClickListener {
-
-            redHeartOnMovie = if(!redHeartOnMovie) {
-                viewModel.insertMovieFavourite(movieEntity)
-                secondMovieSaved.setImageResource(R.drawable.ic_red_heart)
-                Toast.makeText(requireActivity(),"Movie's saved", Toast.LENGTH_SHORT).show()
-                true
-            }else{
-                viewModel.deleteMovieFavourite(movieEntity)
-                secondMovieSaved.setImageResource(R.drawable.ic_save)
-                Toast.makeText(requireActivity(),"Movie's unsaved", Toast.LENGTH_SHORT).show()
-                false
-            }
-        }
     }
 
     private fun getBottomDialogMovieDetails() {
@@ -89,8 +75,7 @@ class MovieSecondFragment : Fragment() {
             modalBottomDialog.setContentView(bottomView)
             modalBottomDialog.setCancelable(true)
 
-            viewModel.getMovieDetails(args.result!!.id,
-                URL.api_key)
+            viewModel.getMovieDetails(args.result!!.id,URL.api_key)
             viewModel.detailsMovieList.observe(viewLifecycleOwner) {
                 modalBottomDialog.secondMovieLanguage.text = it.original_language
                 modalBottomDialog.secondMovieStatus.text = it.status
@@ -116,6 +101,22 @@ class MovieSecondFragment : Fragment() {
         }
     }
 
+    private fun setMoviesFavourite() {
+        viewModel.getAllMovieFavourites()
+        viewModel.movieFavouriteList.observe(viewLifecycleOwner) { entity ->
+            for(i in entity.indices) {
+                if(args.result!!.id == entity[i].movie_id) {
+                    secondMovieSaved.setImageResource(R.drawable.ic_red_heart)
+                    redHeartOnMovie = true
+                    break
+                }
+                else{
+                    redHeartOnMovie = false
+                }
+            }
+        }
+    }
+
     private fun getMovieDetails() {
 
         viewModel.getMovieDetails(args.result!!.id,URL.api_key)
@@ -129,6 +130,25 @@ class MovieSecondFragment : Fragment() {
             secondMovieDescription.text = it.overview
 
             movieEntity = MovieEntity(it.id,it.original_title,it.release_date,it.poster_path,args.result!!)
+
+            setMoviesFavourite()
+
+            secondMovieSaved.setOnClickListener { _ ->
+
+                if(!redHeartOnMovie){
+                    movieEntity = MovieEntity(it.id,it.original_title,it.release_date,it.poster_path,args.result!!)
+                    viewModel.insertMovieFavourite(movieEntity)
+                    secondMovieSaved.setImageResource(R.drawable.ic_red_heart)
+                    Toast.makeText(requireActivity(),"Movie's saved", Toast.LENGTH_SHORT).show()
+                    redHeartOnMovie = true
+                }else{
+
+                    viewModel.deleteMovieFavourite(movieEntity)
+                    secondMovieSaved.setImageResource(R.drawable.ic_save)
+                    Toast.makeText(requireActivity(),"Movie's unsaved", Toast.LENGTH_SHORT).show()
+                    redHeartOnMovie = false
+                }
+            }
         }
     }
 

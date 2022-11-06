@@ -15,14 +15,20 @@ interface SavedDao {
     @Delete
     suspend fun deleteMovieFavourite(result:MovieEntity)
 
+    @Query("SELECT * FROM MOVIE_TABLE ORDER BY movie_id ASC")
+    fun getAllMovieFavourites() : LiveData<List<MovieEntity>>
+
+    @Query("SELECT * FROM MOVIE_TABLE WHERE movie_id= :movieId")
+    fun getMovieById(movieId:Int) : LiveData<MovieEntity>
+
+
+    // Following is Tv Shows
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTvShowFavourite(result:TvShowEntity)
 
     @Delete
     suspend fun deleteTvShowFavourite(result:TvShowEntity)
 
-    @Query("SELECT * FROM MOVIE_TABLE ORDER BY movie_id ASC")
-    fun getAllMovieFavourites() : LiveData<List<MovieEntity>>
 
     @Query("SELECT * FROM tv_table ORDER BY tv_id ASC")
     fun getAllTvShowFavourites() : LiveData<List<TvShowEntity>>

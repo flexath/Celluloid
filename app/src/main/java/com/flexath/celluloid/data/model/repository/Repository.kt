@@ -1,11 +1,9 @@
 package com.flexath.celluloid.data.model.repository
 
-import com.flexath.celluloid.data.room.SavedDao
-import javax.inject.Inject
-import com.flexath.celluloid.data.retrofit.movie.Result
-import com.flexath.celluloid.data.retrofit.tv_show.ResultTvShow
 import com.flexath.celluloid.data.room.MovieEntity
+import com.flexath.celluloid.data.room.SavedDao
 import com.flexath.celluloid.data.room.TvShowEntity
+import javax.inject.Inject
 
 class Repository
 @Inject constructor(private val api:MovieApi,private val dao:SavedDao) {
@@ -39,6 +37,8 @@ class Repository
 
     suspend fun deleteMovieFavourite(result:MovieEntity) =
         dao.deleteMovieFavourite(result)
+
+    fun getMovieById(movieId:Int) = dao.getMovieById(movieId)
 
     fun getAllMovieFavourites() = dao.getAllMovieFavourites()
 

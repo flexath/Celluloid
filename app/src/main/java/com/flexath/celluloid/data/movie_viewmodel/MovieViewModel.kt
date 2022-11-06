@@ -26,6 +26,7 @@ class MovieViewModel
     val personMovieList:MutableLiveData<com.flexath.celluloid.data.retrofit.people.Person> = MutableLiveData()
 
     lateinit var movieFavouriteList:LiveData<List<MovieEntity>>
+    lateinit var movieFavouriteById:LiveData<MovieEntity>
 
     fun getAllNowPlayingMovies(api_key:String,release_date_sort:String,release_date:String,language:String) = viewModelScope.launch {
         repository.getAllNowPlayingMovies(api_key,release_date_sort,release_date,language).let {
@@ -117,5 +118,9 @@ class MovieViewModel
 
     fun getAllMovieFavourites() = viewModelScope.launch {
         movieFavouriteList = repository.getAllMovieFavourites()
+    }
+
+    fun getMovieById(movieId:Int) = viewModelScope.launch {
+        movieFavouriteById = repository.getMovieById(movieId)
     }
 }
