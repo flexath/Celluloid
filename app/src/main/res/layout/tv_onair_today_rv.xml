@@ -16,8 +16,7 @@
             android:id="@+id/tvShowKDramaOnAirTodayPoster"
             android:layout_width="130dp"
             android:layout_height="190dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/black_adam"/>
+            android:scaleType="fitXY"/>
 
         <View
             android:id="@+id/divider"

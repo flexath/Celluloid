@@ -77,7 +77,8 @@
                                 android:layout_height="200dp"
                                 android:background="@color/primary_color"
                                 android:src="@drawable/englishtvshow"
-                                android:scaleType="fitXY"/>
+                                android:scaleType="fitXY"
+                                android:contentDescription="American Series" />
 
                         </com.google.android.material.card.MaterialCardView>
 
@@ -126,7 +127,8 @@
                                 android:layout_height="200dp"
                                 android:background="@color/primary_color"
                                 android:src="@drawable/kdrama"
-                                android:scaleType="fitXY"/>
+                                android:scaleType="fitXY"
+                                android:contentDescription="Korean Series" />
 
                         </com.google.android.material.card.MaterialCardView>
 
@@ -175,7 +177,8 @@
                                 android:layout_height="200dp"
                                 android:background="@color/primary_color"
                                 android:src="@drawable/thaidrama"
-                                android:scaleType="fitXY"/>
+                                android:scaleType="fitXY"
+                                android:contentDescription="Thai Series" />
 
                         </com.google.android.material.card.MaterialCardView>
 
@@ -224,7 +227,8 @@
                                 android:layout_height="200dp"
                                 android:background="@color/primary_color"
                                 android:src="@drawable/indiadrama"
-                                android:scaleType="fitXY"/>
+                                android:scaleType="fitXY"
+                                android:contentDescription="Indian Series" />
 
                         </com.google.android.material.card.MaterialCardView>
 

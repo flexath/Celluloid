@@ -1,4 +1,4 @@
-package com.flexath.celluloid.adapters.movie.second
+package com.flexath.celluloid.adapters.credits
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

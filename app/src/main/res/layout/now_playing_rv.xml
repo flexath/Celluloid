@@ -14,8 +14,7 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/nowPlayingMoviePoster"
             android:layout_width="120dp"
-            android:layout_height="180dp"
-            android:src="@drawable/black_adam"/>
+            android:layout_height="180dp"/>
 
         <View
             android:id="@+id/divider"

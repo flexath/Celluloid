@@ -14,10 +14,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.flexath.celluloid.R
 import com.flexath.celluloid.adapters.CreditSwitch.Companion.switchOnMovie
-import com.flexath.celluloid.adapters.movie.second.SecondMovieCastsAdapter
-import com.flexath.celluloid.adapters.movie.second.SecondMovieCrewsAdapter
+import com.flexath.celluloid.adapters.credits.SecondMovieCastsAdapter
+import com.flexath.celluloid.adapters.credits.SecondMovieCrewsAdapter
 import com.flexath.celluloid.data.URL
 import com.flexath.celluloid.data.movie_viewmodel.MovieViewModel
+import com.flexath.celluloid.data.retrofit.credits.Cast
+import com.flexath.celluloid.data.retrofit.credits.Crew
 import com.flexath.celluloid.data.room.MovieEntity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.fragment_movie_second.*
@@ -30,8 +32,8 @@ class MovieSecondFragment : Fragment() {
 
     private lateinit var horizontalLinearLayoutMovieCasts:LinearLayoutManager
     private lateinit var horizontalLinearLayoutMovieCrews:LinearLayoutManager
-    private lateinit var adapterMovieCasts:SecondMovieCastsAdapter
-    private lateinit var adapterMovieCrews:SecondMovieCrewsAdapter
+    private lateinit var adapterMovieCasts: SecondMovieCastsAdapter
+    private lateinit var adapterMovieCrews: SecondMovieCrewsAdapter
 
     private lateinit var movieEntity:MovieEntity
 
@@ -154,7 +156,7 @@ class MovieSecondFragment : Fragment() {
         rvMovieCasts.layoutManager = horizontalLinearLayoutMovieCasts
         rvMovieCasts.setHasFixedSize(true)
         viewModel.creditsMovieList.observe(viewLifecycleOwner) {
-            adapterMovieCasts = SecondMovieCastsAdapter(it.cast as ArrayList<com.flexath.celluloid.data.retrofit.credits.Cast>)
+            adapterMovieCasts = SecondMovieCastsAdapter(it.cast as ArrayList<Cast>)
             rvMovieCasts.adapter = adapterMovieCasts
             adapterMovieCasts.notifyDataSetChanged()
         }
@@ -164,7 +166,7 @@ class MovieSecondFragment : Fragment() {
         rvMovieCrews.layoutManager = horizontalLinearLayoutMovieCrews
         rvMovieCrews.setHasFixedSize(true)
         viewModel.creditsMovieList.observe(viewLifecycleOwner) {
-            adapterMovieCrews = SecondMovieCrewsAdapter(it.crew as ArrayList<com.flexath.celluloid.data.retrofit.credits.Crew>)
+            adapterMovieCrews = SecondMovieCrewsAdapter(it.crew as ArrayList<Crew>)
             getDirectorName(it)
             rvMovieCrews.adapter = adapterMovieCrews
             adapterMovieCrews.notifyDataSetChanged()

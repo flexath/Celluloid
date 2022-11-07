@@ -10,14 +10,12 @@
         android:layout_width="110dp"
         android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
-        android:scaleType="fitXY"
-        android:src="@drawable/black_adam"/>
+        android:scaleType="fitXY"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvShowSeasonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Season 1"
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
@@ -47,7 +45,6 @@
             android:id="@+id/tvShowSeasonFirstOnAirDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2022/10/15"
             android:fontFamily="@font/worksans_medium"
             android:textSize="13sp"
             android:textColor="@color/text_color"/>
@@ -75,7 +72,6 @@
             android:id="@+id/tvShowSeasonNumberOfEpisodes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="10"
             android:fontFamily="@font/supreme_regular"
             android:textSize="13sp"
             android:textColor="@color/text_color"/>

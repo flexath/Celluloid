@@ -19,7 +19,6 @@
             android:id="@+id/tvShowCreatorProfilePicture"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:src="@drawable/kimdami"
             android:background="@color/primary_color"
             android:scaleType="fitXY"/>
 
@@ -37,7 +36,6 @@
             android:id="@+id/tvShowDirectorName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Jaume Collet-Serra"
             android:textSize="16sp"
             android:textColor="@color/text_color"
             android:fontFamily="@font/worksans_medium"

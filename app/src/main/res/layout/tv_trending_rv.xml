@@ -22,7 +22,6 @@
             android:layout_width="220dp"
             android:layout_height="250dp"
             android:background="@color/primary_color"
-            android:src="@drawable/our_beloved_summer"
             android:scaleType="fitXY"/>
 
     </com.google.android.material.card.MaterialCardView>
@@ -48,7 +47,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
-            android:text="Our Beloved Summer"
             android:textSize="15sp"
             android:textColor="@color/text_color"
             android:fontFamily="@font/supreme_regular"/>
@@ -77,7 +75,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
-            android:text="10/10/2021"
             android:textSize="15sp"
             android:textColor="@color/text_color"
             android:fontFamily="@font/supreme_regular"/>

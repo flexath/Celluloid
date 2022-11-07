@@ -1,4 +1,4 @@
-package com.flexath.celluloid.adapters.movie.second
+package com.flexath.celluloid.adapters.credits
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,6 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.flexath.celluloid.adapters.CreditSwitch.Companion.switchOnMovie
-import com.flexath.celluloid.data.retrofit.credits.Crew
 import com.flexath.celluloid.databinding.MovieCrewsRvBinding
 import com.flexath.celluloid.ui.movie.MovieSecondFragmentDirections
 import com.flexath.celluloid.ui.tvshow.TvShowFourthFragmentDirections

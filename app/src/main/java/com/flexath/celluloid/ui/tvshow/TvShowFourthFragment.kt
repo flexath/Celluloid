@@ -11,11 +11,13 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.flexath.celluloid.R
 import com.flexath.celluloid.adapters.CreditSwitch.Companion.switchOnMovie
-import com.flexath.celluloid.adapters.movie.second.SecondMovieCastsAdapter
-import com.flexath.celluloid.adapters.movie.second.SecondMovieCrewsAdapter
+import com.flexath.celluloid.adapters.credits.SecondMovieCastsAdapter
+import com.flexath.celluloid.adapters.credits.SecondMovieCrewsAdapter
 import com.flexath.celluloid.adapters.tv_show.ThirdTvShowEpisodesAdapter
 import com.flexath.celluloid.data.URL
 import com.flexath.celluloid.data.movie_viewmodel.TvShowViewModel
+import com.flexath.celluloid.data.retrofit.credits.Cast
+import com.flexath.celluloid.data.retrofit.credits.Crew
 import kotlinx.android.synthetic.main.fragment_tv_show_fourth.*
 
 class TvShowFourthFragment : Fragment() {
@@ -27,8 +29,8 @@ class TvShowFourthFragment : Fragment() {
     private lateinit var horizontalLinearLayoutCasts:LinearLayoutManager
     private lateinit var horizontalLinearLayoutCrews:LinearLayoutManager
     private lateinit var adapterTvShowEpisode:ThirdTvShowEpisodesAdapter
-    private lateinit var adapterTvShowCasts:SecondMovieCastsAdapter
-    private lateinit var adapterTvShowCrews:SecondMovieCrewsAdapter
+    private lateinit var adapterTvShowCasts: SecondMovieCastsAdapter
+    private lateinit var adapterTvShowCrews: SecondMovieCrewsAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_tv_show_fourth, container, false)
@@ -84,7 +86,7 @@ class TvShowFourthFragment : Fragment() {
         rvTvShowSeasonCasts.setHasFixedSize(true)
 
         viewModel.creditsTvShowList.observe(viewLifecycleOwner) {
-            adapterTvShowCasts = SecondMovieCastsAdapter(it.cast as ArrayList<com.flexath.celluloid.data.retrofit.credits.Cast>)
+            adapterTvShowCasts = SecondMovieCastsAdapter(it.cast as ArrayList<Cast>)
             rvTvShowSeasonCasts.adapter = adapterTvShowCasts
             adapterTvShowCasts.notifyDataSetChanged()
         }
@@ -95,7 +97,7 @@ class TvShowFourthFragment : Fragment() {
         rvTvShowSeasonCrews.setHasFixedSize(true)
 
         viewModel.creditsTvShowList.observe(viewLifecycleOwner) {
-            adapterTvShowCrews = SecondMovieCrewsAdapter(it.crew as ArrayList<com.flexath.celluloid.data.retrofit.credits.Crew>)
+            adapterTvShowCrews = SecondMovieCrewsAdapter(it.crew as ArrayList<Crew>)
             rvTvShowSeasonCrews.adapter = adapterTvShowCrews
             adapterTvShowCrews.notifyDataSetChanged()
         }

@@ -18,7 +18,6 @@
             android:id="@+id/crewProfilePicture"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/black_adam"
             android:background="@color/primary_color"
             android:scaleType="fitXY"/>
 
@@ -36,7 +35,6 @@
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Dwayne Johnson"
             android:textSize="16sp"
             android:textColor="@color/text_color"
             android:fontFamily="@font/worksans_medium"
@@ -48,7 +46,6 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginTop="5dp"
-            android:text="Teth Adam / Black Adam"
             android:textSize="11sp"
             android:textColor="@color/text_color"
             android:fontFamily="@font/worksans_light"
