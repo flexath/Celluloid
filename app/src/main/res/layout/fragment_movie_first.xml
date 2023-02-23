@@ -25,7 +25,7 @@
         android:background="@drawable/outline_tv_search_style"
         android:autofillHints="name"/>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -122,6 +122,6 @@
         </LinearLayout>
 
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>
